@@ -1,8 +1,8 @@
-# [private]]-Server
-The [private]] server emulator
+# EmuTarkov-Server
+The Escape From Tarkov server emulator
 
 ## Getting started
 See the wiki for more information
 
 ## Credits
-Polivilas,Senko-San The [private] team (see package.json for all names)
+Polivilas, The JustEmuTarkov team (see package.json for all names)

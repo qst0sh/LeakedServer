@@ -15,11 +15,20 @@
 	},
 	"IsGroupPosition": false,
 	"GroupPositions": [],
-	"Root": "5e68b2f786f7741caf48cb0b",
+	"Root": "5ea2d1e686f7747a1e3249f3",
 	"Items": [
 		{
-			"_id": "5e68b2f786f7741caf48cb0b",
-			"_tpl": "5a0abb6e1526d8000a025282"
+			"_id": "5ea2d1e686f7747a1e3249f3",
+			"_tpl": "55d4887d4bdc2d962f8b4570"
+		},
+		{
+			"_id": "5ea2d1e686f7747a1e3249f4",
+			"_tpl": "59e6918f86f7746c9f75e849",
+			"parentId": "5ea2d1e686f7747a1e3249f3",
+			"slotId": "cartridges",
+			"upd": {
+				"StackObjectsCount": 12
+			}
 		}
 	]
 }

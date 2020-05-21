@@ -1,5 +1,5 @@
 {
-	"Id": "SPAWNS/ScavPMCspawn (37)",
+	"Id": "SPAWNS/ScavPMCspawn(2)",
 	"Sides": [
 		"Usec",
 		"Bear",
@@ -7,9 +7,9 @@
 	],
 	"InfiltrationZone": "Factory",
 	"Position": {
-		"x": 46.163,
-		"y": 0.16,
-		"z": -37.009
+		"x": 58.6,
+		"y": 0.101,
+		"z": 19.7
 	},
 	"Center": {
 		"x": 0,
@@ -21,5 +21,5 @@
 		"y": 0,
 		"z": 0
 	},
-	"Orientation": 0
+	"Orientation": 53.4900055
 }

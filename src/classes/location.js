@@ -133,7 +133,7 @@ class LocationServer {
         }
 
         base.data.locations = data;
-        return json.stringify(base);
+        return base.data;
     }
 }
 

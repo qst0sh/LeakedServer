@@ -3,7 +3,7 @@
 	"note": "",
 	"successMessageText": "5ae9b1c986f7743a5736fc04",
 	"failMessageText": "5ae9b1c986f7743a5736fc05",
-	"startedMessageText": "5ae9b1c986f7743a5736fc06",
+	"startedMessageText": "",
 	"description": "5ae9b1c986f7743a5736fc07",
 	"conditions": {
 		"5ae9b32486f7745bbc72275a": "Найти грузовые ведомости Гошана",

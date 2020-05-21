@@ -73,34 +73,23 @@ class ProfileServer {
         let folder = account_f.getPath(account.id);
         let pmcData = json.parse(json.read(db.profile[account.edition]["character_" + info.side.toLowerCase()]));
         let storage = json.parse(json.read(db.profile[account.edition]["storage_" + info.side.toLowerCase()]));
-        let currentStanding = 0;
-        
-        // pmc info
+
+        // delete existing profile
+        if (this.profiles[account.id]) {
+            delete this.profiles[account.id];
+        }
+
+        // pmc
         pmcData._id = "pmc" + account.id;
         pmcData.aid = account.id;
         pmcData.savage = "scav" + account.id;
         pmcData.Info.Nickname = info.nickname;
         pmcData.Info.LowerNickname = info.nickname.toLowerCase();
         pmcData.Info.RegistrationDate = Math.floor(new Date() / 1000);
+        pmcData.Health.UpdateTime = Math.round(Date.now() / 1000);
 
-        // storage info
+        // storage
         storage.data._id = "pmc" + account.id;
-        
-        //Version standing bonus for traders
-        if(account.edition === "Edge Of Darkness" || "Prepare To Escape"){
-            currentStanding = 0.20;
-        } else { currentStanding = 0;}
-        
-        // set trader standing      
-        for (let trader in db.assort) {
-            pmcData.TraderStandings[trader] = {
-                "currentLevel": 1,
-                "currentSalesSum": 0,
-                "currentStanding": currentStanding,
-                "NextLoyalty": null,
-                "loyaltyLevels": ((trader_f.traderServer.getTrader(trader)).data.loyalty.loyaltyLevels)
-            };
-        }
 
         // create profile
         json.write(folder + "character.json", pmcData);
@@ -108,8 +97,13 @@ class ProfileServer {
         json.write(folder + "userbuilds.json", {});
         json.write(folder + "dialogue.json", {});
 
-        // load to memory.
-        this.getProfile(sessionID, 'pmc');
+        // load to memory
+        let profile = this.getProfile(account.id, 'pmc');
+
+        // traders 
+        for (let traderID in db.assort) {
+            trader_f.traderServer.resetTrader(account.id, traderID);
+        }
 
         // don't wipe profile again
         account_f.accountServer.setWipe(account.id, false);
@@ -126,18 +120,29 @@ class ProfileServer {
         return scavData;
     }
 
-    changeNickname(info, sessionID) {
-        let pmcData = this.getPmcProfile(sessionID);
-
-        // check if the nickname exists
-        if (account_f.nicknameTaken(info)) {
-            return '{"err":225, "errmsg":"this nickname is already in use", "data":null}';
+    validateNickname(info, sessionID) {
+        if (info.nickname.length < 3) {
+            return "tooshort";
         }
 
-        // change nickname
-        pmcData.Info.Nickname = info.nickname;
-        pmcData.Info.LowerNickname = info.nickname.toLowerCase();
-        return ('{"err":0, "errmsg":null, "data":{"status":0, "nicknamechangedate":' + Math.floor(new Date() / 1000) + "}}");
+        if (account_f.accountServer.nicknameTaken(info)) {
+            return "taken";
+        }
+
+        return "OK";
+    }
+
+    changeNickname(info, sessionID) {
+        let output = this.validateNickname(info, sessionID);
+
+        if (output === "OK") {
+            let pmcData = this.getPmcProfile(sessionID);
+
+            pmcData.Info.Nickname = info.nickname;
+            pmcData.Info.LowerNickname = info.nickname.toLowerCase();
+        }
+        
+        return output;
     }
 
     changeVoice(info, sessionID) {
@@ -164,5 +169,21 @@ function getStashType(sessionID) {
     return "";
 }
 
+function calculateLevel(pmcData) {
+    let exp = 0;
+
+    for (let level in globals.data.config.exp.level.exp_table) {
+        if (pmcData.Info.Experience < exp) {
+            break;
+        }
+
+        pmcData.Info.Level = parseInt(level);
+        exp += globals.data.config.exp.level.exp_table[level].exp;
+    }
+
+    return pmcData.Info.Level;
+}
+
 module.exports.profileServer = new ProfileServer();
 module.exports.getStashType = getStashType;
+module.exports.calculateLevel = calculateLevel;

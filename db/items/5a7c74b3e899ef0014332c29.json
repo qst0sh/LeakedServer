@@ -134,9 +134,6 @@
 		"HasShoulderContact": false,
 		"SightingRange": 300,
 		"sightModType": "hybrid",
-		"variableZoom": false,
-		"varZoomCount": 0,
-		"varZoomAdd": 0,
 		"aimingSensitivity": 0.45,
 		"SightModesCount": 1,
 		"OpticCalibrationDistances": [
@@ -144,6 +141,26 @@
 			100,
 			150,
 			200
+		],
+		"ScopesCount": 1,
+		"AimSensitivity": [
+			0.7
+		],
+		"ModesCount": [
+			1
+		],
+		"Zooms": [
+			[
+				3.5
+			]
+		],
+		"CalibrationDistances": [
+			[
+				50,
+				100,
+				150,
+				200
+			]
 		]
 	},
 	"_proto": "5a1eaa87fcdbcb001865f75e"

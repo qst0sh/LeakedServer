@@ -3,12 +3,17 @@
 const fs = require('fs');
 const adler32 = require('adler32');
 
-function clearString(string) {
-	return string.replace(/[\r\n\t]/g, '').replace(/\s\s+/g, '').replace(/[\\]/g, "");
+function clearString(s) {
+	return s.replace(/[\b]/g, '')
+            .replace(/[\f]/g, '')
+            .replace(/[\n]/g, '')
+            .replace(/[\r]/g, '')
+            .replace(/[\t]/g, '')
+            .replace(/[\\]/g, '');
 }
 
-function adlerGen(string) {
-	return adler32.sum(string);
+function adlerGen(s) {
+	return adler32.sum(s);
 }
 
 function getRandomInt(min = 0, max = 100) {
@@ -98,6 +103,19 @@ function generateNewId(prefix) {
     return retVal + sign;
 }
 
+
+function secondsToTime(timestamp)
+{
+    timestamp = Math.round(timestamp);
+    let hours = Math.floor(timestamp / 60 / 60);
+    let minutes = Math.floor(timestamp / 60) - (hours * 60);
+    let seconds = timestamp % 60;
+
+    if( minutes < 10 ){ minutes = "0" + minutes}
+    if( seconds < 10 ){ seconds = "0" + seconds}
+    return hours + 'h' + minutes + ':' + seconds;
+}
+
 module.exports.clearString = clearString;
 module.exports.adlerGen = adlerGen;
 module.exports.getRandomInt = getRandomInt;
@@ -111,3 +129,4 @@ module.exports.makeSign = makeSign;
 module.exports.generateNewAccountId = generateNewAccountId;
 module.exports.generateNewItemId = generateNewItemId;
 module.exports.generateNewDialogueId = generateNewDialogueId;
+module.exports.secondsToTime = secondsToTime;

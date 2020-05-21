@@ -6,16 +6,30 @@ class InsuranceServer {
         events.scheduledEventHandler.addEvent("insuranceReturn", this.processReturn.bind(this));
     }
 
+    checkExpiredInsurance() {
+        let scheduledEvents = events.scheduledEventHandler.scheduledEvents;
+        let now = Date.now();
+
+        for (let count = scheduledEvents.length - 1; count >= 0; count--) {
+            let event = scheduledEvents[count];
+
+            if (event.type === "insuranceReturn" && event.scheduledTime <= now) {
+                events.scheduledEventHandler.processEvent(event);
+                scheduledEvents.splice(count, 1);
+            }
+        }
+    }
+
     /* remove insurance from an item */
     remove(pmcData, body) {
         let toDo = [body];
-        
+
         //Find the item and all of it's relates
         if (toDo[0] === undefined || toDo[0] === null || toDo[0] === "undefined") {
             logger.logError("item id is not valid");
             return;
         }
-    
+
         let ids_toremove = itm_hf.findAndReturnChildren(pmcData, toDo[0]); // get all ids related to this item, +including this item itself
 
         for (let i in ids_toremove) { // remove one by one all related items and itself
@@ -42,19 +56,6 @@ class InsuranceServer {
         if (actualItem.slotId === "Scabbard" || actualItem.slotId === "SecuredContainer") {
             return;
         }
-	
-	// Check if the insured item is INSIDE a secure container.
-	// We don't process insurance for these items
-	// TODO: Move this to helper and generify it to allow checking the entire parental tree
-	for(let item of pmcData.Inventory.items) {
-		if(item.slotId === "SecuredContainer") {
-			if(actualItem.parentId === item._id) {
-				return;
-			} else {
-				break;
-			}
-		}
-	}
 
         // Mark root-level items for later.
         if (actualItem.parentId === pmcData.Inventory.equipment) {
@@ -76,27 +77,62 @@ class InsuranceServer {
         const offRaidGearHash = {};
         offraidData.profile.Inventory.items.forEach(i => offRaidGearHash[i._id] = i);
 
+        let gears = [];
+
         for (let insuredItem of pmcData.InsuredItems) {
             if (preRaidGearHash[insuredItem.itemId]) {
                 // This item exists in preRaidGear, meaning we brought it into the raid...
                 // Check if we brought it out of the raid
                 if (!offRaidGearHash[insuredItem.itemId]) {
                     // We didn't bring this item out! We must've lost it.
-                    this.addGearToSend(pmcData, insuredItem, preRaidGearHash[insuredItem.itemId], sessionID);
+                    gears.push({ "pmcData": pmcData, "insuredItem": insuredItem, "item": preRaidGearHash[insuredItem.itemId], "sessionID": sessionID });
                 }
             }
+        }
+
+        for (let gear of gears) {
+            this.addGearToSend(gear.pmcData, gear.insuredItem, gear.item, gear.sessionID);
         }
     }
 
     /* store insured items on pmc death */
-    storeDeadGear(pmcData, sessionID) {
+    storeDeadGear(pmcData, offraidData, preRaidGear, sessionID) {
+        let gears = [];
+        let parentItems = {};
+
+        let securedContainerItems = offraid_f.getSecuredContainer(offraidData.profile.Inventory.items);
+        let offraidGearItems = offraid_f.getPlayerGear(offraidData.profile.Inventory.items);
+
+        let notInSecuredContainerHash = {};
+
+        const preRaidGearHash = {};
+        preRaidGear.forEach(i => preRaidGearHash[i._id] = i);
+
+        const securedContainerItemHash = {};
+        securedContainerItems.forEach(i => securedContainerItemHash[i._id] = i);
+
+        const pmcItemsHash = {};
+        pmcData.Inventory.items.forEach(i => pmcItemsHash[i._id] = i);
+
+        let parentIds = [];
         for (let insuredItem of pmcData.InsuredItems) {
-            for (let item of pmcData.Inventory.items) {
-                if (insuredItem.itemId === item._id) {
-                    this.addGearToSend(pmcData, insuredItem, item, sessionID);
-                    break;
-                }
+            if (preRaidGearHash[insuredItem.itemId] && !(securedContainerItemHash[insuredItem.itemId]) && !(typeof pmcItemsHash[insuredItem.itemId] === "undefined") && !(pmcItemsHash[insuredItem.itemId].slotId === "SecuredContainer")) {
+                /*if (utility.getRandomInt(0, 99) >= gameplayConfig.trading.insureReturnChance) {
+                    parentIds.push(insuredItem.itemId);
+                    continue;
+                }*/
+
+                /*if(parentIds(insuredItem.itemId) > -1) {
+                    
+                }*/
+
+                let item = pmcItemsHash[insuredItem.itemId];
+                gears.push({ "pmcData": pmcData, "insuredItem": insuredItem, "item": pmcItemsHash[insuredItem.itemId], "sessionID": sessionID });
             }
+        }
+        
+        for (let gear of gears) {
+            this.addGearToSend(gear.pmcData, gear.insuredItem, gear.item, gear.sessionID);
         }
     }
 
@@ -109,24 +145,24 @@ class InsuranceServer {
                 "templateId": dialogueTemplates.insuranceStart[utility.getRandomInt(0, dialogueTemplates.insuranceStart.length - 1)],
                 "type": dialogue_f.getMessageTypeValue("npcTrader")
             };
-    
+
             dialogue_f.dialogueServer.addDialogueMessage(traderId, messageContent, sessionID);
-        
+
             messageContent = {
                 "templateId": dialogueTemplates.insuranceFound[utility.getRandomInt(0, dialogueTemplates.insuranceFound.length - 1)],
                 "type": dialogue_f.getMessageTypeValue("insuranceReturn"),
-                "maxStorageTime": trader.data.insurance.max_storage_time * 3600,
+                "maxStorageTime": trader.insurance.max_storage_time * 3600,
                 "systemData": {
                     "date": utility.getDate(),
                     "time": utility.getTime(),
                     "location": pmcData.Info.EntryPoint
                 }
             };
-    
+
             events.scheduledEventHandler.addToSchedule({
                 "type": "insuranceReturn",
                 "sessionId": sessionID,
-                "scheduledTime": Date.now() + utility.getRandomInt(trader.data.insurance.min_return_hour * 3600, trader.data.insurance.max_return_hour * 3600) * 1000,
+                "scheduledTime": Date.now() + utility.getRandomInt(trader.insurance.min_return_hour * 3600, trader.insurance.max_return_hour * 3600) * 1000,
                 "data": {
                     "traderId": traderId,
                     "messageContent": messageContent,
@@ -142,26 +178,38 @@ class InsuranceServer {
         // Inject a little bit of a surprise by failing the insurance from time to time ;)
         if (utility.getRandomInt(0, 99) >= gameplayConfig.trading.insureReturnChance) {
             let insuranceFailedTemplates = json.parse(json.read(db.dialogues[event.data.traderId])).insuranceFailed;
-            event.data.messageContent.templateId = insuranceFailedTemplates[utility.getRandomInt(0, insuranceFailedTemplates.length)];
+            event.data.messageContent.templateId = insuranceFailedTemplates[utility.getRandomInt(0, insuranceFailedTemplates.length - 1)];
             event.data.items = [];
         }
-    
+
         dialogue_f.dialogueServer.addDialogueMessage(event.data.traderId, event.data.messageContent, event.sessionId, event.data.items);
     }
 }
 
 // TODO: Move to helper functions
 function getItemPrice(_tpl) {
-	let price = 0;
-	if(_tpl in db.templates.items) {
-		let template = json.parse(json.read(db.templates.items[_tpl]));
-		price = template.Price;
-	} else {
-		let item = json.parse(json.read(db.items[_tpl]));
-		price = item._props.CreditsPrice;
-	}
-	
-	return price;
+    let price = 0;
+
+    if (typeof (global.templatesById) === "undefined") {
+        global.templatesById = {};
+        templates.data.Items.forEach(i => templatesById[i.Id] = i);
+    }
+
+    if (_tpl in templatesById) {
+        let template = templatesById[_tpl];
+        price = template.Price;
+    } else {
+        let item = items.data[_tpl];
+        price = item._props.CreditsPrice;
+    }
+
+    return price;
+}
+
+function getPremium(pmcData, inventoryItem, traderId) {
+    let premium = getItemPrice(inventoryItem._tpl) * (gameplayConfig.trading.insureMultiplier * 3);
+    premium -= premium * (pmcData.TraderStandings[traderId].currentStanding > 0.5 ? 0.5 : pmcData.TraderStandings[traderId].currentStanding);
+    return Math.round(premium);
 }
 
 /* calculates insurance cost */
@@ -169,15 +217,19 @@ function cost(info, sessionID) {
     let output = {};
     let pmcData = profile_f.profileServer.getPmcProfile(sessionID);
 
+    let inventoryItemsHash = {};
+    pmcData.Inventory.items.forEach(i => inventoryItemsHash[i._id] = i);
+
     for (let trader of info.traders) {
         let items = {};
 
         for (let key of info.items) {
-            for (let item of pmcData.Inventory.items) {
-                if (item._id === key) {
-                    items[item._tpl] = Math.round(getItemPrice(item._tpl) * gameplayConfig.trading.insureMultiplier);
-                    break;
-                }
+            try {
+                items[inventoryItemsHash[key]._tpl] = Math.round(getPremium(pmcData, inventoryItemsHash[key], trader));
+            } catch (e) {
+                logger.logError("Anomalies in the calculation of insurance prices");
+                logger.logError("InventoryItemId:" + item._id);
+                logger.logError("ItemId:" + item._tpl);
             }
         }
 
@@ -191,36 +243,30 @@ function cost(info, sessionID) {
 function insure(pmcData, body, sessionID) {
     let itemsToPay = [];
 
+    let inventoryItemsHash = {};
+    pmcData.Inventory.items.forEach(i => inventoryItemsHash[i._id] = i);
+
     // get the price of all items
     for (let key of body.items) {
-        for (let item of pmcData.Inventory.items) {
-            if (item._id === key) {
-                itemsToPay.push({
-                    "id": item._id,
-                    "count": Math.round(getItemPrice(item._tpl) * gameplayConfig.trading.insureMultiplier)
-                });
-                break;
-            }
-        }
+        itemsToPay.push({
+            "id": inventoryItemsHash[key]._id,
+            "count": Math.round(getPremium(pmcData, inventoryItemsHash[key], body.tid))
+        });
     }
 
+
     // pay the item	to profile
-    if (!itm_hf.payMoney(pmcData, {"scheme_items": itemsToPay, "tid": body.tid}, sessionID)) {
-        logger.LogError("no money found");
+    if (!itm_hf.payMoney(pmcData, { "scheme_items": itemsToPay, "tid": body.tid }, sessionID)) {
+        logger.logError("no money found");
         return "";
     }
 
     // add items to InsuredItems list once money has been paid
     for (let key of body.items) {
-        for (let item of pmcData.Inventory.items) {
-            if (item._id === key) {
-                pmcData.InsuredItems.push({
-                    "tid": body.tid,
-                    "itemId": item._id
-                });
-                break;
-            }
-        }
+        pmcData.InsuredItems.push({
+            "tid": body.tid,
+            "itemId": inventoryItemsHash[key]._id
+        });
     }
 
     return item_f.itemServer.getOutput();

@@ -96,9 +96,6 @@
 		"HasShoulderContact": false,
 		"SightingRange": 800,
 		"sightModType": "optic",
-		"variableZoom": false,
-		"varZoomCount": 1,
-		"varZoomAdd": 1,
 		"aimingSensitivity": 0.2,
 		"SightModesCount": 1,
 		"OpticCalibrationDistances": [
@@ -106,6 +103,26 @@
 			100,
 			150,
 			200
+		],
+		"ScopesCount": 1,
+		"AimSensitivity": [
+			0.75
+		],
+		"ModesCount": [
+			1
+		],
+		"Zooms": [
+			[
+				3.5
+			]
+		],
+		"CalibrationDistances": [
+			[
+				50,
+				100,
+				150,
+				200
+			]
 		]
 	},
 	"_proto": "544a3f024bdc2d1d388b4568"

@@ -3,7 +3,7 @@
 	"note": "",
 	"successMessageText": "5ac346d786f7741d645149ef",
 	"failMessageText": "5ac346d786f7741d645149f0",
-	"startedMessageText": "5ac346d786f7741d645149f1",
+	"startedMessageText": "",
 	"description": "5ac346d786f7741d645149f2",
 	"conditions": {
 		"5ac7a7bf86f774132252a524": "Place first jammer",

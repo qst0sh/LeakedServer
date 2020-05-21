@@ -19,7 +19,7 @@ function parse(string) {
 }
 
 function read(file) {
-    return (fs.readFileSync(file, 'utf8')).replace(/[\r\n\t]/g, '').replace(/\s\s+/g, '');
+    return fs.readFileSync(file, 'utf8');
 }
 
 function write(file, data) {

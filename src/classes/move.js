@@ -153,7 +153,7 @@ function removeItemFromProfile(profileData, itemId, output = null) {
      //remove one by one all related items and itself
     for (let i in ids_toremove) {
         if (output !== null) {
-            output.data.items.del.push({"_id": ids_toremove[i]});
+            output.items.del.push({"_id": ids_toremove[i]});
         }
 
         for (let a in profileData.Inventory.items) {
@@ -215,7 +215,7 @@ function splitItem(pmcData, body, sessionID) {
 
             let newItem = utility.generateNewItemId();
 
-            output.data.items.new.push({
+            output.items.new.push({
                 "_id": newItem,
                 "_tpl": item._tpl,
                 "parentId": body.container.id,
@@ -273,7 +273,7 @@ function mergeItem(pmcData, body, sessionID) {
                     }
 
                     items.to[key].upd.StackObjectsCount = stackItem0 + stackItem1;
-                    output.data.items.del.push({"_id": items.from[key2]._id});
+                    output.items.del.push({"_id": items.from[key2]._id});
                     items.from.splice(key2, 1);
                     return output;
                 }
@@ -371,7 +371,7 @@ function addItem(pmcData, body, output, sessionID, foundInRaid = false) {
     } else if (body.tid === "579dc571d53a0658a154fbec") {
         items = [{_id: body.item_id, _tpl: body.item_id}];
     } else {
-        items = trader_f.traderServer.getAssort(body.tid).data.items;
+        items = trader_f.traderServer.getAssort(body.tid).items;
     }
 
     for (let item of items) {
@@ -448,7 +448,7 @@ function addItem(pmcData, body, output, sessionID, foundInRaid = false) {
                                 upd["SpawnedInSession"] = true;
                             }
 
-                            output.data.items.new.push({
+                            output.items.new.push({
                                 "_id": newItem,
                                 "_tpl": item._tpl,
                                 "parentId": pmcData.Inventory.stash,
@@ -478,7 +478,7 @@ function addItem(pmcData, body, output, sessionID, foundInRaid = false) {
                                         let SlotID = items[tmpKey].slotId;
 
                                         if (SlotID === "hideout") {
-                                            output.data.items.new.push({
+                                            output.items.new.push({
                                                 "_id": newItem,
                                                 "_tpl": items[tmpKey]._tpl,
                                                 "parentId": toDo[0][1],
@@ -496,7 +496,7 @@ function addItem(pmcData, body, output, sessionID, foundInRaid = false) {
                                                 "upd": upd
                                             });
                                         } else {
-                                            output.data.items.new.push({
+                                            output.items.new.push({
                                                 "_id": newItem,
                                                 "_tpl": items[tmpKey]._tpl,
                                                 "parentId": toDo[0][1],

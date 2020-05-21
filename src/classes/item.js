@@ -26,10 +26,6 @@ class ItemServer {
             }
         }
 
-        if (result !== "") {
-            result = json.stringify(result);
-        }
-
         this.resetOutput();
         return result;
     }
@@ -47,14 +43,8 @@ class ItemServer {
     }
 
     resetOutput() {
-        this.output = {"err":0, "errmsg":null, "data":{"items":{"new":[], "change":[], "del":[]}, "badRequest":[], "quests":[], "ragFairOffers":[], "builds":[], "currentSalesSums":{}}};
+        this.output = {"items": {"new": [], "change": [], "del": []}, "badRequest": [], "quests": [], "ragFairOffers": [], "builds": [], "currentSalesSums": {}};
     }
 }
 
-function prices(request)
-{
-    return null
-}
-
-module.exports.prices = prices;
 module.exports.itemServer = new ItemServer();

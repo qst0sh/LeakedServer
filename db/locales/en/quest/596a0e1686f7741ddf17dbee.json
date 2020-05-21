@@ -3,7 +3,7 @@
 	"description": "5abe61a786f7746ad512da54",
 	"note": "",
 	"failMessageText": "5ab0f32686f7745dd409f571",
-	"startedMessageText": "5c4ee9a886f77465b66481f2",
+	"startedMessageText": "",
 	"successMessageText": "5ab0f32686f7745dd409f572",
 	"conditions": {
 		"596a0e7086f7741ddf17dbef": "Find the secure folder on the sawmill",

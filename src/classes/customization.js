@@ -3,7 +3,7 @@
 let customization = undefined;
 
 function initialize() {
-	customization = json.parse(json.read(db.user.cache.customization));
+	customization = json.parse(json.read(db.user.cache.customization)).data;
 }
 
 function getCustomization() {
@@ -17,7 +17,7 @@ function getPath(sessionID) {
 
 function wearClothing(pmcData, body, sessionID) {
 	for (let i = 0; i < body.suites.length; i++) {
-		let suite = customization.data[body.suites[i]];
+		let suite = customization[body.suites[i]];
 
 		// this parent reffers to Lower Node
 		if (suite._parent == "5cd944d01388ce000a659df9") {
@@ -53,7 +53,7 @@ function buyClothing(pmcData, body, sessionID) {
 				if (pmcData.Inventory.items[item].upd.StackObjectsCount > sellItem.count) {
 					pmcData.Inventory.items[item].upd.StackObjectsCount -= sellItem.count;
 
-					output.data.items.change.push({
+					output.items.change.push({
                         "_id": pmcData.Inventory.items[item]._id,
                         "_tpl": pmcData.Inventory.items[item]._tpl,
                         "parentId": pmcData.Inventory.items[item].parentId,
@@ -63,7 +63,7 @@ function buyClothing(pmcData, body, sessionID) {
 					});
 					break;
 				} else if (pmcData.Inventory.items[item].upd.StackObjectsCount === sellItem.count && sellItem.del === true) {
-					output.data.items.del.push({"_id": sellItem.id});
+					output.items.del.push({"_id": sellItem.id});
                     pmcData.Inventory.items.splice(item, 1);					
 				}
 			}

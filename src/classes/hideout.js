@@ -52,7 +52,9 @@ function upgrade(pmcData, body, sessionID) {
 // validating the upgrade
 function upgradeComplete(pmcData, body, sessionID) {
 	for (let hideoutArea in pmcData.Hideout.Areas) {
-		if (pmcData.Hideout.Areas[hideoutArea].type !== body.areaType){ continue; }
+		if (pmcData.Hideout.Areas[hideoutArea].type !== body.areaType) {
+			continue;
+		}
 
 		// upgrade area
 		pmcData.Hideout.Areas[hideoutArea].level++;	
@@ -60,21 +62,21 @@ function upgradeComplete(pmcData, body, sessionID) {
 		pmcData.Hideout.Areas[hideoutArea].constructing = false;
 		
 		//go to apply bonuses
-		for(let area_bonus of areas.data)
-		{
-			if( area_bonus.type !== pmcData.Hideout.Areas[hideoutArea].type){ continue; }
+		for (let area_bonus of areas.data) {
+			if (area_bonus.type !== pmcData.Hideout.Areas[hideoutArea].type) {
+				continue;
+			}
 
-			let arrayofBonuses = area_bonus.stages[pmcData.Hideout.Areas[hideoutArea].level].bonuses;
+			let bonuses = area_bonus.stages[pmcData.Hideout.Areas[hideoutArea].level].bonuses;
 
-			if(arrayofBonuses.length > 0)
-			{
-				for(let bonusInArray of arrayofBonuses)
-				{
-					pmcData.Bonuses.push(bonusInArray); //just do stupid things like bsg does
+			if (bonuses.length > 0) {
+				for (let bonus of bonuses) {
+					applyPlayerUpgradesBonuses(pmcData, bonus);
 				}
 			}
 		}
 	}
+
 	return item_f.itemServer.getOutput();
 }
 
@@ -85,14 +87,15 @@ function putItemsInAreaSlots(pmcData, body, sessionID) {
 	for (let itemToMove in body.items) {
 		for (let inventoryItem of pmcData.Inventory.items) {
 			if (body.items[itemToMove].id !== inventoryItem._id) {
-				continue
+				continue;
 			}
 
-			for (let area in pmcData.Hideout.Areas) {
-				if (pmcData.Hideout.Areas[area].type !== body.areaType) {
+			for (let area of pmcData.Hideout.Areas) {
+				if (area.type !== body.areaType) {
 					continue;
 				}
 
+				let slot_position = parseInt(itemToMove);
 				let slot_to_add = {
 					"item": [
 						{
@@ -102,17 +105,14 @@ function putItemsInAreaSlots(pmcData, body, sessionID) {
 						}
 					]
 				}
-				let slot_position = parseInt(itemToMove);
-				if(pmcData.Hideout.Areas[area].slots[slot_position] === undefined)
-				{
-					pmcData.Hideout.Areas[area].slots.push(slot_to_add)
+				
+				if (!(slot_position in area.slots)) {
+					area.slots.push(slot_to_add);
+				} else {
+					area.slots.splice(slot_position, 1, slot_to_add);
 				}
-				else
-				{
-					pmcData.Hideout.Areas[area].slots.splice(slot_position, 1, slot_to_add);
-				}
-				output = move_f.removeItem(pmcData, inventoryItem._id, output, sessionID);
 
+				output = move_f.removeItem(pmcData, inventoryItem._id, output, sessionID);
 			}
 		}
 	}
@@ -123,45 +123,41 @@ function putItemsInAreaSlots(pmcData, body, sessionID) {
 function takeItemsFromAreaSlots(pmcData, body, sessionID) {
 	let output = item_f.itemServer.getOutput();
 
-	for (let area in pmcData.Hideout.Areas) {
-		if (pmcData.Hideout.Areas[area].type !== body.areaType) { continue; }
+	for (let area of pmcData.Hideout.Areas) {
+		if (area.type !== body.areaType) {
+			continue;
+		}
 
-		if(pmcData.Hideout.Areas[area].type == 4)
-		{	
-			let itemToMove = pmcData.Hideout.Areas[area].slots[body.slots[0]].item[0];
+		if (area.type === 4) {	
+			let itemToMove = area.slots[body.slots[0]].item[0];
 			let newReq = {
 				"item_id": itemToMove._tpl,
 				"count": 1,
 				"tid": "ragfair"
 			};
+
 			output = move_f.addItem(pmcData, newReq, output, sessionID);
-
 			pmcData = profile_f.profileServer.getPmcProfile(sessionID);
-			output.data.items.new[0].upd = itemToMove.upd;
+			output.items.new[0].upd = itemToMove.upd;
 
-			for( let item in pmcData.Inventory.items )
-			{
-				if( pmcData.Inventory.items[item]._id == output.data.items.new[0]._id)
-				{
-					pmcData.Inventory.items[item].upd = itemToMove.upd;
+			for (let item of pmcData.Inventory.items) {
+				if (item._id == output.items.new[0]._id) {
+					item.upd = itemToMove.upd;
 				}
 			}
-			pmcData.Hideout.Areas[area].slots[body.slots[0]] = {"item" : null};			
-		}
-		else
-		{
+
+			area.slots[body.slots[0]] = {"item" : null};			
+		} else {
 			let newReq = {
-				"item_id": pmcData.Hideout.Areas[area].slots[0].item[0]._tpl,
+				"item_id": area.slots[0].item[0]._tpl,
 				"count": 1,
 				"tid": "ragfair"
 			};
 			
 			output = move_f.addItem(pmcData, newReq, output, sessionID);
 			pmcData = profile_f.profileServer.getPmcProfile(sessionID);
-			pmcData.Hideout.Areas[area].slots.splice(0, 1);
+			area.slots.splice(0, 1);
 		}
-
-
 	}
 
 	return output;
@@ -203,14 +199,13 @@ function scavCaseProductionStart(pmcData, body, sessionID) {
 	for (let receipe in scavcase.data) {	
 		if (body.recipeId == scavcase.data[receipe]._id) {
 			let rarityItemCounter = {};
+			let products = [];
 
 			for (let rarity in scavcase.data[receipe].EndProducts) {
 				if (scavcase.data[receipe].EndProducts[rarity].max > 0) {
 					rarityItemCounter[rarity] = scavcase.data[receipe].EndProducts[rarity].max;
 				}
 			}
-
-			let products = [];
 			
 			for (let rarityType in rarityItemCounter) {
 				while (rarityItemCounter[rarityType] !== 0) {	
@@ -257,18 +252,18 @@ function getBTC(pmcData, body, sessionID) {
 		"tid": "ragfair"
 	};
 
-	for(let bitcoin in pmcData.Hideout.Production["20"].Products) {
+	for (let bitcoin in pmcData.Hideout.Production["20"].Products) {
 		output = move_f.addItem(pmcData, newBTC, output, sessionID, true);
 	}
-	pmcData.Hideout.Production["20"].Products = [];
 
+	pmcData.Hideout.Production["20"].Products = [];
 	return output;
 }
 
 function takeProduction(pmcData, body, sessionID) {
 	let output = item_f.itemServer.getOutput();
 
-	if(body.recipeId === "5d5c205bd582a50d042a3c0e") {
+	if (body.recipeId === "5d5c205bd582a50d042a3c0e") {
 		return getBTC(pmcData, body, sessionID);
 	}
 
@@ -345,6 +340,75 @@ function registerProduction(pmcData, body, sessionID) {
 			};
 		}
 	}
+}
+
+// BALIST0N, I got bad news for you
+// we do need to implement these after all
+// ...
+// with that I mean manual implementation
+// RIP, GL whoever is going to do this
+function applyPlayerUpgradesBonuses(pmcData, bonus) {
+	switch (bonus.type) 
+	{
+		case "StashSize":
+
+			for(let item in pmcData.Inventory.items )
+			{
+				if(pmcData.Inventory.items[item]._id == pmcData.Inventory.stash)
+				{
+					pmcData.Inventory.items[item]._tpl = bonus.templateId;
+				}
+			}
+			break;
+
+		case "MaximumEnergyReserve":
+			pmcData.Health.Energy.Maximum = 110;
+			break;
+
+		case "EnergyRegeneration":
+			break;
+
+		case "HydrationRegeneration":
+			break;
+
+		case "HealthRegeneration":
+			break;
+
+		case "DebuffEndDelay":
+			break;
+
+		case "ScavCooldownTimer":
+			break;
+
+		case "QuestMoneyReward":
+			break;
+
+		case "InsuranceReturnTime":
+			break;
+
+		case "ExperienceRate":
+			break;
+
+		case "SkillGroupLevelingBoost":
+			break;
+
+		case "RagfairCommission":
+			break;
+
+		case "AdditionalSlots":
+			break;
+
+		case "UnlockWeaponModification":
+			break;
+		
+		case "TextBonus":
+			break;
+
+		case "FuelConsumption":
+			break;
+	}
+
+	pmcData.Bonuses.push(bonus);
 }
 
 module.exports.initialize = initialize;

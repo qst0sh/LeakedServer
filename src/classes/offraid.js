@@ -7,21 +7,20 @@ function removeLabKeyCard(offraidData) {
     }
 
     for (let item of offraidData.profile.Inventory.items) {
-        if (item._tpl === "5c94bbff86f7747ee735c08f" && item.slotId !== "Hideout") 
-        {
+        if (item._tpl === "5c94bbff86f7747ee735c08f" && item.slotId !== "Hideout") {
             //this will not correctly 
             let usages = ("upd" in item && "Key" in item.upd) ? item.upd.Key.NumberOfUsages : -1;
-            if (usages == -1)
-            {
-                item.upd = {"Key": {"NumberOfUsages": 1 } };
-            }else
-            {
+
+            if (usages === -1) {
+                item.upd = {"Key": {"NumberOfUsages": 1 }};
+            } else {
                 item.upd.Key.NumberOfUsages += 1;
             }
-            if(item.upd.Key.NumberOfUsages >= itm_hf.getItem("5c94bbff86f7747ee735c08f")[1]._props.MaximumNumberOfUsage)
-            {   
+
+            if (item.upd.Key.NumberOfUsages >= itm_hf.getItem("5c94bbff86f7747ee735c08f")[1]._props.MaximumNumberOfUsage) {
                 move_f.removeItemFromProfile(offraidData.profile, item._id);
             }
+
             break;
         }
     }
@@ -35,6 +34,7 @@ function markFoundItems(pmcData, offraidData, isPlayerScav) {
 
         // mark new items for PMC, mark all items for scavs
         if (!isPlayerScav) {
+            // check if the item exists
             for (let item of pmcData.Inventory.items) {
                 if (offraidItem._id === item._id) {
                     found = true;
@@ -43,15 +43,20 @@ function markFoundItems(pmcData, offraidData, isPlayerScav) {
             }
 
             if (found) {
+                // if the item exists and is taken inside the raid, remove the taken in raid status
+                if ("upd" in offraidItem && "SpawnedInSession" in offraidItem.upd) {
+                    delete offraidItem.upd.SpawnedInSession;
+                }
+
                 continue;
             }
         }
 
         // mark item found in raid
         if ("upd" in offraidItem) {
-            offraidItem.upd["SpawnedInSession"] = true;
+            offraidItem.upd.SpawnedInSession = true;
         } else {
-            offraidItem["upd"] = {"SpawnedInSession": true};
+            offraidItem.upd = {"SpawnedInSession": true};
         }
     }
 
@@ -76,10 +81,10 @@ function deleteInventory(pmcData, sessionID) {
     for (let item of pmcData.Inventory.items) {
         // remove normal item
         if (item.parentId === pmcData.Inventory.equipment
-        && item.slotId !== "SecuredContainer"
-        && item.slotId !== "Scabbard"
-        && item.slotId !== "Pockets"
-        || item.parentId === pmcData.Inventory.questRaidItems) {
+            && item.slotId !== "SecuredContainer"
+            && item.slotId !== "Scabbard"
+            && item.slotId !== "Pockets"
+            || item.parentId === pmcData.Inventory.questRaidItems) {
             toDelete.push(item._id);
         }
 
@@ -99,7 +104,6 @@ function deleteInventory(pmcData, sessionID) {
     }
 
     pmcData.Inventory.fastPanel = {}
-
     return pmcData;
 }
 
@@ -120,6 +124,7 @@ function getPlayerGear(items) {
         'pocket2',
         'pocket3',
         'pocket4',
+        "SecuredContainer"
     ];
 
     let inventoryItems = [];
@@ -135,9 +140,51 @@ function getPlayerGear(items) {
     let newItems = inventoryItems;
     while (newItems.length > 0) {
         let foundItems = [];
-        
+
         for (let item of newItems) {
             // Find children of this item
+            for (let newItem of items) {
+                if (newItem.parentId === item._id) {
+                    foundItems.push(newItem);
+                }
+            }
+        }
+
+        // Add these new found items to our list of inventory items
+        inventoryItems = [
+            ...inventoryItems,
+            ...foundItems,
+        ];
+
+        // Now find the children of these items
+        newItems = foundItems;
+    }
+
+    return inventoryItems;
+}
+
+function getSecuredContainer(items) {
+    // Player Slots we care about
+    const inventorySlots = [
+        'SecuredContainer',
+    ];
+
+    let inventoryItems = [];
+
+    // Get an array of root player items
+    for (let item of items) {
+        if (inventorySlots.includes(item.slotId)) {
+            inventoryItems.push(item);
+        }
+    }
+
+    // Loop through these items and get all of their children
+    let newItems = inventoryItems;
+
+    while (newItems.length > 0) {
+        let foundItems = [];
+
+        for (let item of newItems) {
             for (let newItem of items) {
                 if (newItem.parentId === item._id) {
                     foundItems.push(newItem);
@@ -166,8 +213,8 @@ function saveProgress(offraidData, sessionID) {
     let pmcData = profile_f.profileServer.getPmcProfile(sessionID);
     let scavData = profile_f.profileServer.getScavProfile(sessionID);
     const isPlayerScav = offraidData.isPlayerScav;
-    const isDead = offraidData.exit !== "survived" && offraidData.exit !== "runner";
-    const preRaidGear = isPlayerScav ? [] : getPlayerGear(pmcData.Inventory.items);
+    const isDead = (offraidData.exit !== "survived" && offraidData.exit !== "runner");
+    const preRaidGear = (isPlayerScav) ? [] : getPlayerGear(pmcData.Inventory.items);
 
     // set pmc data
     if (!isPlayerScav) {
@@ -177,7 +224,7 @@ function saveProgress(offraidData, sessionID) {
         pmcData.Encyclopedia = offraidData.profile.Encyclopedia;
         pmcData.ConditionCounters = offraidData.profile.ConditionCounters;
         pmcData.Quests = offraidData.profile.Quests;
-        
+
         // For some reason, offraidData seems to drop the latest insured items.
         // It makes more sense to use pmcData's insured items as the source of truth.
         offraidData.profile.InsuredItems = pmcData.InsuredItems;
@@ -214,7 +261,7 @@ function saveProgress(offraidData, sessionID) {
     insurance_f.insuranceServer.storeLostGear(pmcData, offraidData, preRaidGear, sessionID);
 
     if (isDead) {
-        insurance_f.insuranceServer.storeDeadGear(pmcData, sessionID);
+        insurance_f.insuranceServer.storeDeadGear(pmcData, offraidData, preRaidGear, sessionID);
         pmcData = deleteInventory(pmcData, sessionID);
     }
 
@@ -222,3 +269,5 @@ function saveProgress(offraidData, sessionID) {
 }
 
 module.exports.saveProgress = saveProgress;
+module.exports.getSecuredContainer = getSecuredContainer;
+module.exports.getPlayerGear = getPlayerGear;

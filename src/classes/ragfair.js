@@ -27,6 +27,10 @@ function sortOffersByPrice(a, b) {
     return a.requirements[0].count - b.requirements[0].count;
 }
 
+function sortOffersByPriceSummaryCost(a,b){
+    return a.summaryCost - b.summaryCost;
+}
+
 function sortOffersByExpiry(a, b) {
     return a.endTime - b.endTime;
 }
@@ -47,7 +51,9 @@ function sortOffers(request, offers) {
             break;
 
         case 5: // Price
-            offers.sort(sortOffersByPrice);
+            if(request.offerOwnerType ==  1){  offers.sort(sortOffersByPriceSummaryCost); }
+            else{ offers.sort(sortOffersByPrice); }
+            
             break;
 
         case 6: // Expires in
@@ -119,12 +125,18 @@ function countCategories(response) {
 }
 
 function getOffers(request) {
+
+    if( request.offerOwnerType ==  1 )//if its traders items, just a placeholder it will be handled differently later 
+    {
+        return getOffersFromTraders(request)
+    }
+
     let response = {"categories": {}, "offers": [], "offersCount": 10, "selectedCategory": "5b5f78dc86f77409407a7f8e"};
     let itemsToAdd = [];
     let offers = [];
 
     if (!request.linkedSearchId && !request.neededSearchId) {
-        response.categories = (trader_f.traderServer.getAssort("ragfair")).data.loyal_level_items;
+        response.categories = (trader_f.traderServer.getAssort("ragfair")).loyal_level_items;
     }
 
     if (request.buildCount) {
@@ -157,6 +169,118 @@ function getOffers(request) {
     response.offers = sortOffers(request, offers);
     countCategories(response);
     return response;
+}
+
+function getOffersFromTraders(request)
+{
+    let jsonToReturn = json.parse(json.read("user/cache/ragfair_offers.json")); 
+    let offersFilters = []; //this is an array of item tpl who filter only items to show
+
+    jsonToReturn.categories = {}
+    for(let offerC of jsonToReturn.offers)
+    {   
+        jsonToReturn.categories[offerC.items[0]._tpl] = 1;
+    }
+
+    if (request.buildCount) 
+    {
+        // Case: weapon builds
+        offersFilters = Object.keys(request.buildItems) ;
+        jsonToReturn = fillCatagories(jsonToReturn,offersFilters);
+    } 
+    else 
+    {
+        // Case: search
+        if (request.linkedSearchId) 
+        {
+            //offersFilters.concat( getLinkedSearchList(request.linkedSearchId) );
+            offersFilters = [...offersFilters, ...getLinkedSearchList(request.linkedSearchId) ]
+            jsonToReturn = fillCatagories(jsonToReturn,offersFilters);
+        }
+        else if (request.neededSearchId) 
+        {
+            offersFilters = [...offersFilters, ...getNeededSearchList(request.neededSearchId) ]
+            jsonToReturn = fillCatagories(jsonToReturn,offersFilters);
+        }
+        
+        
+
+        if(request.removeBartering == true)
+        { 
+            jsonToReturn = removeBarterOffers(jsonToReturn) 
+            jsonToReturn = fillCatagories(jsonToReturn,offersFilters);
+        }
+
+        // Case: category
+        if (request.handbookId) 
+        {
+            let handbookList = getCategoryList(request.handbookId) 
+            
+            if (offersFilters.length) 
+            {
+                offersFilters = itm_hf.arrayIntersect(offersFilters, handbookList);
+            }
+            else 
+            {
+                offersFilters = handbookList;
+            }
+        }
+    }
+
+    let offersToKeep = [];
+    for(let offer in jsonToReturn.offers)
+    {
+        for(let tplTokeep of offersFilters)
+        {
+            if(jsonToReturn.offers[offer].items[0]._tpl == tplTokeep)
+            {
+                jsonToReturn.offers[offer].summaryCost = calculateCost(jsonToReturn.offers[offer].requirements);
+                offersToKeep.push( jsonToReturn.offers[offer] )
+            }
+        }
+
+    }
+    jsonToReturn.offers = offersToKeep;
+    jsonToReturn.offers = sortOffers(request, jsonToReturn.offers);
+    return jsonToReturn;
+}
+
+function fillCatagories(response,filters)
+{
+    response.categories = {}
+    for(let filter of filters)
+    {   
+        response.categories[filter] = 1;
+    }
+
+    return response;
+}
+
+
+function removeBarterOffers(response)
+{
+    let override = [];
+    for(let offer of response.offers)
+    {   
+        if( itm_hf.isMoneyTpl(offer.requirements[0]._tpl) == true )
+        {
+            override.push(offer)
+        }
+    }
+    response.offers = override;
+    return response;
+}
+
+function calculateCost(barter_scheme)//theorical , not tested not implemented
+{
+    let summaryCost = 0;
+    
+    for(let barter of barter_scheme)
+    {
+        summaryCost += itm_hf.getTemplatePrice(barter._tpl) * barter.count
+    }
+
+    return Math.round(summaryCost)
 }
 
 function getLinkedSearchList(linkedSearchId) {

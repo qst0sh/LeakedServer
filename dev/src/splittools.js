@@ -44,11 +44,11 @@ function genericSplitter(type, basepath, basefile) {
 }
 
 function items() {
-    genericSplitter("items", "items", inputDir + "prod.escapefromtarkov.com.client.items.txt");
+    genericSplitter("items", "items", inputDir + ".client.items.json");
 }
 
 function quests() {
-    let file = json.parse(json.read(inputDir + "prod.escapefromtarkov.com.client.quest.list.txt"));
+    let file = json.parse(json.read(inputDir + ".client.quest.list.json"));
 
     for (let element in file.data) {
         let output = outputDir + "assort/" + file.data[element].traderId + "/quests/" + file.data[element]._id + ".json";
@@ -59,7 +59,7 @@ function quests() {
 }
 
 function traders() {
-    let file = json.parse(json.read(inputDir + "trading.escapefromtarkov.com.client.trading.api.getTradersList.txt"));
+    let file = json.parse(json.read(inputDir + ".client.trading.api.getTradersList.json"));
 
     for (let element in file.data) {
         let output = outputDir + "assort/" + file.data[element]._id + "/" + "base.json";
@@ -68,7 +68,7 @@ function traders() {
 }
 
 function locations() {
-    let file = json.parse(json.read(inputDir + "prod.escapefromtarkov.com.client.locations.txt"));
+    let file = json.parse(json.read(inputDir + ".client.locations.json"));
 
     for (let element in file.data.locations) {
         let data = file.data.locations[element];
@@ -111,31 +111,31 @@ function locations() {
 }
 
 function language() {
-    genericSplitter("languages", "locales", inputDir + "prod.escapefromtarkov.com.client.languages.txt");
+    genericSplitter("languages", "locales", inputDir + ".client.languages.json");
 }
 
 function customizationOutfits() {
-    genericSplitter("customOutfits", "customization", inputDir + "prod.escapefromtarkov.com.client.customization.txt");
+    genericSplitter("customOutfits", "customization", inputDir + ".client.customization.json");
 }
 
 function customizationOffers() {
-    genericSplitter("customOffers", "assort", inputDir + "trading.escapefromtarkov.com.client.trading.customization.5ac3b934156ae10c4430e83c.offers.txt");
+    genericSplitter("customOffers", "assort", inputDir + ".client.trading.customization.5ac3b934156ae10c4430e83c.offers.json");
 }
 
 function hideoutAreas() {
-    genericSplitter("hideoutAreas", "hideout/areas", inputDir + "prod.escapefromtarkov.com.client.hideout.areas.txt");
+    genericSplitter("hideoutAreas", "hideout/areas", inputDir + ".client.hideout.areas.json");
 }
 
 function hideoutProduction() {
-    genericSplitter("hideoutProd", "hideout/production", inputDir + "prod.escapefromtarkov.com.client.hideout.production.recipes.txt");
+    genericSplitter("hideoutProd", "hideout/production", inputDir + ".client.hideout.production.recipes.json");
 }
 
 function hideoutScavcase() {
-    genericSplitter("hideoutScav", "hideout/scavcase", inputDir + "prod.escapefromtarkov.com.client.hideout.production.scavcase.recipes.txt");
+    genericSplitter("hideoutScav", "hideout/scavcase", inputDir + ".client.hideout.production.scavcase.recipes.json");
 }
 
 function templates() {
-    let file = json.parse(json.read(inputDir + "prod.escapefromtarkov.com.client.handbook.templates.txt"));
+    let file = json.parse(json.read(inputDir + ".client.handbook.templates.json"));
 
     for (let element in file.data) {
         let key = file.data[element];
@@ -179,13 +179,13 @@ function assortHelper(assortFile, shortName) {
 }
 
 function assort() {
-    assortHelper("trading.client.trading.api.getTraderAssort.5a7c2eca46aef81a7ca2145d.txt", "5a7c2eca46aef81a7ca2145d");
-    assortHelper("trading.client.trading.api.getTraderAssort.5ac3b934156ae10c4430e83c.txt", "5ac3b934156ae10c4430e83c");
-    assortHelper("trading.client.trading.api.getTraderAssort.5c0647fdd443bc2504c2d371.txt", "5c0647fdd443bc2504c2d371");
-    assortHelper("trading.client.trading.api.getTraderAssort.54cb50c76803fa8b248b4571.txt", "54cb50c76803fa8b248b4571");
-    assortHelper("trading.client.trading.api.getTraderAssort.54cb57776803fa99248b456e.txt", "54cb57776803fa99248b456e");
-    assortHelper("trading.client.trading.api.getTraderAssort.5935c25fb3acc3127c3d8cd9.txt", "5935c25fb3acc3127c3d8cd9");
-    assortHelper("trading.client.trading.api.getTraderAssort.58330581ace78e27b8b10cee.txt", "58330581ace78e27b8b10cee");
+    assortHelper(".client.trading.api.getTraderAssort.5a7c2eca46aef81a7ca2145d.json", "5a7c2eca46aef81a7ca2145d");
+    assortHelper(".client.trading.api.getTraderAssort.5ac3b934156ae10c4430e83c.json", "5ac3b934156ae10c4430e83c");
+    assortHelper(".client.trading.api.getTraderAssort.5c0647fdd443bc2504c2d371.json", "5c0647fdd443bc2504c2d371");
+    assortHelper(".client.trading.api.getTraderAssort.54cb50c76803fa8b248b4571.json", "54cb50c76803fa8b248b4571");
+    assortHelper(".client.trading.api.getTraderAssort.54cb57776803fa99248b456e.json", "54cb57776803fa99248b456e");
+    assortHelper(".client.trading.api.getTraderAssort.5935c25fb3acc3127c3d8cd9.json", "5935c25fb3acc3127c3d8cd9");
+    assortHelper(".client.trading.api.getTraderAssort.58330581ace78e27b8b10cee.json", "58330581ace78e27b8b10cee");
 }
 
 function localesHelper(language, shortName) {
@@ -212,20 +212,22 @@ function localesHelper(language, shortName) {
 }
 
 function locales() {
-    localesHelper("prod.escapefromtarkov.com.client.locale.en.txt", "en");
-    localesHelper("prod.escapefromtarkov.com.client.locale.ru.txt", "ru");
-    localesHelper("prod.escapefromtarkov.com.client.locale.ge.txt", "ge");
-    localesHelper("prod.escapefromtarkov.com.client.locale.fr.txt", "fr");
-    localesHelper("prod.escapefromtarkov.com.client.locale.po.txt", "po");
-    localesHelper("prod.escapefromtarkov.com.client.locale.es.txt", "es");
-    localesHelper("prod.escapefromtarkov.com.client.locale.es-mx.txt", "es-mx");
-    localesHelper("prod.escapefromtarkov.com.client.locale.ch.txt", "ch");
+    localesHelper(".client.locale.en.json", "en");
+    localesHelper(".client.locale.ru.json", "ru");
+    localesHelper(".client.locale.ge.json", "ge");
+    localesHelper(".client.locale.fr.json", "fr");
+    localesHelper(".client.locale.po.json", "po");
+    localesHelper(".client.locale.es.json", "es");
+    localesHelper(".client.locale.es-mx.json", "es-mx");
+    localesHelper(".client.locale.ch.json", "ch");
+    localesHelper(".client.locale.it.json", "it");
+    localesHelper(".client.locale.tu.json", "tu");
 }
 
 function generateRagfairTrader() {
     let itemFiles = fs.readdirSync(outputDir + "items/");
     let templateFiles = fs.readdirSync(outputDir + "templates/items/");
-    let globalFiles = (json.parse(json.read(inputDir + "prod.escapefromtarkov.com.client.globals.txt")).data.ItemPresets);
+    let globalFiles = (json.parse(json.read(inputDir + ".client.globals.json")).data.ItemPresets);
 
     /* single items */
     for (let file in itemFiles) {
@@ -305,8 +307,8 @@ function generateRagfairTrader() {
 function splitAll() {
     console.log("Splitting files...");
 
-    quests();
     items();
+    quests();
     
     traders();
     locations();

@@ -1,50 +1,54 @@
 "use strict";
 
 /* A reverse lookup for templates */
-function createLookup() {
-    let lookup = {
-        items: {
-            byId: {},
-            byParent: {}
-        },
-        categories: {
-            byId: {},
-            byParent: {}
+function tplLookup() {
+    if (tplLookup.lookup === undefined) {
+        const lookup = {
+            items: {
+                byId: {},
+                byParent: {}
+            },
+            categories: {
+                byId: {},
+                byParent: {}
+            }
         }
-    }
 
-    for (let x of templates.data.Items) {
-        lookup.items.byId[x.Id] = x.Price;
-        lookup.items.byParent[x.ParentId] || (lookup.items.byParent[x.ParentId] = []);
-        lookup.items.byParent[x.ParentId].push(x.Id);
-    }
-
-    for (let x of templates.data.Categories) {
-        lookup.categories.byId[x.Id] = x.ParentId ? x.ParentId : null;
-        if (x.ParentId) { // root as no parent
-            lookup.categories.byParent[x.ParentId] || (lookup.categories.byParent[x.ParentId] = []);
-            lookup.categories.byParent[x.ParentId].push(x.Id);
+        for (let x of templates.data.Items) {
+            lookup.items.byId[x.Id] = x.Price;
+            lookup.items.byParent[x.ParentId] || (lookup.items.byParent[x.ParentId] = []);
+            lookup.items.byParent[x.ParentId].push(x.Id);
         }
+
+        for (let x of templates.data.Categories) {
+            lookup.categories.byId[x.Id] = x.ParentId ? x.ParentId : null;
+            if (x.ParentId) { // root as no parent
+                lookup.categories.byParent[x.ParentId] || (lookup.categories.byParent[x.ParentId] = []);
+                lookup.categories.byParent[x.ParentId].push(x.Id);
+            }
+        }
+
+        tplLookup.lookup = lookup;
     }
 
-    return lookup;
+    return tplLookup.lookup;
 }
 
 function getTemplatePrice(x) {
-    return (x in tplLookup.items.byId) ? tplLookup.items.byId[x] : 1;
+    return (x in tplLookup().items.byId) ? tplLookup().items.byId[x] : 1;
 }
 
 /* all items in template with the given parent category */
 function templatesWithParent(x) {
-    return (x in tplLookup.items.byParent) ? tplLookup.items.byParent[x] : [];
+    return (x in tplLookup().items.byParent) ? tplLookup().items.byParent[x] : [];
 }
 
 function isCategory(x) {
-    return x in tplLookup.categories.byId;
+    return x in tplLookup().categories.byId;
 }
 
 function childrenCategories(x) {
-    return (x in tplLookup.categories.byParent) ? tplLookup.categories.byParent[x] : [];
+    return (x in tplLookup().categories.byParent) ? tplLookup().categories.byParent[x] : [];
 }
 
 /* Made a 2d array table with 0 - free slot and 1 - used slot
@@ -131,8 +135,8 @@ function fromRUB(value, currency) {
 * */
 function payMoney(pmcData, body, sessionID) {
     let output = item_f.itemServer.getOutput();
-    let tmpTraderInfo = trader_f.traderServer.getTrader(body.tid, sessionID);
-    let currencyTpl = getCurrency(tmpTraderInfo.data.currency);
+    let trader = trader_f.traderServer.getTrader(body.tid, sessionID);
+    let currencyTpl = getCurrency(trader.currency);
 
     // delete barter things(not a money) from inventory
     if (body.Action === 'TradingConfirm') {
@@ -162,14 +166,14 @@ function payMoney(pmcData, body, sessionID) {
 
     // prepare a price for barter
     let barterPrice = 0;
-    
+
     for (let item of body.scheme_items) {
         barterPrice += item.count;
     }
 
     // prepare the amount of money in the profile
     let amountMoney = 0;
-    
+
     for (let item of moneyItems) {
         amountMoney += item.upd.StackObjectsCount;
     }
@@ -190,7 +194,7 @@ function payMoney(pmcData, body, sessionID) {
         } else {
             moneyItem.upd.StackObjectsCount -= leftToPay;
             leftToPay = 0;
-            output.data.items.change.push(moneyItem);
+            output.items.change.push(moneyItem);
         }
 
         if (leftToPay === 0) {
@@ -200,11 +204,11 @@ function payMoney(pmcData, body, sessionID) {
 
     // set current sale sum
     // convert barterPrice itemTpl into RUB then convert RUB into trader currency
-    let saleSum = pmcData.TraderStandings[body.tid].currentSalesSum += fromRUB(inRUB(barterPrice, currencyTpl), getCurrency(tmpTraderInfo.data.currency));
+    let saleSum = pmcData.TraderStandings[body.tid].currentSalesSum += fromRUB(inRUB(barterPrice, currencyTpl), getCurrency(trader.currency));
 
     pmcData.TraderStandings[body.tid].currentSalesSum = saleSum;
     trader_f.traderServer.lvlUp(body.tid, sessionID);
-    output.data.currentSalesSums[body.tid] = saleSum;
+    output.currentSalesSums[body.tid] = saleSum;
 
     // save changes
     logger.logSuccess("Items taken. Status OK.");
@@ -224,7 +228,7 @@ function findMoney(by, pmcData, barter_itemID) { // find required items to take 
         let mapResult = pmcData.Inventory.items.filter(item => {
             return by === "tpl" ? (item._tpl === barterID) : (item._id === barterID);
         });
-        
+
         itemsArray = Object.assign(itemsArray, mapResult);
     }
 
@@ -274,7 +278,7 @@ function isItemInStash(pmcData, item) {
         }
 
         container = findItemById(pmcData.Inventory.items, container.parentId);
-        
+
         if (!container) {
             break;
         }
@@ -288,8 +292,8 @@ function isItemInStash(pmcData, item) {
 * output: none (output is sended to item.js, and profile is saved to file)
 * */
 function getMoney(pmcData, amount, body, output, sessionID) {
-    let tmpTraderInfo = trader_f.traderServer.getTrader(body.tid, sessionID);
-    let currency = getCurrency(tmpTraderInfo.data.currency);
+    let trader = trader_f.traderServer.getTrader(body.tid, sessionID);
+    let currency = getCurrency(trader.currency);
     let calcAmount = fromRUB(inRUB(amount, currency), currency);
     let maxStackSize = (json.parse(json.read(db.items[currency])))._props.StackMaxSize;
     let skip = false;
@@ -312,15 +316,15 @@ function getMoney(pmcData, amount, body, output, sessionID) {
 
             // make stack max money, then look further
             item.upd.StackObjectsCount = maxStackSize;
-            output.data.items.change.push(item);
+            output.items.change.push(item);
             calcAmount -= difference;
             continue;
         }
 
         // receive money
         item.upd.StackObjectsCount += calcAmount;
-        output.data.items.change.push(item);
-        logger.logSuccess("Money received: " + amount + " " + tmpTraderInfo.data.currency);
+        output.items.change.push(item);
+        logger.logSuccess("Money received: " + amount + " " + trader.currency);
         skip = true;
         break;
     }
@@ -351,8 +355,8 @@ function getMoney(pmcData, amount, body, output, sessionID) {
                         };
 
                         pmcData.Inventory.items.push(MoneyItem);
-                        output.data.items.new.push(MoneyItem);
-                        logger.logSuccess("Money created: " + calcAmount + " " + tmpTraderInfo.data.currency);
+                        output.items.new.push(MoneyItem);
+                        logger.logSuccess("Money created: " + calcAmount + " " + trader.currency);
                         break addedMoney;
                     }
                 }
@@ -364,7 +368,7 @@ function getMoney(pmcData, amount, body, output, sessionID) {
 
     pmcData.TraderStandings[body.tid].currentSalesSum = saleSum;
     trader_f.traderServer.lvlUp(body.tid, sessionID);
-    output.data.currentSalesSums[body.tid] = saleSum;
+    output.currentSalesSums[body.tid] = saleSum;
 
     return output;
 }
@@ -391,7 +395,7 @@ function getItem(template) { // -> Gets item from <input: _tpl>
             return [true, item];
         }
     }
-    
+
     return [false, {}];
 }
 
@@ -515,27 +519,20 @@ function getSize(itemtpl, itemID, InventoryItem) { // -> Prepares item Width and
 * List is backward first item is the furthest child and last item is main item
 * returns all child items ids in array, includes itself and children
 * */
-function findAndReturnChildren(pmcData, itemid) {
-    if(pmcData.Inventory == null) //if finding children from trader assort loading, just a temp workaround
-    { 
-        return findAndReturnChildrenByItems(pmcData.data.items, itemid); 
-    } 
-    else
-    { 
-        return findAndReturnChildrenByItems(pmcData.Inventory.items, itemid);
-    }
+function findAndReturnChildren(pmcData, itemID) {
+    return findAndReturnChildrenByItems(pmcData.Inventory.items, itemID);
 }
 
-function findAndReturnChildrenByItems(items, itemid) {
+function findAndReturnChildrenByItems(items, itemID) {
     let list = [];
 
     for (let childitem of items) {
-        if (childitem.parentId === itemid) {
+        if (childitem.parentId === itemID) {
             list.push.apply(list, findAndReturnChildrenByItems(items, childitem._id));
         }
     }
 
-    list.push(itemid);// it's required
+    list.push(itemID);// it's required
     return list;
 }
 
@@ -614,7 +611,7 @@ function replaceIDs(pmcData, items) {
 	let newParents = {};
     let childrenMapping = {};
     let oldToNewIds = {};
-	
+
 	// Finding duplicate IDs involves scanning the item three times.
     // First scan - Check which ids are duplicated.
     // Second scan - Map parents to items.
@@ -627,7 +624,7 @@ function replaceIDs(pmcData, items) {
         // register the parents
         if (dupes[item._id] > 1) {
             let newId = utility.generateNewItemId();
-            
+
             newParents[item.parentId] = newParents[item.parentId] || [];
             newParents[item.parentId].push(item);
             oldToNewIds[item._id] = oldToNewIds[item._id] || [];
@@ -693,7 +690,6 @@ function arrayIntersect(a, b) {
     return a.filter(x => b.includes(x));
 }
 
-module.exports.createLookup = createLookup;
 module.exports.getTemplatePrice = getTemplatePrice;
 module.exports.templatesWithParent = templatesWithParent;
 module.exports.isCategory = isCategory;

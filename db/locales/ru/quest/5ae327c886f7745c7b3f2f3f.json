@@ -3,7 +3,7 @@
 	"note": "",
 	"successMessageText": "5ae327d286f7745d3a7704bb",
 	"failMessageText": "5ae327d286f7745d3a7704bc",
-	"startedMessageText": "5ae327d286f7745d3a7704bd",
+	"startedMessageText": "",
 	"description": "5ae327d286f7745d3a7704be",
 	"conditions": {
 		"5ae445f386f7744e87761331": "Модифицировать АК-105 до требуемых параметров",

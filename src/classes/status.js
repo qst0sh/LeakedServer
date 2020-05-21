@@ -60,56 +60,48 @@ function bindItem(pmcData, body, sessionID) {
 }
 
 function examineItem(pmcData, body, sessionID) {
-    let returned = "";
+    let itemID = "";
+    let items = pmcData.Inventory.items;
 
     // outside player profile
     if ("fromOwner" in body) {
+        // scan ragfair as a trader
         if (body.fromOwner.type === "RagFair") {
             body.item = body.fromOwner.id;
             body.fromOwner.type = "Trader";
             body.fromOwner.id = "ragfair";
         }
     
+        // get trader assort
         if (body.fromOwner.type === "Trader") {
-            let tmpTraderAssort = trader_f.traderServer.getAssort(body.fromOwner.id);
-    
-            for (let item of tmpTraderAssort.data.items) {
-                if (item._id === body.item) {
-                    logger.logInfo("Found trader with examined item: " + item._id, "", "", true);
-                    returned = item._tpl;
-                    break;
-                }
-            }
+            items = trader_f.traderServer.getAssort(body.fromOwner.id).items;
         }
     }
 
     // player inventory
-    if (returned === "") {
-        for (let item of pmcData.Inventory.items) {
-            if (item._id === body.item) {
-                logger.logInfo("Found equipment examing item: " + item._id, "", "", true);
-                returned = item._tpl;
-                break;
-            }
+    for (let item of items) {
+        if (item._id === body.item) {
+            itemID = item._tpl;
+            break;
         }
     }
 
-    if (preset_f.itemPresets.isPreset(returned)) {
-        returned = preset_f.itemPresets.getBaseItemTpl(returned);
+    if (preset_f.itemPresets.isPreset(itemID)) {
+        itemID = preset_f.itemPresets.getBaseItemTpl(itemID);
     }
 
     // item not found
-    if (returned === "") {
-        logger.logError("Cannot find proper item. Stopped.");
+    if (itemID === "") {
+        logger.logError("Cannot find item to examine");
         return "";
     }
 
     // item found
-    let data = json.parse(json.read(db.items[returned]));
+    let item = json.parse(json.read(db.items[itemID]));
+    pmcData.Info.Experience += item._props.ExamineExperience;
+    pmcData.Encyclopedia[itemID] = true;
 
-    pmcData.Info.Experience += data._props.ExamineExperience;
-    pmcData.Encyclopedia[returned] = true;
-    logger.logSuccess("EXAMINED: " + returned);
+    logger.logSuccess("EXAMINED: " + itemID);
     return item_f.itemServer.getOutput();
 }
 

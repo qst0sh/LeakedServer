@@ -28,7 +28,6 @@ function cache() {
         }
     }
 
-    base.crc = utility.adlerGen(json.stringify(base.data));
     json.write("user/cache/templates.json", base);
 }
 

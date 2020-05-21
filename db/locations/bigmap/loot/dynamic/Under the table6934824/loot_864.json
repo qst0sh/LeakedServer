@@ -1,0 +1,25 @@
+{
+	"Id": "Under the table6934824",
+	"IsStatic": false,
+	"useGravity": true,
+	"randomRotation": false,
+	"Position": {
+		"x": 219.359,
+		"y": 0.056,
+		"z": 59.711
+	},
+	"Rotation": {
+		"x": 2.66804268e-8,
+		"y": 179.504242,
+		"z": 0
+	},
+	"IsGroupPosition": false,
+	"GroupPositions": [],
+	"Root": "5ea2d1c586f77468057c0fff",
+	"Items": [
+		{
+			"_id": "5ea2d1c586f77468057c0fff",
+			"_tpl": "590c5f0d86f77413997acfab"
+		}
+	]
+}

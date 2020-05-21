@@ -77,15 +77,33 @@
 		"HasShoulderContact": false,
 		"SightingRange": 100,
 		"sightModType": "reflex",
-		"variableZoom": false,
-		"varZoomCount": 0,
-		"varZoomAdd": 0,
 		"aimingSensitivity": 0.6,
 		"SightModesCount": 3,
 		"OpticCalibrationDistances": [
 			25,
 			50,
 			100
+		],
+		"ScopesCount": 1,
+		"AimSensitivity": [
+			0.7
+		],
+		"ModesCount": [
+			3
+		],
+		"Zooms": [
+			[
+				1,
+				1,
+				1
+			]
+		],
+		"CalibrationDistances": [
+			[
+				25,
+				50,
+				100
+			]
 		]
 	},
 	"_proto": "57655f7d2459777aa2064c85"

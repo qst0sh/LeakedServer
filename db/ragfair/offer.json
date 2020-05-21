@@ -15,7 +15,8 @@
             "_id": "5cf5e9f402153a196f20e270",
             "_tpl": "54009119af1c881c07000029",
             "upd": {
-                "StackObjectsCount": 999999999
+                "UnlimitedCount": true,
+                "StackObjectsCount": 999
             }
         }
     ],

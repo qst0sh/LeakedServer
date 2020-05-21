@@ -10,9 +10,31 @@
         "saveHealthMultiplier": 0.1
     },
     "bots": {
-        "pmcEnabled": true,
-        "pmcSpawnChance": 15,
-        "pmcUsecChance": 50
+        "pmc": {
+            "enabled": true,
+            "spawnChance": 15,
+            "usecChance": 50
+        },
+        "limits": {
+            "assault": 100,
+            "cursedAssault": 100,
+            "marksman": 100,
+            "pmcBot": 100,
+            "bossBully": 30,
+            "bossGluhar": 30,
+            "bossKilla": 30,
+            "bossKojaniy": 30,
+            "bossStormtrooper": 30,
+            "bossTest": 30,
+            "followerBully": 100,
+            "followerGluharAssault": 100,
+            "followerGluharScout": 100,
+            "followerGluharSecurity": 100,
+            "followerGluharSnipe": 100,
+            "followerKojaniy": 100,
+            "followerStormtrooper": 100,
+            "followerTest": 100
+        }
     },
     "trading": {
         "ragfairMultiplier": 1,
@@ -44,5 +66,8 @@
         "tarkovstreets": 0,
         "terminal": 0,
         "town": 0
+    },
+    "match": {
+        "enabled": false
     }
 }

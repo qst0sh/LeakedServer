@@ -30,7 +30,7 @@ class Server {
         this.ip = serverConfig.ip;
         this.port = serverConfig.port;
         this.backendUrl = "https://" + this.ip + ":" + this.port;
-        this.version = "0.12.4-R2";
+        this.version = "0.12.5-R1";
         this.mime = {
             txt: 'text/plain',
             jpg: 'image/jpeg',
@@ -138,6 +138,13 @@ class Server {
             output = router.getResponse(req, body, sessionID);
         } else {
             output = router.getResponse(req, "", sessionID);
+        }
+
+        /* route doesn't exist or response is not properly set up */
+        if (output === "") {
+            logger.logError("[UNHANDLED][" + req.url + "]");
+            logger.logData(body);
+            output = '{"err": 404, "errmsg": "UNHANDLED RESPONSE: ' + req.url + '", "data": null}';
         }
 
         // execute data received callback

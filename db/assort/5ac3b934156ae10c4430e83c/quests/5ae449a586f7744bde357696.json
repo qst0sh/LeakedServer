@@ -65,9 +65,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5ae4499a86f77449783815db",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 0,
 					"parentId": "",
 					"id": ""

@@ -3,7 +3,7 @@
 	"description": "5abe61a786f7746ad512da64",
 	"note": "",
 	"failMessageText": "5c3f04f886f774100b631508",
-	"startedMessageText": "5c3f04f886f774100b631509",
+	"startedMessageText": "",
 	"successMessageText": "5ab0f32686f7745dd409f589",
 	"conditions": {
 		"59c128b986f77415037680df": "Mark fuel tank №1 with beacon on Customs",

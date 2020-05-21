@@ -17,7 +17,7 @@ function buyItem(pmcData, body, sessionID) {
 // Selling item to trader
 function sellItem(pmcData, body, sessionID) {
     let money = 0;
-    let prices = trader_f.getPurchasesData(body.tid, sessionID);
+    let prices = trader_f.traderServer.getPurchasesData(body.tid, sessionID);
     let output = item_f.itemServer.getOutput();
 
     for (let sellItem of body.items) {
@@ -70,6 +70,7 @@ function confirmTrading(pmcData, body, sessionID) {
 
 // Ragfair trading
 function confirmRagfairTrading(pmcData, body, sessionID) {
+    let ragfair_offers_traders = json.parse(json.read(db.user.cache.ragfair_offers));
     let offers = body.offers;
     let output = item_f.itemServer.getOutput()
 
@@ -85,6 +86,15 @@ function confirmRagfairTrading(pmcData, body, sessionID) {
             "scheme_id": 0,
             "scheme_items": offer.items
         };
+
+        for(let offerFromTrader of ragfair_offers_traders.offers)
+        {
+            if(offerFromTrader._id == offer.id)
+            {
+                body.tid = offerFromTrader.user.id;
+                break;
+            }
+        }
 
         output = confirmTrading(pmcData, body, sessionID);
     }

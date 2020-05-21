@@ -23,8 +23,10 @@ function getQuestsCache() {
 }
 
 function getCachedQuest(qid) {
-    for (let quest of questsCache.data) {
-        if (quest.qid === qid) {
+    let quests = json.parse(questsCache);
+
+    for (let quest of quests.data) {
+        if (quest._id === qid) {
             return quest;
         }
     }
@@ -111,7 +113,7 @@ function acceptQuest(pmcData, body, sessionID) {
         "type": dialogue_f.getMessageTypeValue('questStart')
     };
 
-    if (messageContent === "") {
+    if (questLocale.startedMessageText === "") {
         messageContent = {
             "templateId": questLocale.description,
             "type": dialogue_f.getMessageTypeValue('questStart')
@@ -179,6 +181,10 @@ function completeQuest(pmcData, body, sessionID) {
                 pmcData.TraderStandings[reward.target].currentStanding += parseFloat(reward.value);
                 trader_f.traderServer.lvlUp(reward.target, sessionID);
                 break;
+                
+            case "TraderUnlock":
+                trader_f.traderServer.changeTraderDisplay(reward.target, true, sessionID);
+                break;
         }
     }
 
@@ -232,7 +238,7 @@ function handoverQuest(pmcData, body, sessionID) {
             let index = pmcData.Inventory.items.length;
 
             // important: don't tell the client to remove the attachments, it will handle it
-            output.data.items.del.push({ "_id": itemHandover.id });
+            output.items.del.push({ "_id": itemHandover.id });
             counter = 1;
 
             // important: loop backward when removing items from the array we're looping on
@@ -268,14 +274,14 @@ function applyMoneyBoost(quest, moneyBoost) {
 /* Sets the item stack to value, or delete the item if value <= 0 */
 // TODO maybe merge this function and the one from customization
 function changeItemStack(pmcData, id, value, output) {
-    for (let inventoryItem of pmcData.Inventory.items) {
+    for (let inventoryItem in pmcData.Inventory.items) {
         if (pmcData.Inventory.items[inventoryItem]._id === id) {
             if (value > 0) {
                 let item = pmcData.Inventory.items[inventoryItem];
 
                 item.upd.StackObjectsCount = value;
 
-                output.data.items.change.push({
+                output.items.change.push({
                     "_id": item._id,
                     "_tpl": item._tpl,
                     "parentId": item.parentId,
@@ -284,7 +290,7 @@ function changeItemStack(pmcData, id, value, output) {
                     "upd": { "StackObjectsCount": item.upd.StackObjectsCount }
                 });
             } else {
-                output.data.items.del.push({ "_id": id });
+                output.items.del.push({ "_id": id });
                 pmcData.Inventory.items.splice(inventoryItem, 1);
             }
 

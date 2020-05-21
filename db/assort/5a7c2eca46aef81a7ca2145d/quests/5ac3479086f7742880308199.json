@@ -75,26 +75,12 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5ac3467986f7741d6224abc2",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 1,
 					"parentId": "",
 					"id": ""
 				}
 			},
-			{
-				"_parent": "Quest",
-				"_props": {
-					"target": "5ac2428686f77412450b42bf",
-					"status": [
-						4
-					],
-					"index": 2,
-					"parentId": "",
-					"id": ""
-				}
-			}
 		],
 		"AvailableForFinish": [
 			{

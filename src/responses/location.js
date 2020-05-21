@@ -1,7 +1,7 @@
 "use strict";
 
 function getLocations(url, info, sessionID) {
-    return location_f.locationServer.generateAll();
+    return response_f.getBody(location_f.locationServer.generateAll());
 }
 
 function getLocation(url, info, sessionID) {

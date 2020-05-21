@@ -3,7 +3,7 @@
 	"note": "",
 	"successMessageText": "5c13997e86f774210563ece0",
 	"failMessageText": "5c13997e86f774210563ece1",
-	"startedMessageText": "5c13997e86f774210563ece2",
+	"startedMessageText": "",
 	"description": "5c13997e86f774210563ece3",
 	"conditions": {
 		"5c13979886f774251443c1a6": "Survivez à l'échangeur (statut : Survivant)",

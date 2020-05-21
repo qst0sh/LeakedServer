@@ -3,7 +3,7 @@
 	"note": "",
 	"successMessageText": "5ae44ffe86f774149f15f4e9",
 	"failMessageText": "5ae44ffe86f774149f15f4ea",
-	"startedMessageText": "5ae44ffe86f774149f15f4eb",
+	"startedMessageText": "",
 	"description": "5ae44ffe86f774149f15f4ec",
 	"conditions": {
 		"5ae4508386f7741250488337": "Проверить AVOKADO ",

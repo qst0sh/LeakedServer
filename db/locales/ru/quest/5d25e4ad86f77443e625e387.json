@@ -3,7 +3,7 @@
 	"note": "",
 	"successMessageText": "5d274eae86f77475a86565c1",
 	"failMessageText": "5d274eae86f77475a86565c2",
-	"startedMessageText": "5d274eae86f77475a86565c3",
+	"startedMessageText": "",
 	"description": "5d274eae86f77475a86565c4",
 	"conditions": {
 		"5d27522686f774304e316405": "Вернуть Егерю фотоальбом",

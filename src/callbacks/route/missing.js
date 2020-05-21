@@ -25,7 +25,8 @@ function route() {
         "hideout_scavcase": "user/cache/hideout_scavcase.json",
         "weather": "user/cache/weather.json",
         "templates": "user/cache/templates.json",
-        "mods": "user/cache/mods.json"
+        "mods": "user/cache/mods.json",
+        "ragfair_offers": "user/cache/ragfair_offers.json"
     };
 
     db.user.configs.accounts = "user/configs/accounts.json";

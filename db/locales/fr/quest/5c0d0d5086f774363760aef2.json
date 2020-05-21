@@ -3,7 +3,7 @@
 	"note": "",
 	"successMessageText": "5c0d0d9586f77433ec4de6c4",
 	"failMessageText": "5c0d0d9586f77433ec4de6c5",
-	"startedMessageText": "5c0d0d9586f77433ec4de6c6",
+	"startedMessageText": "",
 	"description": "5c0d0d9586f77433ec4de6c7",
 	"conditions": {
 		"5c0d0dfd86f7747f482a89a5": "Augmentez votre compétence santé au niveau 10",

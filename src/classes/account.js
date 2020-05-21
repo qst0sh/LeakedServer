@@ -18,8 +18,8 @@ class AccountServer {
     }
 
     find(sessionID) {
-        for (let accountId in this.accounts) {
-            let account = this.accounts[accountId];
+        for (let accountID in this.accounts) {
+            let account = this.accounts[accountID];
 
             if (account.id === sessionID) {
                 return account;
@@ -38,11 +38,11 @@ class AccountServer {
     }
 
     login(info) {
-        for (let accountId in this.accounts) {
-            let account = this.accounts[accountId];
+        for (let accountID in this.accounts) {
+            let account = this.accounts[accountID];
 
             if (info.email === account.email && info.password === account.password) {
-				return accountId;
+				return accountID;
             }
         }
 
@@ -50,16 +50,16 @@ class AccountServer {
     }
 
     register(info) {
-        for (let accountId in this.accounts) {
-            if (info.email === this.accounts[accountId].email) {
-				return accountId;
+        for (let accountID in this.accounts) {
+            if (info.email === this.accounts[accountID].email) {
+				return accountID;
             }
         }
         
-        let accountId = utility.generateNewAccountId();
+        let accountID = utility.generateNewAccountId();
 
-        this.accounts[accountId] = {
-            "id": accountId,
+        this.accounts[accountID] = {
+            "id": accountID,
             "nickname": "",
             "email": info.email,
             "password": info.password,
@@ -72,53 +72,63 @@ class AccountServer {
     }
     
     remove(info) {
-        let accountId = this.login(info);  
+        let accountID = this.login(info);  
 
-        if (accountId !== "") {
-            delete this.accounts[accountId];
-            utility.removeDir("user/profiles/" + accountId + "/");
+        if (accountID !== "") {
+            delete this.accounts[accountID];
+            utility.removeDir("user/profiles/" + accountID + "/");
             this.saveToDisk();
         }
 
-        return accountId;
+        return accountID;
     }
 
     changeEmail(info) {
-        let accountId = this.login(info);
+        let accountID = this.login(info);
 
-        if (accountId !== "") {
-            this.accounts[accountId].email = info.change;
+        if (accountID !== "") {
+            this.accounts[accountID].email = info.change;
             this.saveToDisk();
         }
 
-        return accountId;
+        return accountID;
     }
 
     changePassword(info) {
-        let accountId = this.login(info);  
+        let accountID = this.login(info);  
 
-        if (accountId !== "") {
-            this.accounts[accountId].password = info.change;
+        if (accountID !== "") {
+            this.accounts[accountID].password = info.change;
             this.saveToDisk();
         }
 
-        return accountId;
+        return accountID;
     }
 
     wipe(info) {
-        let accountId = this.login(info);  
+        let accountID = this.login(info);  
 
-        if (accountId !== "") {
-            this.accounts[accountId].edition = info.edition;
-            this.setWipe(accountId, true);
+        if (accountID !== "") {
+            this.accounts[accountID].edition = info.edition;
+            this.setWipe(accountID, true);
             this.saveToDisk();
         }
 
-        return accountId;
+        return accountID;
     }
 
     getReservedNickname(sessionID) {
         return this.accounts[sessionID].nickname;
+    }
+
+    nicknameTaken(info) {
+        for (let accountID in this.accounts) {
+            if (info.nickname.toLowerCase() === this.accounts[accountID].nickname.toLowerCase()) {
+				return true;
+            }
+        }
+
+        return false;
     }
 }
 

@@ -3,7 +3,7 @@
 	"description": "5abe61a886f7746ad512da6d",
 	"note": "",
 	"failMessageText": "5ab0f32686f7745dd409f593",
-	"startedMessageText": "5c53ffdf86f7742fb93131d7",
+	"startedMessageText": "",
 	"successMessageText": "5ab0f32686f7745dd409f594",
 	"conditions": {
 		"59ca2fba86f77445e4732b25": "Kill 15 PMC operators. You must use SVD",

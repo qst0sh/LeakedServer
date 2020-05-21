@@ -63,8 +63,8 @@
 			"584984812459776a704a82a6",
 			"59f9d81586f7744c7506ee62",
 			"570fd721d2720bc5458b4596",
-			"5aa66be6e5b5b0214e506e97",
 			"56ea70acd2720b844b8b4594",
+			"5aa66be6e5b5b0214e506e97",
 			"5a37ca54c4a282000d72296a",
 			"57c69dd424597774c03b7bbc",
 			"5aa66a9be5b5b0214e506e89",
@@ -99,13 +99,27 @@
 		"HasShoulderContact": false,
 		"SightingRange": 600,
 		"sightModType": "iron",
-		"variableZoom": false,
-		"varZoomCount": 0,
-		"varZoomAdd": 0,
 		"aimingSensitivity": 0.65,
 		"SightModesCount": 1,
 		"OpticCalibrationDistances": [
 			100
+		],
+		"ScopesCount": 1,
+		"AimSensitivity": [
+			0.65
+		],
+		"ModesCount": [
+			1
+		],
+		"Zooms": [
+			[
+				1
+			]
+		],
+		"CalibrationDistances": [
+			[
+				100
+			]
 		]
 	},
 	"_proto": "55d4af3a4bdc2d972f8b456f"

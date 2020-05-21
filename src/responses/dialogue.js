@@ -1,15 +1,11 @@
 "use strict";
 
-function nullArrayResponse(url, info, sessionID) {
-    return '{"err":0, "errmsg":null, "data":[]}';
-}
-
 function getFriendList(url, info, sessionID) {
-    return '{"err":0, "errmsg":null, "data":{"Friends":[], "Ignore":[], "InIgnoreList":[]}}';
+    return response_f.getBody({"Friends":[], "Ignore":[], "InIgnoreList":[]});
 }
 
 function getChatServerList(url, info, sessionID) {
-    return '{"err":0, "errmsg":null, "data":[{"_id":"5ae20a0dcb1c13123084756f", "RegistrationId":20, "DateTime":' + Math.floor(new Date() / 1000) + ', "IsDeveloper":true, "Regions":["EUR"], "VersionId":"bgkidft87ddd", "Ip":"", "Port":0, "Chats":[{"_id":"0", "Members":0}]}]}';
+    return response_f.getBody([{"_id": "5ae20a0dcb1c13123084756f", "RegistrationId": 20, "DateTime": Math.floor(new Date() / 1000), "IsDeveloper": true, "Regions": ["EUR"], "VersionId": "bgkidft87ddd", "Ip": "", "Port": 0, "Chats": [{"_id": "0", "Members": 0}]}]);
 }
 
 function getMailDialogList(url, info, sessionID) {
@@ -22,32 +18,32 @@ function getMailDialogView(url, info, sessionID) {
 
 function getMailDialogInfo(url, info, sessionID) {
     let data = dialogue_f.dialogueServer.getDialogueInfo(info.dialogId, sessionID);
-    return '{"err":0,"errmsg":null,"data":' + json.stringify(data) + '}';
+    return response_f.getBody(data);
 }
 
 function removeDialog(url, info, sessionID) {
     dialogue_f.dialogueServer.removeDialogue(info.dialogId, sessionID);
-    return nullArrayResponse;
+    return response_f.emptyArrayResponse();
 }
 
 function pinDialog(url, info, sessionID) {
     dialogue_f.dialogueServer.setDialoguePin(info.dialogId, true, sessionID);
-    return nullArrayResponse;
+    return response_f.emptyArrayResponse();
 }
 
 function unpinDialog(url, info, sessionID) {
     dialogue_f.dialogueServer.setDialoguePin(info.dialogId, false, sessionID);
-    return nullArrayResponse;
+    return response_f.emptyArrayResponse();
 }
 
 function setRead(url, info, sessionID) {
     dialogue_f.dialogueServer.setRead(info.dialogs, sessionID);
-    return nullArrayResponse;
+    return response_f.emptyArrayResponse();
 }
 
 function getAllAttachments(url, info, sessionID) {
     let data = dialogue_f.dialogueServer.getAllAttachments(info.dialogId, sessionID);
-    return '{"err":0,"errmsg":null,"data":' + json.stringify(data) + '}';
+    return response_f.getBody(data);
 }
 
 router.addStaticRoute("/client/friend/list", getFriendList);
@@ -60,5 +56,5 @@ router.addStaticRoute("/client/mail/dialog/pin", pinDialog);
 router.addStaticRoute("/client/mail/dialog/unpin", unpinDialog);
 router.addStaticRoute("/client/mail/dialog/read", setRead);
 router.addStaticRoute("/client/mail/dialog/getAllAttachments", getAllAttachments);
-router.addStaticRoute("/client/friend/request/list/outbox", nullArrayResponse);
-router.addStaticRoute("/client/friend/request/list/inbox", nullArrayResponse);
+router.addStaticRoute("/client/friend/request/list/outbox", response_f.emptyArrayResponse);
+router.addStaticRoute("/client/friend/request/list/inbox", response_f.emptyArrayResponse);

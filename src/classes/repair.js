@@ -2,16 +2,17 @@
 
 function main(pmcData, body, sessionID) {
     let output = item_f.itemServer.getOutput();
-    let tmpTraderInfo = trader_f.traderServer.getTrader(body.tid, sessionID);
-    let repairRate = (tmpTraderInfo.data.repair.price_rate === 0) ? 1 : (tmpTraderInfo.data.repair.price_rate / 100 + 1);
+    let trader = trader_f.traderServer.getTrader(body.tid, sessionID);
+    let repairRate = (trader.repair.price_rate === 0) ? 1 : (trader.repair.price_rate / 100 + 1);
 
+    // find the item to repair
     for (let repairItem of body.repairItems) {
-        // find the item to repair
         let itemToRepair = undefined;
         
         for (let item of pmcData.Inventory.items) {
             if (item._id === repairItem._id) {
                 itemToRepair = item;
+                break;
             }
         }
 
@@ -36,7 +37,7 @@ function main(pmcData, body, sessionID) {
 
         itemToRepair.upd.Repairable.Durability = calculateDurability;
         itemToRepair.upd.Repairable.MaxDurability = calculateDurability;
-        output.data.items.change.push(itemToRepair);
+        output.items.change.push(itemToRepair);
     }
 
     return output;

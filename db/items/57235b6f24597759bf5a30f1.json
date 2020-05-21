@@ -81,9 +81,6 @@
 		"HasShoulderContact": false,
 		"SightingRange": 0,
 		"sightModType": "iron",
-		"variableZoom": false,
-		"varZoomCount": 0,
-		"varZoomAdd": 0,
 		"aimingSensitivity": 0.2,
 		"SightModesCount": 1,
 		"OpticCalibrationDistances": [
@@ -91,6 +88,26 @@
 			100,
 			150,
 			200
+		],
+		"ScopesCount": 1,
+		"AimSensitivity": [
+			1
+		],
+		"ModesCount": [
+			1
+		],
+		"Zooms": [
+			[
+				1
+			]
+		],
+		"CalibrationDistances": [
+			[
+				50,
+				100,
+				150,
+				200
+			]
 		],
 		"Intensity": 2.27,
 		"Mask": "OldMonocular",

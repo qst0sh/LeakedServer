@@ -45,17 +45,17 @@ class Router {
         /* load files from game cache */
         if ("crc" in info) {
             let crctest = json.parse(output);
+            
+            if ("data" in crctest) {
+                crctest.crc = utility.adlerGen(json.stringify(crctest.data));
 
-            if ("crc" in crctest && info.crc === crctest.crc) {
-                logger.logWarning("[CRC match]: loading from game cache files");
-                output = '{"err":0, "errmsg":null, "data":null}';
+                if (info.crc === crctest.crc) {
+                    logger.logWarning("[CRC match]: loading from game cache files");
+                    output = '{"err": 0, "errmsg": null, "data": null}';
+                } else {
+                    output = json.stringify(crctest);
+                }
             }
-        }
-
-        /* route doesn't exist or response is not properly set up */
-        if (output === "") {
-            logger.logError("[UNHANDLED][" + url + "] request data: " + json.stringify(info));
-            output = '{"err":404, "errmsg":"UNHANDLED RESPONSE: ' + url + '", "data":null}';
         }
     
         return output;

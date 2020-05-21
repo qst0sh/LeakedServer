@@ -32,7 +32,6 @@ function genericCacher(cachename, filepathNode, output = "") {
         }
     }
 
-    base.crc = utility.adlerGen(json.stringify(base.data));
     json.write("user/cache/" + cachename, base);
 }
 

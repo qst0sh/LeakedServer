@@ -12,8 +12,6 @@ function updateTraders(sessionID) {
     let update_per = 3600;
     let timeNow = Math.floor(Date.now() / 1000);
     let tradersToUpdateList = trader_f.traderServer.getAllTraders(sessionID);
-
-    tradersToUpdateList = tradersToUpdateList.data;
     
     for (let i = 0; i < tradersToUpdateList.length; i++) {
         if ((tradersToUpdateList[i].supply_next_time + update_per) > timeNow) {
@@ -189,20 +187,18 @@ function updateAirFilters(airFilterArea)
 
 function updateBitcoinFarm(btcProd,farmReceipe,btcFarmCGs,isGeneratorOn)
 {
-    let startTimelessSkip = btcProd.StartTime + btcProd.SkipTime;
-    let time_elapsed = (Math.floor(Date.now() / 1000) - startTimelessSkip);
+
+    let time_elapsed = (Math.floor(Date.now() / 1000)) - btcProd.StartTime;
 
     if(isGeneratorOn == true)
     {
         btcProd.Progress += time_elapsed; 
     }
-    else
-    {
-        btcProd.SkipTime += time_elapsed;
-    }
 
     let t2 = Math.pow( (0.05 + (btcFarmCGs - 1) / 49 * 0.15), -1);//THE FUNCTION TO REDUCE TIME OF PRODUCTION DEPENDING OF CGS
     let final_prodtime = Math.floor(t2*3600)
+
+    //console.log("next bitcoin : " +  utility.secondsToTime(final_prodtime - btcProd.Progress) + " (" + utility.secondsToTime(btcProd.Progress) +" elapsed)" )
 
     while(btcProd.Progress > final_prodtime) {
         if(btcProd.Products.length < 3) {
@@ -219,8 +215,7 @@ function updateBitcoinFarm(btcProd,farmReceipe,btcFarmCGs,isGeneratorOn)
         }
     }
 
-    btcProd.SkipTime = 0;
-    btcProd.StartTime = Date.now() / 1000;
+    btcProd.StartTime = (Math.floor(Date.now() / 1000) );
     return btcProd;
 }
 

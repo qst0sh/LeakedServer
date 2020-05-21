@@ -12,7 +12,6 @@ function cache() {
         base.data.push(fileData);
     }
 
-    base.crc = utility.adlerGen(json.stringify(base.data));
     json.write("user/cache/languages.json", base);
 }
 

@@ -74,7 +74,7 @@
 				]
 			},
 			{
-				"target": "5e0ac74b9d594972a112a895",
+				"target": "5e064f5ceb009468d90badca",
 				"id": "5ac668d386f774066f04bd58",
 				"type": "AssortmentUnlock",
 				"index": 4,
@@ -82,7 +82,7 @@
 				"traderId": "5c0647fdd443bc2504c2d371",
 				"items": [
 					{
-						"_id": "5e0ac74b9d594972a112a895",
+						"_id": "5e064f5ceb009468d90badca",
 						"_tpl": "5a966f51a2750c00156aacf6"
 					}
 				]
@@ -106,9 +106,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5979f9ba86f7740f6c3fe9f2",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 1,
 					"parentId": "",
 					"id": ""

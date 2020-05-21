@@ -5,9 +5,6 @@
 	"_type": "Node",
 	"_props": {
 		"sightModType": "iron",
-		"variableZoom": false,
-		"varZoomCount": 0,
-		"varZoomAdd": 0,
 		"aimingSensitivity": 0.2,
 		"SightModesCount": 1,
 		"OpticCalibrationDistances": [
@@ -16,6 +13,26 @@
 			150,
 			200
 		],
-		"SightingRange": 0
+		"SightingRange": 0,
+		"ScopesCount": 1,
+		"AimSensitivity": [
+			1
+		],
+		"ModesCount": [
+			1
+		],
+		"Zooms": [
+			[
+				1
+			]
+		],
+		"CalibrationDistances": [
+			[
+				50,
+				100,
+				150,
+				200
+			]
+		]
 	}
 }

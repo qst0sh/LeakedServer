@@ -77,13 +77,27 @@
 		"HasShoulderContact": false,
 		"SightingRange": 300,
 		"sightModType": "iron",
-		"variableZoom": false,
-		"varZoomCount": 0,
-		"varZoomAdd": 0,
 		"aimingSensitivity": 0.65,
 		"SightModesCount": 1,
 		"OpticCalibrationDistances": [
 			100
+		],
+		"ScopesCount": 1,
+		"AimSensitivity": [
+			0.65
+		],
+		"ModesCount": [
+			1
+		],
+		"Zooms": [
+			[
+				1
+			]
+		],
+		"CalibrationDistances": [
+			[
+				100
+			]
 		]
 	},
 	"_proto": "55d4af3a4bdc2d972f8b456f"

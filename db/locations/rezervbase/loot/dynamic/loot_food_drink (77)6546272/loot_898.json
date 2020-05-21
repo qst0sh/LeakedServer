@@ -1,0 +1,25 @@
+{
+	"Id": "loot_food_drink (77)6546272",
+	"IsStatic": false,
+	"useGravity": true,
+	"randomRotation": true,
+	"Position": {
+		"x": -130.825012,
+		"y": -6.077,
+		"z": -127.371979
+	},
+	"Rotation": {
+		"x": 0,
+		"y": 0,
+		"z": 0
+	},
+	"IsGroupPosition": false,
+	"GroupPositions": [],
+	"Root": "5ea2d1ed86f77410fc4b91d4",
+	"Items": [
+		{
+			"_id": "5ea2d1ed86f77410fc4b91d4",
+			"_tpl": "5448ff904bdc2d6f028b456e"
+		}
+	]
+}

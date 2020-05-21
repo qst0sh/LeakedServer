@@ -11,139 +11,160 @@ class TraderServer {
 
     /* Load all the traders into memory. */
     initializeTraders() {
-        logger.logWarning("Loading traders into RAM...");
-
-        for (let id in db.assort) {
-            this.traders[id] = json.parse(json.read(db.assort[id].base));
-            this.traders[id].sell_category = Object.keys(json.parse(json.read(db.assort[id].categories)));
+        for (let traderID in db.assort) {
+            this.traders[traderID] = json.parse(json.read(db.assort[traderID].base));
+            this.traders[traderID].sell_category = json.parse(json.read(db.assort[traderID].categories));
         }
     }
 
-    getTrader(id) {
-        return {err: 0, errmsg: null, data: this.traders[id]};
+    getTrader(traderID) {
+        return this.traders[traderID];
+    }
+
+    changeTraderDisplay(traderID, status, sessionID) {
+        let pmcData = profile_f.profileServer.getPmcProfile(sessionID);
+        pmcData.TraderStandings[traderID].display = status;
     }
 
     getAllTraders(sessionID) {
         let pmcData = profile_f.profileServer.getPmcProfile(sessionID);
         let traders = [];
 
-        for (let traderId in this.traders) {
-            if (traderId === "ragfair") {
+        for (let traderID in this.traders) {
+            if (traderID === "ragfair") {
                 continue;
             }
 
-            let trader = this.traders[traderId];
+            if (!(traderID in pmcData.TraderStandings)) {
+                this.resetTrader(sessionID, traderID);
+            }
 
-            trader.loyalty.currentLevel = pmcData.TraderStandings[traderId].currentLevel;
-            trader.loyalty.currentStanding = pmcData.TraderStandings[traderId].currentStanding;
-            trader.loyalty.currentSalesSum = pmcData.TraderStandings[traderId].currentSalesSum;
+            let trader = this.traders[traderID];
+
+            trader.display = pmcData.TraderStandings[traderID].display;
+            trader.loyalty.currentLevel = pmcData.TraderStandings[traderID].currentLevel;
+            trader.loyalty.currentStanding = pmcData.TraderStandings[traderID].currentStanding;
+            trader.loyalty.currentSalesSum = pmcData.TraderStandings[traderID].currentSalesSum;
             traders.push(trader);
         }
 
-        return {err: 0, errmsg: null, data: traders};
+        return traders;
     }
 
-    lvlUp(id, sessionID) {
+    lvlUp(traderID, sessionID) {
         let pmcData = profile_f.profileServer.getPmcProfile(sessionID);
-        let loyaltyLevels = this.traders[id].loyalty.loyaltyLevels;
+        let loyaltyLevels = this.traders[traderID].loyalty.loyaltyLevels;
 
         // level up player
-        let checkedExp = 0;
-
-        for (let level in globals.data.config.exp.level.exp_table) {
-            if (pmcData.Info.Experience < checkedExp) {
-                break;
-            }
-
-            pmcData.Info.Level = parseInt(level);
-            checkedExp += globals.data.config.exp.level.exp_table[level].exp;
-        }
+        pmcData.Info.Level = profile_f.calculateLevel(pmcData);
 
         // level up traders
         let targetLevel = 0;
         
         for (let level in loyaltyLevels) {
-            // level reached
             if ((loyaltyLevels[level].minLevel <= pmcData.Info.Level
-            && loyaltyLevels[level].minSalesSum <= pmcData.TraderStandings[id].currentSalesSum
-            && loyaltyLevels[level].minStanding <= pmcData.TraderStandings[id].currentStanding)
+            && loyaltyLevels[level].minSalesSum <= pmcData.TraderStandings[traderID].currentSalesSum
+            && loyaltyLevels[level].minStanding <= pmcData.TraderStandings[traderID].currentStanding)
             && targetLevel < 4) {
+                // level reached
                 targetLevel++;
             }
         }
-        pmcData.TraderStandings[id].currentLevel = targetLevel;
-        this.traders[id].loyalty.currentLevel = targetLevel;
+        
+        // set level
+        pmcData.TraderStandings[traderID].currentLevel = targetLevel;
+        this.traders[traderID].loyalty.currentLevel = targetLevel;
+
         // set assort
-        this.generateAssort(id);
+        this.generateAssort(traderID);
     }
 
-    getAssort(traderId) {
-        if (!(traderId in this.assorts)) {
-            this.generateAssort(traderId);
+    resetTrader(sessionID, traderID) {
+        let account = account_f.accountServer.find(sessionID);
+        let pmcData = profile_f.profileServer.getPmcProfile(sessionID); 
+        let traderWipe = json.parse(json.read(db.profile[account.edition]["trader_" + pmcData.Info.Side.toLowerCase()]));
+    
+        pmcData.TraderStandings[traderID] = {
+            "currentLevel": 1,
+            "currentSalesSum": traderWipe.initialSalesSum,
+            "currentStanding": traderWipe.initialStanding,
+            "NextLoyalty": null,
+            "loyaltyLevels": this.traders[traderID].loyalty.loyaltyLevels,
+            "display": this.traders[traderID].display
+        };
+
+        this.lvlUp(traderID, sessionID);
+    }
+
+    getAssort(traderID) {
+        if (!(traderID in this.assorts)) {
+            this.generateAssort(traderID);
         }
         
-        return this.assorts[traderId];
+        return this.assorts[traderID];
     }
 
-    generateAssort(traderId) {
-        if (traderId === "579dc571d53a0658a154fbec") {
+    generateAssort(traderID) {
+        if (traderID === "579dc571d53a0658a154fbec") {
             logger.logWarning("generating fence");
-            this.generateFence();
+            this.generateFenceAssort();
             return;
         }
 
-        let base = json.parse(json.read(db.user.cache["assort_" + traderId]));
+        let base = json.parse(json.read(db.user.cache["assort_" + traderID]));
+
+        base = base.data;
 
         // 1 is min level, 4 is max level
-        if (traderId !== "ragfair") {
-            let keys = Object.keys(base.data.loyal_level_items);
-            let level = this.traders[traderId].loyalty.currentLevel;
+        if (traderID !== "ragfair") {
+            let keys = Object.keys(base.loyal_level_items);
+            let level = this.traders[traderID].loyalty.currentLevel;
 
             for (let i = 1; i < 4; i++) {
                 for (let key of keys) {
-                    if (base.data.loyal_level_items[key] > level) {
+                    if (base.loyal_level_items[key] > level) {
                         base = this.removeItemFromAssort(base, key);
                     }
                 }
             }
         }
 
-        this.assorts[traderId] = base;
+        this.assorts[traderID] = base;
     }
 
-    generateFence() {
+    generateFenceAssort() {
         let base = json.parse(json.read("db/cache/assort.json"));
         let names = Object.keys(db.assort["579dc571d53a0658a154fbec"].loyal_level_items);
         let added = [];
 
         for (let i = 0; i < gameplayConfig.trading.fenceAssortSize; i++) {
-            let id = names[utility.getRandomInt(0, names.length - 1)];
+            let traderID = names[utility.getRandomInt(0, names.length - 1)];
 
-            if (added.includes(id)) {
+            if (added.includes(traderID)) {
                 i--;
                 continue;
             }
 
-            added.push(id);
-            base.data.items.push(json.parse(json.read(db.assort["579dc571d53a0658a154fbec"].items[id])));
-            base.data.barter_scheme[id] = json.parse(json.read(db.assort["579dc571d53a0658a154fbec"].barter_scheme[id]));
-            base.data.loyal_level_items[id] = json.parse(json.read(db.assort["579dc571d53a0658a154fbec"].loyal_level_items[id]));
+            added.push(traderID);
+            base.data.items.push(json.parse(json.read(db.assort["579dc571d53a0658a154fbec"].items[traderID])));
+            base.data.barter_scheme[traderID] = json.parse(json.read(db.assort["579dc571d53a0658a154fbec"].barter_scheme[traderID]));
+            base.data.loyal_level_items[traderID] = json.parse(json.read(db.assort["579dc571d53a0658a154fbec"].loyal_level_items[traderID]));
         }
 
-        this.assorts['579dc571d53a0658a154fbec'] = base;
+        this.assorts['579dc571d53a0658a154fbec'] = base.data;
     }
 
     // delete assort keys
-    removeItemFromAssort(assort, id) {
-        let ids_toremove = itm_hf.findAndReturnChildren(assort, id);
+    removeItemFromAssort(assort, itemID) {
+        let ids_toremove = itm_hf.findAndReturnChildrenByItems(assort.items, itemID);
 
-        delete assort.data.barter_scheme[id];
-        delete assort.data.loyal_level_items[id];
+        delete assort.barter_scheme[itemID];
+        delete assort.loyal_level_items[itemID];
 
         for (let i in ids_toremove) {
-            for (let a in assort.data.items) {
-                if (assort.data.items[a]._id === ids_toremove[i]) {
-                    assort.data.items.splice(a, 1);
+            for (let a in assort.items) {
+                if (assort.items[a]._id === ids_toremove[i]) {
+                    assort.items.splice(a, 1);
                 }
             }
         }
@@ -151,14 +172,14 @@ class TraderServer {
         return assort;
     }
 
-    getCustomization(traderId, sessionID) {
+    getCustomization(traderID, sessionID) {
         let pmcData = profile_f.profileServer.getPmcProfile(sessionID);
-        let allSuits = customization_f.getCustomization().data;
-        let suitArray = json.parse(json.read(db.user.cache["customization_" + traderId]));
+        let allSuits = customization_f.getCustomization();
+        let suitArray = json.parse(json.read(db.user.cache["customization_" + traderID]));
         let suitList = [];
 
         for (let suit of suitArray) {
-            if (suit.suiteId in customization_f.getCustomization().data) {
+            if (suit.suiteId in allSuits) {
                 for (var i = 0; i < allSuits[suit.suiteId]._props.Side.length; i++) {
                     let side = allSuits[suit.suiteId]._props.Side[i];
 
@@ -175,114 +196,106 @@ class TraderServer {
     getAllCustomization(sessionID) {
         let output = [];
         
-		for (let traderId in this.traders) {
-			if(db.user.cache["customization_" + traderId] !== undefined) {
-				output = output.concat(this.getCustomization(traderId, sessionID));
+		for (let traderID in this.traders) {
+			if(db.user.cache["customization_" + traderID] !== undefined) {
+				output = output.concat(this.getCustomization(traderID, sessionID));
 			}
         }
 
         return output;
     }
-}
 
-/*
-    function to calculate the price of each player items in the inventory when selling
-*/
-function getPurchasesData(tmpTraderInfo, sessionID) {
-    let pmcData = profile_f.profileServer.getPmcProfile(sessionID);
-    let traderData = trader_f.traderServer.getTrader(tmpTraderInfo, sessionID);
-    let traderCategories = json.parse(json.read(db.assort[tmpTraderInfo].categories));
-    let currency = itm_hf.getCurrency(traderData.data.currency);
-    let output = {};
+    getPurchasesData(traderID, sessionID) {
+        let pmcData = profile_f.profileServer.getPmcProfile(sessionID);
+        let trader = this.traders[traderID];
+        let currency = itm_hf.getCurrency(trader.currency);
+        let output = {};
 
-    // get sellable items
-    for (let item of pmcData.Inventory.items) 
-    {
-        let price = 0;
-        if (item._id === pmcData.Inventory.equipment
-        || item._id === pmcData.Inventory.stash
-        || item._id === pmcData.Inventory.questRaidItems
-        || item._id === pmcData.Inventory.questStashItems
-        || itm_hf.isNotSellable(item._tpl) 
-        || traderFilter(Object.keys(traderCategories), item._tpl) == false) {
-            continue;
-        }
+        // get sellable items
+        for (let item of pmcData.Inventory.items) {
+            let price = 0;
 
-        // find all child of the item and sum the price 
-        for (let childItemId of itm_hf.findAndReturnChildren(pmcData, item._id)) {
-            let childitem = itm_hf.findInventoryItemById(pmcData, childItemId);
-            
-            if (childitem === false) {
-                // root item
-                let count = ("upd" in item && "StackObjectsCount" in item.upd) ? childitem.upd.StackObjectsCount : 1;
-                price = ((items.data[item._tpl]._props.CreditsPrice >= 1) ? items.data[item._tpl]._props.CreditsPrice : 1) * count;
-            } else {
-                // child item
-                let tempPrice = (items.data[childitem._tpl]._props.CreditsPrice >= 1) ? items.data[childitem._tpl]._props.CreditsPrice : 1;
-                let count = ("upd" in childitem && "StackObjectsCount" in childitem.upd) ? childitem.upd.StackObjectsCount : 1;
-                price = price + (tempPrice * count);
+            if (item._id === pmcData.Inventory.equipment
+            || item._id === pmcData.Inventory.stash
+            || item._id === pmcData.Inventory.questRaidItems
+            || item._id === pmcData.Inventory.questStashItems
+            || itm_hf.isNotSellable(item._tpl) 
+            || traderFilter(trader.sell_category, item._tpl) === false) {
+                continue;
             }
+    
+            // find all child of the item and sum the price 
+            for (let childItemId of itm_hf.findAndReturnChildren(pmcData, item._id)) {
+                let childitem = itm_hf.findInventoryItemById(pmcData, childItemId);
+                
+                if (childitem === false) {
+                    // root item
+                    let count = ("upd" in item && "StackObjectsCount" in item.upd) ? childitem.upd.StackObjectsCount : 1;
+                    price = ((items.data[item._tpl]._props.CreditsPrice >= 1) ? items.data[item._tpl]._props.CreditsPrice : 1) * count;
+                } else {
+                    // child item
+                    let tempPrice = (items.data[childitem._tpl]._props.CreditsPrice >= 1) ? items.data[childitem._tpl]._props.CreditsPrice : 1;
+                    let count = ("upd" in childitem && "StackObjectsCount" in childitem.upd) ? childitem.upd.StackObjectsCount : 1;
+                    price = price + (tempPrice * count);
+                }
+            }
+    
+            // dogtag calculation
+            if ("upd" in item && "Dogtag" in item.upd && itm_hf.isDogtag(item._tpl)) {
+                price *= item.upd.Dogtag.Level;
+            }
+    
+            // meds calculation
+            let hpresource = ("upd" in item && "Medkit" in item.upd) ? item.upd.MedKit.HpResource : 0;  
+    
+            if (hpresource > 0) {
+                let maxHp = itm_hf.getItem(item._tpl)[1]._props.MaxHpResource;
+                price *= (hpresourc / maxHp);
+            }
+    
+            // weapons and armor calculation
+            let repairable = ("upd" in item && "Repairable" in item.upd) ? item.upd.Repairable : 1;
+    
+            if (repairable !== 1 ) {
+                price *= (repairable.Durability / repairable.MaxDurability)
+            }
+    
+            // get real price
+            if(trader.discount > 0 ) { price = (trader.discount / 100) * price }
+            price = itm_hf.fromRUB(price, currency);
+            price = (price > 0 && price !== "NaN") ? price : 1;
+            
+            output[item._id] = [[{"_tpl": currency, "count": price.toFixed(0)}]];
         }
-
-        // dogtag calculation
-        if ("upd" in item && "Dogtag" in item.upd && itm_hf.isDogtag(item._tpl)) {
-            price *= item.upd.Dogtag.Level;
-        }
-
-        // meds calculation
-        let hpresource = ("upd" in item && "Medkit" in item.upd) ? item.upd.MedKit.HpResource : 0;  
-        if (hpresource > 0) {
-            let maxHp = itm_hf.getItem(item._tpl)[1]._props.MaxHpResource;
-            price *= (hpresourc / maxHp);
-        }
-
-        // weapons and armor calculation
-        let repairable = ("upd" in item && "Repairable" in item.upd) ? item.upd.Repairable : 1;
-        if (repairable !== 1 ) {
-            price *= (repairable.Durability / repairable.MaxDurability)
-        }
-
-        // get real price
-        //price *= traderCategories[sellFilter[1]];
-        price = itm_hf.fromRUB(price, currency);
-        price = (price > 0 && price !== "NaN") ? price : 1;
-        
-        output[item._id] = [[{"_tpl": currency, "count": price.toFixed(0)}]];
+    
+        return output;
     }
-
-    return output;
 }
 
 /*
 check if an item is allowed to be sold to a trader
-input : array of handbook categories, itemTpl of inventory
+input : array of allowed categories, itemTpl of inventory
 output : boolean
 */
 function traderFilter(traderFilters, tplToCheck) {
 
-    for (let filter of traderFilters) 
-    {
-        for (let iaaaaa of itm_hf.templatesWithParent(filter)) 
-        {
-            if (iaaaaa == tplToCheck) 
-            {
+    for (let filter of traderFilters){
+        for (let iaaaaa of itm_hf.templatesWithParent(filter)){
+            if (iaaaaa == tplToCheck){
                 return true;
             }
         }
         
-        for (let subcateg of itm_hf.childrenCategories(filter)) 
-        {
-            for (let itemFromSubcateg of itm_hf.templatesWithParent(subcateg)) 
-            {
-                if (itemFromSubcateg == tplToCheck) 
-                {
+        for (let subcateg of itm_hf.childrenCategories(filter)) {
+            for (let itemFromSubcateg of itm_hf.templatesWithParent(subcateg)) {
+                if (itemFromSubcateg === tplToCheck) {
                     return true;
                 }
             }
         }
     }
+
     return false;
 }
 
 module.exports.traderServer = new TraderServer();
-module.exports.getPurchasesData = getPurchasesData;

@@ -57,7 +57,6 @@ function cache() {
             }
         }
 
-        base.crc = utility.adlerGen(json.stringify(base.data));
         json.write("user/cache/locale_" + locale + ".json", base);
     }
 }

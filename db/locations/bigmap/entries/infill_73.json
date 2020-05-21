@@ -8,8 +8,8 @@
 	"InfiltrationZone": "Boiler Tanks",
 	"Position": {
 		"x": 394.919983,
-		"y": 2.185,
-		"z": -120.681
+		"y": 2.18,
+		"z": -120.68
 	},
 	"Center": {
 		"x": 0,
@@ -21,5 +21,5 @@
 		"y": 0,
 		"z": 0
 	},
-	"Orientation": 179.191559
+	"Orientation": 179.19
 }

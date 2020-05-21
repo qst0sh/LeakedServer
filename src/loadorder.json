@@ -7,9 +7,11 @@
     "cachetemplates_c": "src/callbacks/cache/templates.js",
     "cacheassort_c": "src/callbacks/cache/assort.js",
     "cachelocales_c": "src/callbacks/cache/locales.js",
+    "cacheragfair_c": "src/callbacks/cache/ragfair.js",
     "cachedone_c": "src/callbacks/cache/done.js",
 
     "saveHandler": "src/classes/savehandler.js",
+    "response_f": "src/classes/response.js",
     "staticdata_f": "src/classes/staticdata.js",
     "item_f": "src/classes/item.js",
     "locale_f": "src/classes/locale.js",
@@ -38,6 +40,7 @@
     "ragfair_f": "src/classes/ragfair.js",
     "weather_f": "src/classes/weather.js",
     "location_f": "src/classes/location.js",
+    "match_f": "src/classes/match.js",
 
     "item_r": "src/responses/item.js",
     "bots_r": "src/responses/bots.js",
@@ -67,6 +70,7 @@
     "userbuilds_r": "src/responses/userbuilds.js",
     "weather_r": "src/responses/weather.js",
     "wishlist_r": "src/responses/wishlist.js",
+    "match_r": "src/responses/match.js",
 
     "loadstaticdata_c": "src/callbacks/start/staticdata.js",
     "loadsavehandler_c": "src/callbacks/start/savehandler.js",
@@ -80,5 +84,6 @@
     "notifier_c": "src/callbacks/response/notifier.js",
     "savehandler_c": "src/callbacks/response/savehandler.js",
     "image_c": "src/callbacks/response/image.js",
-    "location_c": "src/callbacks/response/location.js"
+    "location_c": "src/callbacks/response/location.js",
+    "insurance_c": "src/callbacks/receive/insurance.js"
 }

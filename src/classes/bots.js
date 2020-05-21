@@ -5,27 +5,16 @@ function getRandomValue(node) {
 	return json.parse(json.read(node[keys[utility.getRandomInt(0, keys.length - 1)]]));
 }
 
-function addDogtag(bot, sessionID) {
-	let dogtagItem = {
-		_id: utility.generateNewItemId(),
-		_tpl: ((bot.Info.Side === 'Usec') ? "59f32c3b86f77472a31742f0" : "59f32bb586f774757e1e8442"),
-		parentId: bot.Inventory.equipment,
-		slotId: "Dogtag",
-		upd: {
-			"Dogtag": {
-				"Nickname": bot.Info.Nickname,
-				"Side": bot.Info.Side,
-				"Level": bot.Info.Level,
-				"Time": (new Date().toISOString()),
-				"Status": "Killed by ",
-				"KillerName": "You",
-				"WeaponName": "Something"
-			}
-		}
+function getRandomExperience(bot) {
+	let exp = 0;
+
+	// get maximum experience
+	for (let level of globals.data.config.exp.level.exp_table) {
+        exp += level.exp;
 	}
 
-	bot.Inventory.items.push(dogtagItem);
-	return bot;
+	// get  random experience
+	return utility.getRandomInt(0, exp);
 }
 
 function generateBot(bot, role, sessionID) {
@@ -33,12 +22,12 @@ function generateBot(bot, role, sessionID) {
 	let node = {};
 
 	// chance to spawn simulated PMC players
-	if ((type === "assault" || type === "marksman" || type === "pmcBot") && gameplayConfig.bots.pmcEnabled) {
+	if ((type === "assault" || type === "marksman" || type === "pmcBot") && gameplayConfig.bots.pmc.enabled) {
 		let spawnChance = utility.getRandomInt(0, 99);
 		let sideChance = utility.getRandomInt(0, 99);
 
-		if (spawnChance < gameplayConfig.bots.pmcSpawnChance) {
-			if (sideChance < gameplayConfig.bots.pmcUsecChance) {
+		if (spawnChance < gameplayConfig.bots.pmc.spawnChance) {
+			if (sideChance < gameplayConfig.bots.pmc.usecChance) {
 				bot.Info.Side = "Usec";
 				type = "usec";
 			} else {
@@ -60,6 +49,8 @@ function generateBot(bot, role, sessionID) {
 
 	bot.Info.Settings.Role = role;
 	bot.Info.Nickname = getRandomValue(node.names);
+	bot.Info.experience = getRandomExperience();
+	bot.Info.Level = profile_f.calculateLevel(bot);
 	bot.Info.Settings.Experience = getRandomValue(node.experience);
 	bot.Info.Voice = getRandomValue(node.appearance.voice);
 	bot.Health = getRandomValue(node.health);
@@ -69,11 +60,6 @@ function generateBot(bot, role, sessionID) {
 	bot.Customization.Hands = getRandomValue(node.appearance.hands);
 	bot.Inventory = getRandomValue(node.inventory);
 
-	// add dogtag to PMC's		
-	if (type === "usec" || type === "bear") {
-		bot = addDogtag(bot, sessionID);
-	}
-	
 	return bot;
 }
 

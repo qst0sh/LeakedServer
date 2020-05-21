@@ -80,9 +80,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "597a0f5686f774273b74f676",
-					"status": [
-						2
-					],
+					"status": [2],
 					"index": 0,
 					"parentId": "",
 					"id": ""
@@ -176,9 +174,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "597a0f5686f774273b74f676",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 0,
 					"parentId": "",
 					"id": ""
@@ -188,9 +184,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "597a160786f77477531d39d2",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 1,
 					"parentId": "",
 					"id": ""

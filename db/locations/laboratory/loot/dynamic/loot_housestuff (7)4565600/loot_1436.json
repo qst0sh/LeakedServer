@@ -1,0 +1,25 @@
+{
+	"Id": "loot_housestuff (7)4565600",
+	"IsStatic": false,
+	"useGravity": true,
+	"randomRotation": true,
+	"Position": {
+		"x": -158.06,
+		"y": 5.159,
+		"z": -411.5
+	},
+	"Rotation": {
+		"x": 0,
+		"y": 0,
+		"z": 0
+	},
+	"IsGroupPosition": false,
+	"GroupPositions": [],
+	"Root": "5ea2d25586f7742a3041415b",
+	"Items": [
+		{
+			"_id": "5ea2d25586f7742a3041415b",
+			"_tpl": "577e1c9d2459773cd707c525"
+		}
+	]
+}

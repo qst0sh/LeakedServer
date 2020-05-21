@@ -37,9 +37,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "59674cd986f7744ab26e32f2",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 0,
 					"parentId": "",
 					"id": ""
@@ -49,9 +47,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "596760e186f7741e11214d58",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 1,
 					"parentId": "",
 					"id": ""
@@ -61,9 +57,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5c12452c86f7744b83469073",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 2,
 					"parentId": "",
 					"id": ""
@@ -73,9 +67,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5c0bd01e86f7747cdd799e56",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 3,
 					"parentId": "",
 					"id": ""
@@ -85,9 +77,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5c0bd94186f7747a727f09b2",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 4,
 					"parentId": "",
 					"id": ""
@@ -97,9 +87,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "59ca2eb686f77445a80ed049",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 5,
 					"parentId": "",
 					"id": ""
@@ -109,9 +97,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5968eb3186f7741dde183a4d",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 6,
 					"parentId": "",
 					"id": ""
@@ -120,22 +106,8 @@
 			{
 				"_parent": "Quest",
 				"_props": {
-					"target": "5a5642ce86f77445c63c3419",
-					"status": [
-						4
-					],
-					"index": 7,
-					"parentId": "",
-					"id": ""
-				}
-			},
-			{
-				"_parent": "Quest",
-				"_props": {
 					"target": "596a1e6c86f7741ddc2d3206",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 8,
 					"parentId": "",
 					"id": ""
@@ -144,22 +116,8 @@
 			{
 				"_parent": "Quest",
 				"_props": {
-					"target": "5d6fb2c086f77449da599c24",
-					"status": [
-						4
-					],
-					"index": 9,
-					"parentId": "",
-					"id": ""
-				}
-			},
-			{
-				"_parent": "Quest",
-				"_props": {
 					"target": "5c0d0d5086f774363760aef2",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 10,
 					"parentId": "",
 					"id": ""
@@ -169,9 +127,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5c0d1c4cd0928202a02a6f5c",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 11,
 					"parentId": "",
 					"id": ""
@@ -181,9 +137,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "597a0e5786f77426d66c0636",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 12,
 					"parentId": "",
 					"id": ""
@@ -192,22 +146,8 @@
 			{
 				"_parent": "Quest",
 				"_props": {
-					"target": "5d4bec3486f7743cac246665",
-					"status": [
-						4
-					],
-					"index": 13,
-					"parentId": "",
-					"id": ""
-				}
-			},
-			{
-				"_parent": "Quest",
-				"_props": {
 					"target": "5b478ff486f7744d184ecbbf",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 14,
 					"parentId": "",
 					"id": ""
@@ -217,9 +157,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5c0bdb5286f774166e38eed4",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 15,
 					"parentId": "",
 					"id": ""
@@ -229,9 +167,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5c0bc91486f7746ab41857a2",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 16,
 					"parentId": "",
 					"id": ""
@@ -241,9 +177,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5c1234c286f77406fa13baeb",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 17,
 					"parentId": "",
 					"id": ""
@@ -253,9 +187,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5c0d4c12d09282029f539173",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 18,
 					"parentId": "",
 					"id": ""
@@ -265,9 +197,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5a27ba1c86f77461ea5a3c56",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 19,
 					"parentId": "",
 					"id": ""
@@ -277,9 +207,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5a27bb5986f7741dfb660900",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 20,
 					"parentId": "",
 					"id": ""
@@ -288,22 +216,8 @@
 			{
 				"_parent": "Quest",
 				"_props": {
-					"target": "5d6fbc2886f77449d825f9d3",
-					"status": [
-						4
-					],
-					"index": 21,
-					"parentId": "",
-					"id": ""
-				}
-			},
-			{
-				"_parent": "Quest",
-				"_props": {
 					"target": "5c0d4e61d09282029f53920e",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 22,
 					"parentId": "",
 					"id": ""
@@ -313,9 +227,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5c0be13186f7746f016734aa",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 23,
 					"parentId": "",
 					"id": ""
@@ -325,9 +237,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5ac3475486f7741d6224abd3",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 24,
 					"parentId": "",
 					"id": ""
@@ -337,9 +247,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5c139eb686f7747878361a6f",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 25,
 					"parentId": "",
 					"id": ""
@@ -349,9 +257,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5c0bde0986f77479cf22c2f8",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 26,
 					"parentId": "",
 					"id": ""
@@ -361,9 +267,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5ac3479086f7742880308199",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 27,
 					"parentId": "",
 					"id": ""
@@ -373,9 +277,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5ac3477486f7741d651d6885",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 28,
 					"parentId": "",
 					"id": ""
@@ -385,9 +287,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5ac346e886f7741d6118b99b",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 29,
 					"parentId": "",
 					"id": ""
@@ -397,9 +297,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5b47825886f77468074618d3",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 30,
 					"parentId": "",
 					"id": ""
@@ -409,9 +307,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5ae448bf86f7744d733e55ee",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 31,
 					"parentId": "",
 					"id": ""
@@ -421,9 +317,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5ae449d986f774453a54a7e1",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 32,
 					"parentId": "",
 					"id": ""
@@ -433,9 +327,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5c112d7e86f7740d6f647486",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 33,
 					"parentId": "",
 					"id": ""
@@ -445,9 +337,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5b478d0f86f7744d190d91b5",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 34,
 					"parentId": "",
 					"id": ""
@@ -457,9 +347,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5ae449a586f7744bde357696",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 35,
 					"parentId": "",
 					"id": ""
@@ -469,9 +357,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5c1141f386f77430ff393792",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 36,
 					"parentId": "",
 					"id": ""
@@ -481,9 +367,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5bc4893c86f774626f5ebf3e",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 37,
 					"parentId": "",
 					"id": ""
@@ -493,9 +377,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5d25e4b786f77408251c4bfc",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 38,
 					"parentId": "",
 					"id": ""
@@ -504,34 +386,8 @@
 			{
 				"_parent": "Quest",
 				"_props": {
-					"target": "5d25e44386f77409453bce7b",
-					"status": [
-						4
-					],
-					"index": 39,
-					"parentId": "",
-					"id": ""
-				}
-			},
-			{
-				"_parent": "Quest",
-				"_props": {
-					"target": "5d25e2d886f77442734d335e",
-					"status": [
-						4
-					],
-					"index": 40,
-					"parentId": "",
-					"id": ""
-				}
-			},
-			{
-				"_parent": "Quest",
-				"_props": {
 					"target": "5d25e43786f7740a212217fa",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 41,
 					"parentId": "",
 					"id": ""
@@ -541,9 +397,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5d25e45e86f77408251c4bfa",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 42,
 					"parentId": "",
 					"id": ""
@@ -553,9 +407,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5d25e4ca86f77409dd5cdf2c",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 43,
 					"parentId": "",
 					"id": ""
@@ -565,9 +417,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5d25e4d586f77443e625e388",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 44,
 					"parentId": "",
 					"id": ""
@@ -577,9 +427,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5d25e4ad86f77443e625e387",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 45,
 					"parentId": "",
 					"id": ""
@@ -589,9 +437,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5d25e29d86f7740a22516326",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 46,
 					"parentId": "",
 					"id": ""
@@ -601,9 +447,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5d25e2a986f77409dd5cdf2a",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 47,
 					"parentId": "",
 					"id": ""
@@ -613,9 +457,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5d25e46e86f77409453bce7c",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 48,
 					"parentId": "",
 					"id": ""
@@ -625,9 +467,7 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5d25aed386f77442734d25d2",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 49,
 					"parentId": "",
 					"id": ""
@@ -637,22 +477,8 @@
 				"_parent": "Quest",
 				"_props": {
 					"target": "5d25e48d86f77408251c4bfb",
-					"status": [
-						4
-					],
+					"status": [4],
 					"index": 50,
-					"parentId": "",
-					"id": ""
-				}
-			},
-			{
-				"_parent": "Quest",
-				"_props": {
-					"target": "5dc53acb86f77469c740c893",
-					"status": [
-						4
-					],
-					"index": 51,
 					"parentId": "",
 					"id": ""
 				}
