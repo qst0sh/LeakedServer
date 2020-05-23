@@ -15,13 +15,13 @@
 	},
 	"IsGroupPosition": false,
 	"GroupPositions": [],
-	"Root": "5ea2d1e686f7747a1e324992",
+	"Root": "5eb3dcf986f77468595ae7e3",
 	"Items": [
 		{
-			"_id": "5ea2d1e686f7747a1e324992",
-			"_tpl": "54527ac44bdc2d36668b4567",
+			"_id": "5eb3dcf986f77468595ae7e3",
+			"_tpl": "56dff3afd2720bba668b4567",
 			"upd": {
-				"StackObjectsCount": 25
+				"StackObjectsCount": 10
 			}
 		}
 	]

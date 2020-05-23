@@ -15,16 +15,16 @@
 	},
 	"IsGroupPosition": false,
 	"GroupPositions": [],
-	"Root": "5e68b26b86f7745c3804d4bc",
+	"Root": "5eb3dd3086f77466383c9227",
 	"Items": [
 		{
-			"_id": "5e68b26b86f7745c3804d4bc",
+			"_id": "5eb3dd3086f77466383c9227",
 			"_tpl": "5d6d2bb386f774785b07a77a"
 		},
 		{
-			"_id": "5e68b26c86f7745c3804d4bd",
-			"_tpl": "59e6542b86f77411dc52a77a",
-			"parentId": "5e68b26b86f7745c3804d4bc",
+			"_id": "5eb3dd3086f77466383c9228",
+			"_tpl": "59e68f6f86f7746c9f75e846",
+			"parentId": "5eb3dd3086f77466383c9227",
 			"slotId": "main",
 			"location": {
 				"x": 0,
@@ -32,13 +32,13 @@
 				"r": 0
 			},
 			"upd": {
-				"StackObjectsCount": 49
+				"StackObjectsCount": 15
 			}
 		},
 		{
-			"_id": "5e68b26c86f7745c3804d4be",
-			"_tpl": "590c5c9f86f77477c91c36e7",
-			"parentId": "5e68b26b86f7745c3804d4bc",
+			"_id": "5eb3dd3086f77466383c9229",
+			"_tpl": "573727c624597765cc785b5b",
+			"parentId": "5eb3dd3086f77466383c9227",
 			"slotId": "main",
 			"location": {
 				"x": 1,
@@ -47,69 +47,22 @@
 			}
 		},
 		{
-			"_id": "5e68b26c86f7745c3804d4bf",
-			"_tpl": "57347d90245977448f7b7f65",
-			"parentId": "5e68b26b86f7745c3804d4bc",
-			"slotId": "main",
-			"location": {
-				"x": 2,
-				"y": 0,
-				"r": 0
-			}
-		},
-		{
-			"_id": "5e68b26c86f7745c3804d4c0",
-			"_tpl": "56dfef82d2720bbd668b4567",
-			"parentId": "5e68b26b86f7745c3804d4bc",
-			"slotId": "main",
-			"location": {
-				"x": 0,
-				"y": 1,
-				"r": 0
-			},
-			"upd": {
-				"StackObjectsCount": 33
-			}
-		},
-		{
-			"_id": "5e68b26c86f7745c3804d4c1",
-			"_tpl": "57347c77245977448d35f6e2",
-			"parentId": "5e68b26b86f7745c3804d4bc",
-			"slotId": "main",
-			"location": {
-				"x": 0,
-				"y": 2,
-				"r": 0
-			}
-		},
-		{
-			"_id": "5e68b26c86f7745c3804d4c2",
-			"_tpl": "573722e82459776104581c21",
-			"parentId": "5e68b26b86f7745c3804d4bc",
-			"slotId": "main",
-			"location": {
-				"x": 1,
-				"y": 2,
-				"r": 0
-			}
-		},
-		{
-			"_id": "5e68b26c86f7745c3804d4c3",
-			"_tpl": "573718ba2459775a75491131",
-			"parentId": "5e68b26c86f7745c3804d4c2",
+			"_id": "5eb3dd3086f77466383c922a",
+			"_tpl": "5737201124597760fc4431f1",
+			"parentId": "5eb3dd3086f77466383c9229",
 			"slotId": "cartridges",
 			"upd": {
 				"StackObjectsCount": 16
 			}
 		},
 		{
-			"_id": "5e68b26c86f7745c3804d4c4",
-			"_tpl": "575146b724597720a27126d5",
-			"parentId": "5e68b26b86f7745c3804d4bc",
+			"_id": "5eb3dd3086f77466383c922b",
+			"_tpl": "590a3b0486f7743954552bdb",
+			"parentId": "5eb3dd3086f77466383c9227",
 			"slotId": "main",
 			"location": {
 				"x": 2,
-				"y": 2,
+				"y": 0,
 				"r": 0
 			}
 		}

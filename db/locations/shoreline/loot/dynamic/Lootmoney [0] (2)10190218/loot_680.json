@@ -1,0 +1,25 @@
+{
+	"Id": "Lootmoney [0] (2)10190218",
+	"IsStatic": false,
+	"useGravity": true,
+	"randomRotation": false,
+	"Position": {
+		"x": -287.822021,
+		"y": 2.444,
+		"z": -89.091
+	},
+	"Rotation": {
+		"x": 0,
+		"y": 327.614563,
+		"z": 0
+	},
+	"IsGroupPosition": false,
+	"GroupPositions": [],
+	"Root": "5eb3dd9986f77451e474b5e7",
+	"Items": [
+		{
+			"_id": "5eb3dd9986f77451e474b5e7",
+			"_tpl": "573478bc24597738002c6175"
+		}
+	]
+}

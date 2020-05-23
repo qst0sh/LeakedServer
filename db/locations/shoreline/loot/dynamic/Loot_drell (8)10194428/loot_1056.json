@@ -1,0 +1,25 @@
+{
+	"Id": "Loot_drell (8)10194428",
+	"IsStatic": false,
+	"useGravity": false,
+	"randomRotation": true,
+	"Position": {
+		"x": 329.172119,
+		"y": -55.065,
+		"z": 174.18
+	},
+	"Rotation": {
+		"x": 1.27222189e-14,
+		"y": 91.54478,
+		"z": 2.16103942e-7
+	},
+	"IsGroupPosition": false,
+	"GroupPositions": [],
+	"Root": "5eb3dd9f86f7741c2a65af8e",
+	"Items": [
+		{
+			"_id": "5eb3dd9f86f7741c2a65af8e",
+			"_tpl": "5d1b317c86f7742523398392"
+		}
+	]
+}

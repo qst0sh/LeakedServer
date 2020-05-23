@@ -1,0 +1,28 @@
+{
+	"Id": "Loottools[2] (75)10198260",
+	"IsStatic": false,
+	"useGravity": true,
+	"randomRotation": false,
+	"Position": {
+		"x": 157.589966,
+		"y": -47.709,
+		"z": 134.058014
+	},
+	"Rotation": {
+		"x": 0,
+		"y": 0,
+		"z": 0
+	},
+	"IsGroupPosition": false,
+	"GroupPositions": [],
+	"Root": "5eb3dda586f77457e162a288",
+	"Items": [
+		{
+			"_id": "5eb3dda586f77457e162a288",
+			"_tpl": "5696686a4bdc2da3298b456a",
+			"upd": {
+				"StackObjectsCount": 66
+			}
+		}
+	]
+}

@@ -1,0 +1,25 @@
+{
+	"Id": "loot_item_barter_flam_kerosine (38)10193694",
+	"IsStatic": false,
+	"useGravity": true,
+	"randomRotation": true,
+	"Position": {
+		"x": 300.226776,
+		"y": -55.7483253,
+		"z": 107.771996
+	},
+	"Rotation": {
+		"x": 0,
+		"y": 0,
+		"z": 0
+	},
+	"IsGroupPosition": false,
+	"GroupPositions": [],
+	"Root": "5eb3dd9f86f7741c2a65af91",
+	"Items": [
+		{
+			"_id": "5eb3dd9f86f7741c2a65af91",
+			"_tpl": "5d1b371186f774253763a656"
+		}
+	]
+}

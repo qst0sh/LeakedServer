@@ -15,97 +15,48 @@
 	},
 	"IsGroupPosition": false,
 	"GroupPositions": [],
-	"Root": "5e68b2b686f7746649428fc6",
+	"Root": "5eb3dda786f77468595b1177",
 	"Items": [
 		{
-			"_id": "5e68b2b686f7746649428fc6",
+			"_id": "5eb3dda786f77468595b1177",
 			"_tpl": "5d6d2bb386f774785b07a77a"
 		},
 		{
-			"_id": "5e68b2b686f7746649428fc7",
-			"_tpl": "5672cb304bdc2dc2088b456a",
-			"parentId": "5e68b2b686f7746649428fc6",
+			"_id": "5eb3dda786f77468595b1178",
+			"_tpl": "5449016a4bdc2d6f028b456f",
+			"parentId": "5eb3dda786f77468595b1177",
 			"slotId": "main",
 			"location": {
 				"x": 0,
 				"y": 0,
-				"r": 0
-			}
-		},
-		{
-			"_id": "5e68b2b686f7746649428fc8",
-			"_tpl": "5737292724597765e5728562",
-			"parentId": "5e68b2b686f7746649428fc6",
-			"slotId": "main",
-			"location": {
-				"x": 1,
-				"y": 0,
-				"r": 0
-			}
-		},
-		{
-			"_id": "5e68b2b686f7746649428fc9",
-			"_tpl": "56dfef82d2720bbd668b4567",
-			"parentId": "5e68b2b686f7746649428fc8",
-			"slotId": "cartridges",
-			"upd": {
-				"StackObjectsCount": 60
-			}
-		},
-		{
-			"_id": "5e68b2b686f7746649428fca",
-			"_tpl": "56dfef82d2720bbd668b4567",
-			"parentId": "5e68b2b686f7746649428fc8",
-			"slotId": "cartridges",
-			"location": 1,
-			"upd": {
-				"StackObjectsCount": 60
-			}
-		},
-		{
-			"_id": "5e68b2b686f7746649428fcb",
-			"_tpl": "56dff338d2720bbd668b4569",
-			"parentId": "5e68b2b686f7746649428fc6",
-			"slotId": "main",
-			"location": {
-				"x": 0,
-				"y": 1,
 				"r": 0
 			},
 			"upd": {
-				"StackObjectsCount": 6
+				"StackObjectsCount": 947
 			}
 		},
 		{
-			"_id": "5e68b2b686f7746649428fcc",
-			"_tpl": "5734773724597737fd047c14",
-			"parentId": "5e68b2b686f7746649428fc6",
+			"_id": "5eb3dda786f77468595b1179",
+			"_tpl": "56dff421d2720b5f5a8b4567",
+			"parentId": "5eb3dda786f77468595b1177",
 			"slotId": "main",
 			"location": {
 				"x": 1,
-				"y": 1,
+				"y": 0,
 				"r": 0
+			},
+			"upd": {
+				"StackObjectsCount": 7
 			}
 		},
 		{
-			"_id": "5e68b2b686f7746649428fcd",
-			"_tpl": "57347b8b24597737dd42e192",
-			"parentId": "5e68b2b686f7746649428fc6",
+			"_id": "5eb3dda786f77468595b117a",
+			"_tpl": "5c0e531d86f7747fa23f4d42",
+			"parentId": "5eb3dda786f77468595b1177",
 			"slotId": "main",
 			"location": {
 				"x": 2,
-				"y": 1,
-				"r": 0
-			}
-		},
-		{
-			"_id": "5e68b2b686f7746649428fce",
-			"_tpl": "57513f07245977207e26a311",
-			"parentId": "5e68b2b686f7746649428fc6",
-			"slotId": "main",
-			"location": {
-				"x": 0,
-				"y": 2,
+				"y": 0,
 				"r": 0
 			}
 		}

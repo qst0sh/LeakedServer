@@ -15,27 +15,30 @@
 	},
 	"IsGroupPosition": false,
 	"GroupPositions": [],
-	"Root": "5e68b2b686f7746649428fbe",
+	"Root": "5eb3dda786f77468595b116f",
 	"Items": [
 		{
-			"_id": "5e68b2b686f7746649428fbe",
+			"_id": "5eb3dda786f77468595b116f",
 			"_tpl": "5d6d2bb386f774785b07a77a"
 		},
 		{
-			"_id": "5e68b2b686f7746649428fbf",
-			"_tpl": "57347d3d245977448f7b7f61",
-			"parentId": "5e68b2b686f7746649428fbe",
+			"_id": "5eb3dda786f77468595b1170",
+			"_tpl": "56dff338d2720bbd668b4569",
+			"parentId": "5eb3dda786f77468595b116f",
 			"slotId": "main",
 			"location": {
 				"x": 0,
 				"y": 0,
 				"r": 0
+			},
+			"upd": {
+				"StackObjectsCount": 5
 			}
 		},
 		{
-			"_id": "5e68b2b686f7746649428fc0",
-			"_tpl": "5751435d24597720a27126d1",
-			"parentId": "5e68b2b686f7746649428fbe",
+			"_id": "5eb3dda786f77468595b1171",
+			"_tpl": "5734795124597738002c6176",
+			"parentId": "5eb3dda786f77468595b116f",
 			"slotId": "main",
 			"location": {
 				"x": 1,
@@ -44,9 +47,9 @@
 			}
 		},
 		{
-			"_id": "5e68b2b686f7746649428fc1",
-			"_tpl": "5737250c2459776125652acc",
-			"parentId": "5e68b2b686f7746649428fbe",
+			"_id": "5eb3dda786f77468595b1172",
+			"_tpl": "5c0e530286f7747fa1419862",
+			"parentId": "5eb3dda786f77468595b116f",
 			"slotId": "main",
 			"location": {
 				"x": 2,
@@ -55,21 +58,23 @@
 			}
 		},
 		{
-			"_id": "5e68b2b686f7746649428fc2",
-			"_tpl": "573719df2459775a626ccbc2",
-			"parentId": "5e68b2b686f7746649428fc1",
-			"slotId": "cartridges",
-			"upd": {
-				"StackObjectsCount": 16
-			}
-		},
-		{
-			"_id": "5e68b2b686f7746649428fc3",
-			"_tpl": "56742c284bdc2d98058b456d",
-			"parentId": "5e68b2b686f7746649428fbe",
+			"_id": "5eb3dda786f77468595b1173",
+			"_tpl": "57347d9c245977448b40fa85",
+			"parentId": "5eb3dda786f77468595b116f",
 			"slotId": "main",
 			"location": {
 				"x": 0,
+				"y": 1,
+				"r": 0
+			}
+		},
+		{
+			"_id": "5eb3dda786f77468595b1174",
+			"_tpl": "5751496424597720a27126da",
+			"parentId": "5eb3dda786f77468595b116f",
+			"slotId": "main",
+			"location": {
+				"x": 1,
 				"y": 1,
 				"r": 0
 			}
