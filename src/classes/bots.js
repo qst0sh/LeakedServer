@@ -17,6 +17,30 @@ function getRandomExperience(bot) {
 	return utility.getRandomInt(0, exp);
 }
 
+
+function addDogtag(bot, sessionID) {
+	let dogtagItem = {
+		_id: utility.generateNewItemId(),
+		_tpl: ((bot.Info.Side === 'Usec') ? "59f32c3b86f77472a31742f0" : "59f32bb586f774757e1e8442"),
+		parentId: bot.Inventory.equipment,
+		slotId: "Dogtag",
+		upd: {
+			"Dogtag": {
+				"Nickname": bot.Info.Nickname,
+				"Side": bot.Info.Side,
+				"Level": bot.Info.Level,
+				"Time": (new Date().toISOString()),
+				"Status": "Killed by ",
+				"KillerName": "You",
+				"WeaponName": "Something"
+			}
+		}
+	}
+
+	bot.Inventory.items.push(dogtagItem);
+	return bot;
+}
+
 function generateBot(bot, role, sessionID) {
 	let type = (role === "cursedAssault") ? "assault" : role;
 	let node = {};
@@ -59,6 +83,11 @@ function generateBot(bot, role, sessionID) {
 	bot.Customization.Feet = getRandomValue(node.appearance.feet);
 	bot.Customization.Hands = getRandomValue(node.appearance.hands);
 	bot.Inventory = getRandomValue(node.inventory);
+
+	// add dogtag to PMC's	
+	if (type === "usec" || type === "bear") {
+		bot = addDogtag(bot, sessionID);
+	}
 
 	return bot;
 }
