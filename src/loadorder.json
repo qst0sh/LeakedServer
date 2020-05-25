@@ -84,6 +84,5 @@
     "notifier_c": "src/callbacks/response/notifier.js",
     "savehandler_c": "src/callbacks/response/savehandler.js",
     "image_c": "src/callbacks/response/image.js",
-    "location_c": "src/callbacks/response/location.js",
     "insurance_c": "src/callbacks/receive/insurance.js"
 }

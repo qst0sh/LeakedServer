@@ -5,7 +5,7 @@ function getLocations(url, info, sessionID) {
 }
 
 function getLocation(url, info, sessionID) {
-    return "LOCATION";
+    return location_f.locationServer.get(req.url.replace("/api/location/", ""));
 }
 
 router.addStaticRoute("/client/locations", getLocations);
