@@ -2,7 +2,7 @@
 The Escape From Tarkov server emulator
 
 ## Getting started
-See the wiki for more information
+Check at the documentation: https://kandasoranyan.github.io/EmuTarkovWiki/#/tutorials/development-environment-setup
 
 ## Credits
-Polivilas, The JustEmuTarkov team (see package.json for all names)
+Polivilas, The EmuTarkov team (see package.json for all names)
