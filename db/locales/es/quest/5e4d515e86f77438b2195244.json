@@ -1,0 +1,19 @@
+{
+	"conditions": {
+		"5e4d515e86f77438b2195245": "Obtén 10 tejidos de lana en la incursión",
+		"5e4d515e86f77438b2195246": "Entrega los 10 tejidos de lana",
+		"5e4d515e86f77438b2195247": "Obtén 10 piezas de tejido Cordura de poliamida en la incursión",
+		"5e4d515e86f77438b2195248": "Entrega los 10 tejidos Cordura de poliamida",
+		"5e4d515e86f77438b2195249": "Obtén 5 cintas adhesivas KEKTAPE en la incursión",
+		"5e4d515e86f77438b219524a": "Entrega las 5 cintas adhesivas KEKTAPE",
+		"5e58dbf386f7747c25656a54": "",
+		"5e58dd9086f7747c2639ee43": ""
+	},
+	"name": "Tejidos II",
+	"note": "",
+	"successMessageText": "5e4d533b86f774264f758340",
+	"failMessageText": "5e4d533b86f774264f758341",
+	"startedMessageText": "",
+	"description": "5e4d533b86f774264f758343",
+	"location": "any"
+}

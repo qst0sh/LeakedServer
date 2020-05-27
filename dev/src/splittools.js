@@ -205,6 +205,10 @@ function localesHelper(language, shortName) {
         for (let target in key) {
             let output = outputDir + "locales/" + shortName + "/"  + element + "/" + target + ".json";
 
+            if ("startedMessageText" in key) {
+                key.startedMessageText = "";
+            }
+
             json.write(output, key[target]);
             console.log("done: " + output);
         }
