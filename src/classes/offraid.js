@@ -14,8 +14,8 @@ class InraidServer {
         delete this.players[sessionID];
     }
 
-    removeLabKeyCard(offraidData) {
-        if (this.players[sessionID] !== "Common") {
+    removeLabKeyCard(offraidData,sessionID) {
+        if (this.players[,sessionID] !== "Common") {
             return;
         }
     
@@ -253,7 +253,7 @@ function saveProgress(offraidData, sessionID) {
         }
 
         // Remove the Lab card
-        offraid_f.inraidServer.removeLabKeyCard(offraidData);
+        offraid_f.inraidServer.removeLabKeyCard(offraidData, sessionID);
         offraid_f.inraidServer.removePlayer(sessionID);
     }
 
