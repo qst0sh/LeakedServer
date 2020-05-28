@@ -1,0 +1,25 @@
+{
+	"Id": "Loot_mil_electr (17)10199286",
+	"IsStatic": false,
+	"useGravity": true,
+	"randomRotation": false,
+	"Position": {
+		"x": -715.9,
+		"y": -42.14,
+		"z": 227.909973
+	},
+	"Rotation": {
+		"x": 0,
+		"y": 33.2960472,
+		"z": 2.16104013e-7
+	},
+	"IsGroupPosition": false,
+	"GroupPositions": [],
+	"Root": "5eb3dda586f77457e162a1f5",
+	"Items": [
+		{
+			"_id": "5eb3dda586f77457e162a1f5",
+			"_tpl": "590a358486f77429692b2790"
+		}
+	]
+}

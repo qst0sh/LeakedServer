@@ -1,0 +1,25 @@
+{
+	"Id": "Loot_money[1] (77)10195882",
+	"IsStatic": false,
+	"useGravity": true,
+	"randomRotation": false,
+	"Position": {
+		"x": -278.728027,
+		"y": 0.189,
+		"z": -87.748
+	},
+	"Rotation": {
+		"x": 0,
+		"y": 38.14347,
+		"z": 0
+	},
+	"IsGroupPosition": false,
+	"GroupPositions": [],
+	"Root": "5eb3dd9f86f7741c2a65afae",
+	"Items": [
+		{
+			"_id": "5eb3dd9f86f7741c2a65afae",
+			"_tpl": "5448fee04bdc2dbc018b4567"
+		}
+	]
+}
