@@ -15,7 +15,7 @@ class InraidServer {
     }
 
     removeLabKeyCard(offraidData,sessionID) {
-        if (this.players[,sessionID] !== "Common") {
+        if (this.players[sessionID] !== "Common") {
             return;
         }
     
