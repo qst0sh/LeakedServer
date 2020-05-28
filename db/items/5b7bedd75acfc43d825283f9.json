@@ -12,8 +12,8 @@
 		"Width": 2,
 		"Height": 1,
 		"StackMaxSize": 1,
-		"Rarity": "Not_exist",
-		"SpawnChance": 1,
+		"Rarity": "Rare",
+		"SpawnChance": 3,
 		"CreditsPrice": 16262,
 		"ItemSound": "mod",
 		"Prefab": {
@@ -106,8 +106,8 @@
 						{
 							"Shift": 0,
 							"Filter": [
-								"59e0bdb186f774156f04ce82",
-								"59e0be5d86f7742d48765bd2"
+								"5b7be4575acfc400161d0832",
+								"5b7be4645acfc400170e2dcc"
 							]
 						}
 					]

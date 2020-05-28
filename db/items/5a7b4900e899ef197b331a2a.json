@@ -12,7 +12,7 @@
 		"Width": 1,
 		"Height": 1,
 		"StackMaxSize": 1,
-		"Rarity": "Superrare",
+		"Rarity": "Rare",
 		"SpawnChance": 2,
 		"CreditsPrice": 5620,
 		"ItemSound": "mod",
@@ -92,8 +92,8 @@
 						{
 							"Shift": 0,
 							"Filter": [
-								"5cc9c20cd7f00c001336c65d",
 								"5a800961159bd4315e3a1657",
+								"5cc9c20cd7f00c001336c65d",
 								"5d2369418abbc306c62e0c80",
 								"5b07dd285acfc4001754240d",
 								"56def37dd2720bec348b456a",

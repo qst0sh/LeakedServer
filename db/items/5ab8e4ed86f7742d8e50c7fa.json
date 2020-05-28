@@ -13,7 +13,7 @@
 		"Height": 3,
 		"StackMaxSize": 1,
 		"Rarity": "Rare",
-		"SpawnChance": 2,
+		"SpawnChance": 6,
 		"CreditsPrice": 33355,
 		"ItemSound": "gear_armor",
 		"Prefab": {

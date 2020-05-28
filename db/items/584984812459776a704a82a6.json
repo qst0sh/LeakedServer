@@ -12,9 +12,9 @@
 		"Width": 1,
 		"Height": 1,
 		"StackMaxSize": 1,
-		"Rarity": "Superrare",
-		"SpawnChance": 15,
-		"CreditsPrice": 17636,
+		"Rarity": "Rare",
+		"SpawnChance": 5,
+		"CreditsPrice": 27636,
 		"ItemSound": "mod",
 		"Prefab": {
 			"path": "assets/content/items/mods/scopes/scope_all_vomz_pilad_p1x42_weaver.bundle",

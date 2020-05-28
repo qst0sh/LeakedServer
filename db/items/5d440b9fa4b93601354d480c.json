@@ -12,8 +12,8 @@
 		"Width": 4,
 		"Height": 1,
 		"StackMaxSize": 1,
-		"Rarity": "Not_exist",
-		"SpawnChance": 5,
+		"Rarity": "Rare",
+		"SpawnChance": 2,
 		"CreditsPrice": 36567,
 		"ItemSound": "mod",
 		"Prefab": {
@@ -89,6 +89,7 @@
 								"56ea6fafd2720b844b8b4593",
 								"5943ee5a86f77413872d25ec",
 								"5c7fb51d2e2216001219ce11",
+								"5ea172e498dacb342978818e",
 								"5c6d710d2e22165df16b81e7",
 								"5d440625a4b9361eec4ae6c5",
 								"5cc9b815d7f00c000e2579d6",

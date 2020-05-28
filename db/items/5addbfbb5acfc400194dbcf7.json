@@ -13,8 +13,8 @@
 		"Height": 1,
 		"StackMaxSize": 1,
 		"Rarity": "Rare",
-		"SpawnChance": 3,
-		"CreditsPrice": 25874,
+		"SpawnChance": 2,
+		"CreditsPrice": 15874,
 		"ItemSound": "mod",
 		"Prefab": {
 			"path": "assets/content/items/mods/mounts/mount_m14_ultimak_m8_forward_optic_mount.bundle",

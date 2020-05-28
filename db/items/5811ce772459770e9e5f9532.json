@@ -1,12 +1,12 @@
 {
 	"_id": "5811ce772459770e9e5f9532",
-	"_name": "stash 10x63",
+	"_name": "Edge of darkness stash 10x68",
 	"_parent": "566abbb64bdc2d144c8b457d",
 	"_type": "Item",
 	"_props": {
-		"Name": "stash 10x66",
-		"ShortName": "stash 10x66",
-		"Description": "stash 10x66\n",
+		"Name": "Edge of darkness stash 10x68",
+		"ShortName": "Edge of darkness stash 10x68",
+		"Description": "Edge of darkness stash 10x68\n",
 		"Weight": 1,
 		"BackgroundColor": "blue",
 		"Width": 1,
@@ -66,7 +66,7 @@
 				"_props": {
 					"filters": [],
 					"cellsH": 10,
-					"cellsV": 66,
+					"cellsV": 68,
 					"minCount": 0,
 					"maxCount": 0,
 					"maxWeight": 0

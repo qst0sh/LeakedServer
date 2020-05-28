@@ -13,7 +13,7 @@
 		"Height": 4,
 		"StackMaxSize": 1,
 		"Rarity": "Superrare",
-		"SpawnChance": 1,
+		"SpawnChance": 2,
 		"CreditsPrice": 91000,
 		"ItemSound": "gear_generic",
 		"Prefab": {
@@ -37,7 +37,7 @@
 		"LootExperience": 20,
 		"ExamineExperience": 10,
 		"HideEntrails": true,
-		"RepairCost": 820,
+		"RepairCost": 1120,
 		"RepairSpeed": 0,
 		"ExtraSizeLeft": 0,
 		"ExtraSizeRight": 0,

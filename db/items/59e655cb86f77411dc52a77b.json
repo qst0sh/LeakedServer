@@ -61,7 +61,7 @@
 		"StackMinRandom": 20,
 		"StackMaxRandom": 50,
 		"ammoType": "bullet",
-		"Damage": 65,
+		"Damage": 68,
 		"ammoAccr": -10,
 		"ammoRec": -15,
 		"ammoDist": 0,

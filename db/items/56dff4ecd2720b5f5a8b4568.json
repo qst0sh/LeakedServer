@@ -59,7 +59,7 @@
 		"AnimationVariantsNumber": 0,
 		"DiscardingBlock": false,
 		"StackMinRandom": 10,
-		"StackMaxRandom": 15,
+		"StackMaxRandom": 60,
 		"ammoType": "bullet",
 		"Damage": 65,
 		"ammoAccr": 0,

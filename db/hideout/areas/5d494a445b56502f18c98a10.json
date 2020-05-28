@@ -67,7 +67,7 @@
 				}
 			],
 			"slots": 0,
-			"constructionTime": 86400,
+			"constructionTime": 108000,
 			"description": ""
 		},
 		"2": {
@@ -121,7 +121,7 @@
 				}
 			],
 			"slots": 0,
-			"constructionTime": 129600,
+			"constructionTime": 151200,
 			"description": ""
 		},
 		"3": {
@@ -155,13 +155,13 @@
 				},
 				{
 					"templateId": "5d1b2fa286f77425227d1674",
-					"count": 1,
+					"count": 2,
 					"isFunctional": false,
 					"type": "Item"
 				},
 				{
 					"templateId": "5d1b327086f7742525194449",
-					"count": 2,
+					"count": 4,
 					"isFunctional": false,
 					"type": "Item"
 				}
@@ -180,7 +180,7 @@
 				}
 			],
 			"slots": 0,
-			"constructionTime": 259200,
+			"constructionTime": 345600,
 			"description": ""
 		}
 	}

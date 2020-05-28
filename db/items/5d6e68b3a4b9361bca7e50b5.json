@@ -12,8 +12,8 @@
 		"Width": 1,
 		"Height": 1,
 		"StackMaxSize": 20,
-		"Rarity": "Not_exist",
-		"SpawnChance": 15,
+		"Rarity": "Rare",
+		"SpawnChance": 3,
 		"CreditsPrice": 82,
 		"ItemSound": "ammo_shotgun",
 		"Prefab": {

@@ -12,9 +12,9 @@
 		"Width": 1,
 		"Height": 1,
 		"StackMaxSize": 1,
-		"Rarity": "Superrare",
+		"Rarity": "Rare",
 		"SpawnChance": 2,
-		"CreditsPrice": 31600,
+		"CreditsPrice": 29600,
 		"ItemSound": "mod",
 		"Prefab": {
 			"path": "assets/content/items/mods/scopes/scope_base_aimpooint_comp_m4.bundle",

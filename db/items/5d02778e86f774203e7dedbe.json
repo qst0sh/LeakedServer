@@ -12,8 +12,8 @@
 		"Width": 2,
 		"Height": 1,
 		"StackMaxSize": 1,
-		"Rarity": "Superrare",
-		"SpawnChance": 4,
+		"Rarity": "Rare",
+		"SpawnChance": 2,
 		"CreditsPrice": 22500,
 		"ItemSound": "med_medkit",
 		"Prefab": {

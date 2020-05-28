@@ -1,12 +1,12 @@
 {
 	"_id": "566abbc34bdc2d92178b4576",
-	"_name": "stash 10x23",
+	"_name": "Standard stash 10x28",
 	"_parent": "566abbb64bdc2d144c8b457d",
 	"_type": "Item",
 	"_props": {
-		"Name": "stash 10x26",
-		"ShortName": "stash 10x26",
-		"Description": "stash 10x26\n",
+		"Name": "Standard stash 10x28",
+		"ShortName": "Standard stash 10x28",
+		"Description": "Standard stash 10x28\n",
 		"Weight": 1,
 		"BackgroundColor": "blue",
 		"Width": 1,
@@ -66,7 +66,7 @@
 				"_props": {
 					"filters": [],
 					"cellsH": 10,
-					"cellsV": 26,
+					"cellsV": 28,
 					"minCount": 0,
 					"maxCount": 0,
 					"maxWeight": 0

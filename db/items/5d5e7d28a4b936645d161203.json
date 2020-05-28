@@ -13,7 +13,7 @@
 		"Height": 2,
 		"StackMaxSize": 1,
 		"Rarity": "Rare",
-		"SpawnChance": 2,
+		"SpawnChance": 4,
 		"CreditsPrice": 46200,
 		"ItemSound": "gear_helmet",
 		"Prefab": {
@@ -87,7 +87,10 @@
 					"filters": [
 						{
 							"Shift": 0,
-							"Filter": []
+							"Filter": [
+								"5a398b75c4a282000a51a266",
+								"5a398ab9c4a282000c5a9842"
+							]
 						}
 					]
 				},

@@ -13,7 +13,7 @@
 		"Height": 4,
 		"StackMaxSize": 1,
 		"Rarity": "Rare",
-		"SpawnChance": 2,
+		"SpawnChance": 4,
 		"CreditsPrice": 68500,
 		"ItemSound": "gear_armor",
 		"Prefab": {
@@ -37,7 +37,7 @@
 		"LootExperience": 20,
 		"ExamineExperience": 2,
 		"HideEntrails": false,
-		"RepairCost": 150,
+		"RepairCost": 250,
 		"RepairSpeed": 8,
 		"ExtraSizeLeft": 0,
 		"ExtraSizeRight": 0,

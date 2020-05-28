@@ -14,7 +14,7 @@
 		"StackMaxSize": 1,
 		"Rarity": "Superrare",
 		"SpawnChance": 6,
-		"CreditsPrice": 75000,
+		"CreditsPrice": 85000,
 		"ItemSound": "spec_multitool",
 		"Prefab": {
 			"path": "assets/content/items/barter/item_barter_energy_cyclon/item_barter_energy_cyclon.bundle",

@@ -1,5 +1,5 @@
 {
-	"Name": "Submachinegun PPSH-41 7.62x25",
-	"ShortName": "PPSH-41",
-	"Description": "The PPSh-41 (pistolet-pulemyot Shpagina; Russian: Пистолет-пулемёт Шпагина; \"Shpagin submachinegun\") is a Soviet submachine gun designed by Georgy Shpagin as a cheap, reliable, and simplified alternative to the PPD-40."
+	"Name": "Pistolet-mitrailleur PPSh-41 7,62x25",
+	"ShortName": "PPSh-41",
+	"Description": "Le PPSh-41 (pistolet-pulemyot Shpagina; en russe : Пистолет-пулемёт Шпагина; \"Pistolet-mitrailleur Shpagin\") est un pistolet-mitrailleur soviétique conçu par Georgy Shpagin comme une alternative simple, fiable et bon marché au PPD-40."
 }

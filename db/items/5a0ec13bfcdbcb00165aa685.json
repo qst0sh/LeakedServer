@@ -394,7 +394,7 @@
 		"CameraRecoil": 0.2,
 		"CameraSnap": 3.5,
 		"ReloadMode": "ExternalMagazine",
-		"CenterOfImpact": 0.06,
+		"CenterOfImpact": 0.066,
 		"AimPlane": 0.19,
 		"DeviationCurve": 1,
 		"DeviationMax": 100,

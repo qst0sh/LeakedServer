@@ -14,7 +14,7 @@
 		"StackMaxSize": 1,
 		"Rarity": "Not_exist",
 		"SpawnChance": 25,
-		"CreditsPrice": 4159,
+		"CreditsPrice": 14159,
 		"ItemSound": "mod",
 		"Prefab": {
 			"path": "assets/content/items/mods/pistol grips/pistolgrip_tt_toz_tt_gold.bundle",

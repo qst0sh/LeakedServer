@@ -114,7 +114,7 @@
 		"IsAnimated": false,
 		"HasShoulderContact": false,
 		"SightingRange": 0,
-		"CenterOfImpact": 0.025,
+		"CenterOfImpact": 0.032,
 		"ShotgunDispersion": 1,
 		"IsSilencer": false
 	},

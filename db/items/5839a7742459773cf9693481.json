@@ -12,9 +12,9 @@
 		"Width": 2,
 		"Height": 1,
 		"StackMaxSize": 1,
-		"Rarity": "Superrare",
+		"Rarity": "Rare",
 		"SpawnChance": 5,
-		"CreditsPrice": 1203,
+		"CreditsPrice": 3203,
 		"ItemSound": "mod",
 		"Prefab": {
 			"path": "assets/content/items/mods/recievers/reciever_aks74u_izhmash_aks74ub_std.bundle",

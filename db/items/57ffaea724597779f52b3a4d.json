@@ -12,8 +12,8 @@
 		"Width": 1,
 		"Height": 1,
 		"StackMaxSize": 1,
-		"Rarity": "Superrare",
-		"SpawnChance": 16,
+		"Rarity": "Rare",
+		"SpawnChance": 5,
 		"CreditsPrice": 3453,
 		"ItemSound": "mod",
 		"Prefab": {
@@ -112,11 +112,11 @@
 						{
 							"Shift": 0,
 							"Filter": [
-								"5cc9c20cd7f00c001336c65d",
 								"5a800961159bd4315e3a1657",
 								"57fd23e32459772d0805bcf1",
 								"544909bb4bdc2d6f028b4577",
 								"5c06595c0db834001a66af6c",
+								"5cc9c20cd7f00c001336c65d",
 								"5b07dd285acfc4001754240d",
 								"56def37dd2720bec348b456a",
 								"5a7b483fe899ef0016170d15",

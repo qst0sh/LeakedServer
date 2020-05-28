@@ -12,7 +12,7 @@
 		"Width": 3,
 		"Height": 4,
 		"StackMaxSize": 1,
-		"Rarity": "Rare",
+		"Rarity": "Common",
 		"SpawnChance": 2,
 		"CreditsPrice": 40300,
 		"ItemSound": "gear_armor",

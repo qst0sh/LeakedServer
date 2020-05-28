@@ -12,7 +12,7 @@
 		"Width": 1,
 		"Height": 1,
 		"StackMaxSize": 1,
-		"Rarity": "Rare",
+		"Rarity": "Common",
 		"SpawnChance": 5,
 		"CreditsPrice": 3850,
 		"ItemSound": "mag_plastic",

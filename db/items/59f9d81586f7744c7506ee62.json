@@ -13,7 +13,7 @@
 		"Height": 1,
 		"StackMaxSize": 1,
 		"Rarity": "Superrare",
-		"SpawnChance": 1,
+		"SpawnChance": 4,
 		"CreditsPrice": 25847,
 		"ItemSound": "mod",
 		"Prefab": {

@@ -13,7 +13,7 @@
 		"Height": 1,
 		"StackMaxSize": 40,
 		"Rarity": "Superrare",
-		"SpawnChance": 10,
+		"SpawnChance": 7,
 		"CreditsPrice": 375,
 		"ItemSound": "ammo_singleround",
 		"Prefab": {

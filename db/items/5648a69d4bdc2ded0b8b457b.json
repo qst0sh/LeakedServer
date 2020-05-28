@@ -12,9 +12,9 @@
 		"Width": 3,
 		"Height": 4,
 		"StackMaxSize": 1,
-		"Rarity": "Not_exist",
-		"SpawnChance": 50,
-		"CreditsPrice": 36700,
+		"Rarity": "Rare",
+		"SpawnChance": 3,
+		"CreditsPrice": 40700,
 		"ItemSound": "gear_generic",
 		"Prefab": {
 			"path": "assets/content/items/equipment/rig_blackrock/item_equipment_rig_blackrock.bundle",

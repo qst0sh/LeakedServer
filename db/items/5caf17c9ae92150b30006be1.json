@@ -14,7 +14,7 @@
 		"StackMaxSize": 1,
 		"Rarity": "Not_exist",
 		"SpawnChance": 5,
-		"CreditsPrice": 4100,
+		"CreditsPrice": 6100,
 		"ItemSound": "mod",
 		"Prefab": {
 			"path": "assets/content/items/mods/muzzle/muzzle_ash12_ckib_ash12_std_127x55.bundle",
@@ -64,7 +64,7 @@
 		"CantRemoveFromSlotsDuringRaid": [],
 		"Durability": 100,
 		"Accuracy": 0,
-		"Recoil": -18,
+		"Recoil": -23,
 		"Loudness": 0,
 		"EffectiveDistance": 0,
 		"Ergonomics": 0,

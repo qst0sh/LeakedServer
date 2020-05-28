@@ -13,7 +13,7 @@
 		"Height": 2,
 		"StackMaxSize": 1,
 		"Rarity": "Rare",
-		"SpawnChance": 5,
+		"SpawnChance": 3,
 		"CreditsPrice": 75502,
 		"ItemSound": "gear_helmet",
 		"Prefab": {

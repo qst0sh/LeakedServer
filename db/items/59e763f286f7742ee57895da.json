@@ -12,7 +12,7 @@
 		"Width": 5,
 		"Height": 7,
 		"StackMaxSize": 1,
-		"Rarity": "Superrare",
+		"Rarity": "Rare",
 		"SpawnChance": 2,
 		"CreditsPrice": 39565,
 		"ItemSound": "gear_backpack",

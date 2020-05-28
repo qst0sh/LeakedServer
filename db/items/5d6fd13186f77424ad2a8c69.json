@@ -76,7 +76,7 @@
 					],
 					"cellsH": 5,
 					"cellsV": 5,
-					"minCount": 2,
+					"minCount": 3,
 					"maxCount": 13,
 					"maxWeight": 0
 				},

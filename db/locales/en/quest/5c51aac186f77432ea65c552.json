@@ -82,13 +82,21 @@
 		"5cb5df5586f7746ef82c17e8": "Find a can of sprats in raid",
 		"5cb5df7186f7747d215eca08": "Find fake mustache in raid",
 		"5cb5df8486f7746ef82c17ea": "Find Kotton beanie in raid",
-		"5de798b233870205123c7f33": ""
+		"5de798b233870205123c7f33": "",
+		"5ec798b8254c431289542b90": "",
+		"5ec7998dc1683c0db84484e7": "",
+		"5ec79aaac1683c0db84484e8": "",
+		"5ec79b3ced84ad5ddb58e24c": "",
+		"5ec79c2fed84ad5ddb58e24d": "",
+		"5ec79c5ac1683c0db84484eb": "",
+		"5ec79f2c82a25876330cb232": "",
+		"5ec79fb273279f683254baaa": ""
 	},
 	"name": "Collector",
 	"note": "",
 	"successMessageText": "5c5d950686f7747a777ade0c",
 	"failMessageText": "5c5d950686f7747a777ade0d",
-	"startedMessageText": "",
+	"startedMessageText": "5c5d950686f7747a777ade0e",
 	"description": "5c5d950686f7747a777ade0f",
 	"location": "any"
 }

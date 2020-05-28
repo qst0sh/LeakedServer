@@ -13,7 +13,7 @@
 		"Height": 1,
 		"StackMaxSize": 1,
 		"Rarity": "Superrare",
-		"SpawnChance": 4,
+		"SpawnChance": 3,
 		"CreditsPrice": 44147,
 		"ItemSound": "weap_ar",
 		"Prefab": {
@@ -234,7 +234,7 @@
 		"durabSpawnMin": 25,
 		"durabSpawnMax": 75,
 		"isFastReload": true,
-		"RecoilForceUp": 110,
+		"RecoilForceUp": 135,
 		"RecoilForceBack": 195,
 		"Convergence": 2.5,
 		"RecoilAngle": 90,

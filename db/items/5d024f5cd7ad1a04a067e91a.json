@@ -48,7 +48,10 @@
 		"CanSellOnRagfair": true,
 		"CanRequireOnRagfair": true,
 		"BannedFromRagfair": false,
-		"ConflictingItems": [],
+		"ConflictingItems": [
+			"5bc5a372d4351e44f824d17f",
+			"5bbdb811d4351e45020113c7"
+		],
 		"FixedPrice": false,
 		"Unlootable": false,
 		"UnlootableFromSlot": "FirstPrimaryWeapon",

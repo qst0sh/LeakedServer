@@ -12,8 +12,8 @@
 		"Width": 5,
 		"Height": 6,
 		"StackMaxSize": 1,
-		"Rarity": "Superrare",
-		"SpawnChance": 1,
+		"Rarity": "Rare",
+		"SpawnChance": 3,
 		"CreditsPrice": 37216,
 		"ItemSound": "gear_backpack",
 		"Prefab": {

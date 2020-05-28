@@ -13,7 +13,7 @@
 		"Height": 2,
 		"StackMaxSize": 1,
 		"Rarity": "Superrare",
-		"SpawnChance": 3,
+		"SpawnChance": 4,
 		"CreditsPrice": 13946,
 		"ItemSound": "magazine_metal",
 		"Prefab": {

@@ -1,12 +1,12 @@
 {
 	"_id": "5811ce662459770f6f490f32",
-	"_name": "stash 10x43",
+	"_name": "Prepare for escape stash 10x48",
 	"_parent": "566abbb64bdc2d144c8b457d",
 	"_type": "Item",
 	"_props": {
-		"Name": "stash 10x46",
-		"ShortName": "stash 10x46",
-		"Description": "stash 10x46\n",
+		"Name": "Prepare for escape stash 10x48",
+		"ShortName": "Prepare for escape stash 10x48",
+		"Description": "Prepare for escape stash 10x48\n",
 		"Weight": 1,
 		"BackgroundColor": "blue",
 		"Width": 1,
@@ -66,7 +66,7 @@
 				"_props": {
 					"filters": [],
 					"cellsH": 10,
-					"cellsV": 46,
+					"cellsV": 48,
 					"minCount": 0,
 					"maxCount": 0,
 					"maxWeight": 0

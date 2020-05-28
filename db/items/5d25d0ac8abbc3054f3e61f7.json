@@ -12,8 +12,8 @@
 		"Width": 4,
 		"Height": 1,
 		"StackMaxSize": 1,
-		"Rarity": "Not_exist",
-		"SpawnChance": 20,
+		"Rarity": "Superrare",
+		"SpawnChance": 3,
 		"CreditsPrice": 26500,
 		"ItemSound": "mod",
 		"Prefab": {

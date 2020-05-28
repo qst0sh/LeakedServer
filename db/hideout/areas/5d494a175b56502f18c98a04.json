@@ -21,13 +21,13 @@
 				},
 				{
 					"templateId": "59e3639286f7741777737013",
-					"count": 2,
+					"count": 3,
 					"isFunctional": false,
 					"type": "Item"
 				},
 				{
 					"templateId": "5d235a5986f77443f6329bc6",
-					"count": 2,
+					"count": 4,
 					"isFunctional": false,
 					"type": "Item"
 				},
@@ -56,7 +56,7 @@
 				}
 			],
 			"slots": 0,
-			"constructionTime": 129600,
+			"constructionTime": 144000,
 			"description": ""
 		}
 	}

@@ -12,9 +12,9 @@
 		"Width": 2,
 		"Height": 1,
 		"StackMaxSize": 1,
-		"Rarity": "Superrare",
-		"SpawnChance": 10,
-		"CreditsPrice": 5441,
+		"Rarity": "Rare",
+		"SpawnChance": 1,
+		"CreditsPrice": 7441,
 		"ItemSound": "mod",
 		"Prefab": {
 			"path": "assets/content/items/mods/stocks/stock_ar15_troy_m7a1_pdw_fde.bundle",

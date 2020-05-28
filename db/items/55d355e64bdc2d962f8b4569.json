@@ -13,7 +13,7 @@
 		"Height": 1,
 		"StackMaxSize": 1,
 		"Rarity": "Rare",
-		"SpawnChance": 10,
+		"SpawnChance": 3,
 		"CreditsPrice": 5198,
 		"ItemSound": "mod",
 		"Prefab": {
@@ -159,6 +159,8 @@
 								"55f84c3c4bdc2d5f408b4576",
 								"588b56d02459771481110ae2",
 								"5c9a26332e2216001219ea70",
+								"5ea16ada09aa976f2e7a51be",
+								"5ea16acdfadf1d18c87b0784",
 								"5a329052c4a28200741e22d3",
 								"55d459824bdc2d892f8b4573",
 								"5d122e7bd7ad1a07102d6d7f",

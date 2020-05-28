@@ -13,7 +13,7 @@
 		"Height": 1,
 		"StackMaxSize": 1,
 		"Rarity": "Common",
-		"SpawnChance": 2,
+		"SpawnChance": 3,
 		"CreditsPrice": 10437,
 		"ItemSound": "weap_pistol",
 		"Prefab": {
