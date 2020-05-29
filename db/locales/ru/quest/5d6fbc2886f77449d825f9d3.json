@@ -3,7 +3,7 @@
 	"note": "",
 	"successMessageText": "5d6fbedb86f77449d825f9d4",
 	"failMessageText": "5d6fbedb86f77449d825f9d5",
-	"startedMessageText": "5d6fbedb86f77449d825f9d6",
+	"startedMessageText": "",
 	"description": "5d6fbedb86f77449d825f9d7",
 	"conditions": {
 		"5d6fbf0f86f77449d97f738e": "Заплатить 50 000 евро",

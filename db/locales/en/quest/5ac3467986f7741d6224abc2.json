@@ -3,7 +3,7 @@
 	"note": "",
 	"successMessageText": "5ac3468b86f7741d6118b98f",
 	"failMessageText": "5ac3468b86f7741d6118b990",
-	"startedMessageText": "5ac3468b86f7741d6118b991",
+	"startedMessageText": "",
 	"description": "5ac3468b86f7741d6118b992",
 	"conditions": {
 		"5ac5e0fa86f77431c305d243": "Find the first signal source",

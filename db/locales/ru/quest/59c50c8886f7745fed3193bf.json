@@ -3,7 +3,7 @@
 	"description": "5abe61a886f7746ad512da66",
 	"note": "",
 	"failMessageText": "5c76b8d786f7746582258dde",
-	"startedMessageText": "5c76b8d786f7746582258ddf",
+	"startedMessageText": "",
 	"successMessageText": "5ab0f32686f7745dd409f58b",
 	"conditions": {
 		"59c50f1686f77412ef2c01e7": "Передать маски Прапору",

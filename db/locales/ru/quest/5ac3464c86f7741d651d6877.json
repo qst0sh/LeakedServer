@@ -3,7 +3,7 @@
 	"note": "",
 	"successMessageText": "5ac3465286f7741d6118b98a",
 	"failMessageText": "5ac3465286f7741d6118b98b",
-	"startedMessageText": "5ac3465286f7741d6118b98c",
+	"startedMessageText": "",
 	"description": "5ac3465286f7741d6118b98d",
 	"conditions": {
 		"5ac5081086f7740bde1b002f": "Достать в рейде 3 видеокарт",

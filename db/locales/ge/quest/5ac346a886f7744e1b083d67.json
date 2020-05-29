@@ -3,7 +3,7 @@
 	"note": "",
 	"successMessageText": "5ac346ba86f7741d6118b996",
 	"failMessageText": "5ac346ba86f7741d6118b997",
-	"startedMessageText": "5ac346ba86f7741d6118b998",
+	"startedMessageText": "",
 	"description": "5ac346ba86f7741d6118b999",
 	"conditions": {
 		"5ac5e79986f7747398341847": "Übergib drei PC-CPUs",

@@ -3,7 +3,7 @@
 	"note": "",
 	"successMessageText": "5c0bdb7c86f77422c8027f40",
 	"failMessageText": "5c0bdb7c86f77422c8027f41",
-	"startedMessageText": "5c0bdb7c86f77422c8027f42",
+	"startedMessageText": "",
 	"description": "5c0bdb7c86f77422c8027f43",
 	"conditions": {
 		"5c0bdbb586f774166e38eed5": "Erreiche Stufe 8 der Fähigkeit \"Stressresistenz\"",

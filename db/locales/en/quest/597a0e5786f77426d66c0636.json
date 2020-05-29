@@ -3,7 +3,7 @@
 	"description": "5abe61a786f7746ad512da60",
 	"note": "",
 	"failMessageText": "5c76c90286f77465815ed4dd",
-	"startedMessageText": "5c76c90286f77465815ed4de",
+	"startedMessageText": "",
 	"successMessageText": "5ab0f32686f7745dd409f582",
 	"conditions": {
 		"597a15b386f774799e5cd152": "Find a syringe with chemical in the factory",

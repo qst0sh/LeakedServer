@@ -3,7 +3,7 @@
 	"note": "",
 	"successMessageText": "5ac345e886f7741d632339f0",
 	"failMessageText": "5ac345e886f7741d632339f1",
-	"startedMessageText": "5ac345e886f7741d632339f2",
+	"startedMessageText": "",
 	"description": "5ac345e886f7741d632339f3",
 	"conditions": {
 		"5ac7a4ba86f77409f3423628": "Отремонтировать первую панель управления",

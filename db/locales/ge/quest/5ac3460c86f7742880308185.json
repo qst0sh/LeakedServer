@@ -3,7 +3,7 @@
 	"note": "",
 	"successMessageText": "5ac3461486f7741d6224abb8",
 	"failMessageText": "5ac3461486f7741d6224abb9",
-	"startedMessageText": "5ac3461486f7741d6224abba",
+	"startedMessageText": "",
 	"description": "5ac3461486f7741d6224abbb",
 	"conditions": {
 		"5ac502a786f7740bde1b000c": "Beschaffe 3 Stromkabel",

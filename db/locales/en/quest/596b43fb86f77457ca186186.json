@@ -3,7 +3,7 @@
 	"description": "5abe61a786f7746ad512da59",
 	"note": "",
 	"failMessageText": "5c76c81686f774658340b141",
-	"startedMessageText": "5c76c81686f774658340b142",
+	"startedMessageText": "",
 	"successMessageText": "5ab0f32686f7745dd409f579",
 	"conditions": {
 		"596b44b686f77457cb50ecca": " Find the hidden valuable cargo",

@@ -3,7 +3,7 @@
 	"note": "",
 	"successMessageText": "5c13a99d86f77463932d9bc2",
 	"failMessageText": "5c13a99d86f77463932d9bc3",
-	"startedMessageText": "5c13a99d86f77463932d9bc4",
+	"startedMessageText": "",
 	"description": "5c13a99d86f77463932d9bc5",
 	"conditions": {
 		"5c139eb686f7747878361a72": "Livrez un lecteur RFID UHF",

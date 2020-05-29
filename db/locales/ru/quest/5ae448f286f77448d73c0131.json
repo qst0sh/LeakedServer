@@ -3,7 +3,7 @@
 	"note": "",
 	"successMessageText": "5ae4525986f7741b747a048b",
 	"failMessageText": "5ae4525986f7741b747a048c",
-	"startedMessageText": "5ae4525986f7741b747a048d",
+	"startedMessageText": "",
 	"description": "5ae4525986f7741b747a048e",
 	"conditions": {
 		"5ae452c086f774336a397578": "Пометить первую цистерну",

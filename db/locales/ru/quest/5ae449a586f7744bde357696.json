@@ -3,7 +3,7 @@
 	"note": "",
 	"successMessageText": "5ae9c32886f774703201f167",
 	"failMessageText": "5ae9c32886f774703201f168",
-	"startedMessageText": "5ae9c32886f774703201f169",
+	"startedMessageText": "",
 	"description": "5ae9c32886f774703201f16a",
 	"conditions": {
 		"5ae9c38e86f7743515398707": "Повысить уровень лояльности с Терапевтом до 3",

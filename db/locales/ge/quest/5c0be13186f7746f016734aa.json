@@ -3,7 +3,7 @@
 	"note": "",
 	"successMessageText": "5c0be15086f7746f016734ab",
 	"failMessageText": "5c0be15086f7746f016734ac",
-	"startedMessageText": "5c0be15086f7746f016734ad",
+	"startedMessageText": "",
 	"description": "5c0be15086f7746f016734ae",
 	"conditions": {
 		"5c0be2b486f7747bcb347d58": "Erreiche Stufe 9 der Fähigkeit \"Scharfschütze\"",

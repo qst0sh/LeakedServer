@@ -3,7 +3,7 @@
 	"note": "",
 	"successMessageText": "5ae3272086f77444fd36f5e3",
 	"failMessageText": "5ae3272086f77444fd36f5e4",
-	"startedMessageText": "5ae3272086f77444fd36f5e5",
+	"startedMessageText": "",
 	"description": "5ae3272086f77444fd36f5e6",
 	"conditions": {
 		"5ae3550b86f7741cf44fc799": "Модифицировать АКМ до требуемых параметров",
