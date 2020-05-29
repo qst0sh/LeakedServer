@@ -15,19 +15,30 @@
 	},
 	"IsGroupPosition": false,
 	"GroupPositions": [],
-	"Root": "5eb3dda686f77468595b111a",
+	"Root": "5ec3f459686b7e28703440a7",
 	"Items": [
 		{
-			"_id": "5eb3dda686f77468595b111a",
+			"_id": "5ec3f459686b7e28703440a7",
 			"_tpl": "5909d50c86f774659e6aaebe"
 		},
 		{
-			"_id": "5eb3dda686f77468595b111b",
-			"_tpl": "59e35cbb86f7741778269d83",
-			"parentId": "5eb3dda686f77468595b111a",
+			"_id": "5ec3f459686b7e28703440a8",
+			"_tpl": "5d63d33b86f7746ea9275524",
+			"parentId": "5ec3f459686b7e28703440a7",
 			"slotId": "main",
 			"location": {
 				"x": 0,
+				"y": 0,
+				"r": 0
+			}
+		},
+		{
+			"_id": "5ec3f459686b7e28703440a9",
+			"_tpl": "5d1b313086f77425227d1678",
+			"parentId": "5ec3f459686b7e28703440a7",
+			"slotId": "main",
+			"location": {
+				"x": 1,
 				"y": 0,
 				"r": 0
 			}

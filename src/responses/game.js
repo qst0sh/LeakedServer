@@ -17,8 +17,7 @@ function getServer(url, info, sessionID) {
 }
 
 function validateGameVersion(url, info, sessionID) {
-    console.log(info);
-    return response_f.getBody({"isvalid":true,"latestVersion":"0.12.6.7456"});
+    return response_f.getBody({"isvalid": true, "latestVersion": ""});
 }
 
 router.addStaticRoute("/client/game/profile/select", selectProfile);

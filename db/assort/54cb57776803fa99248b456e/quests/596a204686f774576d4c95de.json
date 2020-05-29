@@ -73,11 +73,12 @@
 					"target": [
 						"590a3efd86f77437d351a25b"
 					],
-					"value": "3",
+					"value": "2",
 					"index": 2,
 					"parentId": "",
 					"id": "596a20ac86f7741ddf17dbf4",
-					"visibilityConditions": []
+					"visibilityConditions": [],
+					"onlyFoundInRaid": true
 				}
 			}
 		],

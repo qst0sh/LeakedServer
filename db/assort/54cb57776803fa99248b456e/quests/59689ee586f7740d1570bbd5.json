@@ -130,7 +130,7 @@
 					"minDurability": 0,
 					"maxDurability": 0,
 					"dogtagLevel": 0,
-					"onlyFoundInRaid": true,
+					"onlyFoundInRaid": false,
 					"index": 1,
 					"parentId": "",
 					"id": "5cb6f32986f7746ef55e17a0"
@@ -150,7 +150,7 @@
 					"minDurability": 0,
 					"maxDurability": 0,
 					"dogtagLevel": 0,
-					"onlyFoundInRaid": true
+					"onlyFoundInRaid": false
 				}
 			}
 		],

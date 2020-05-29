@@ -8,7 +8,8 @@
 		"ShortName": "SavageUpperSuite1",
 		"Description": "SavageUpperSuite1",
 		"Side": [
-			"Savage"
+			"Bear",
+			"Usec"
 		],
 		"AvailableAsDefault": false,
 		"Body": "5e9da1d086f774054a667134",

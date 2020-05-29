@@ -5,10 +5,11 @@
 	"_type": "Item",
 	"_props": {
 		"Name": "KillaLowerSuite",
-		"ShortName": "KillaLowerSuite",
+		"ShortName": "LowerSuite",
 		"Description": "KillaLowerSuite",
 		"Side": [
-			"Savage"
+			"Bear",
+			"Usec"
 		],
 		"AvailableAsDefault": false,
 		"Feet": "5cdea3c47d6c8b0475341734"
