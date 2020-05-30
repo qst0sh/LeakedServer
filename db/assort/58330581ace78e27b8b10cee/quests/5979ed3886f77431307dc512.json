@@ -145,6 +145,7 @@
 					"minDurability": 0,
 					"index": 0,
 					"parentId": "",
+					"onlyFoundInRaid": true,
 					"id": "5979ee2986f7743ec214c7a4"
 				}
 			},
@@ -159,6 +160,7 @@
 					"index": 1,
 					"parentId": "",
 					"id": "5979ee4586f7743ec214c7a5",
+					"onlyFoundInRaid": true,
 					"visibilityConditions": [
 						{
 							"_parent": "CompleteCondition",

@@ -203,20 +203,54 @@
 		],
 		"AvailableForFinish": [
 			{
+				"_parent": "FindItem",
+				"_props": {
+					"target": [
+						"5c05308086f7746b2101e90b"
+					],
+					"value": "2",
+					"minDurability": 0,
+					"maxDurability": 0,
+					"dogtagLevel": 0,
+					"index": 0,
+					"parentId": "",
+					"id": "5ec13d45a1032866196c939b",
+					"visibilityConditions": [],
+					"onlyFoundInRaid": true
+				}
+			},
+			{
 				"_parent": "HandoverItem",
 				"_props": {
 					"target": [
 						"5c05308086f7746b2101e90b"
 					],
-					"value": "3",
+					"value": "2",
 					"minDurability": 0,
 					"maxDurability": 0,
 					"dogtagLevel": 0,
-					"index": 3,
+					"index": 1,
 					"parentId": "",
 					"id": "5c138c4486f7743b056e2943",
 					"visibilityConditions": [],
-					"onlyFoundInRaid": false
+					"onlyFoundInRaid": true
+				}
+			},
+			{
+				"_parent": "FindItem",
+				"_props": {
+					"target": [
+						"5c052f6886f7746b1e3db148"
+					],
+					"value": "1",
+					"minDurability": 0,
+					"maxDurability": 0,
+					"dogtagLevel": 0,
+					"index": 2,
+					"parentId": "",
+					"id": "5ec13da983b69d213d3c2ee4",
+					"visibilityConditions": [],
+					"onlyFoundInRaid": true
 				}
 			},
 			{
@@ -225,15 +259,15 @@
 					"target": [
 						"5c052f6886f7746b1e3db148"
 					],
-					"value": "2",
+					"value": "1",
 					"minDurability": 0,
 					"maxDurability": 0,
 					"dogtagLevel": 0,
-					"index": 4,
+					"index": 3,
 					"parentId": "",
 					"id": "5c138d4286f774276a6504aa",
 					"visibilityConditions": [],
-					"onlyFoundInRaid": false
+					"onlyFoundInRaid": true
 				}
 			}
 		],

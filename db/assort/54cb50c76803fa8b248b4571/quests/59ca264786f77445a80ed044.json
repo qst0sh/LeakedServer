@@ -332,9 +332,10 @@
 					"target": [
 						"57e26fc7245977162a14b800"
 					],
-					"value": "10",
+					"value": "5",
 					"minDurability": 0,
 					"index": 2,
+					"onlyFoundInRaid": true,
 					"parentId": "",
 					"id": "59ca293c86f91445a80ed047"
 				}
@@ -345,9 +346,10 @@
 					"target": [
 						"57e26fc7245977162a14b800"
 					],
-					"value": "10",
+					"value": "5",
 					"minDurability": 0,
 					"index": 3,
+					"onlyFoundInRaid": true,
 					"parentId": "",
 					"id": "59ca29ab86f77445ab431c86",
 					"visibilityConditions": []

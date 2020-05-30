@@ -139,14 +139,14 @@
 					"target": [
 						"59e36c6f86f774176c10a2a7"
 					],
-					"value": "3",
+					"value": "2",
 					"minDurability": 0,
 					"dogtagLevel": 0,
 					"index": 0,
 					"parentId": "",
 					"id": "5ac502a786f7740bde1b000c",
 					"maxDurability": 0,
-					"onlyFoundInRaid": false
+					"onlyFoundInRaid": true
 				}
 			},
 			{
@@ -155,7 +155,7 @@
 					"target": [
 						"59e36c6f86f774176c10a2a7"
 					],
-					"value": "3",
+					"value": "2",
 					"minDurability": 0,
 					"dogtagLevel": 0,
 					"index": 1,
@@ -163,7 +163,7 @@
 					"id": "5ac5055a86f7745cae22b582",
 					"visibilityConditions": [],
 					"maxDurability": 0,
-					"onlyFoundInRaid": false
+					"onlyFoundInRaid": true
 				}
 			},
 			{
@@ -172,12 +172,13 @@
 					"target": [
 						"57347cd0245977445a2d6ff1"
 					],
-					"value": "5",
+					"value": "4",
 					"minDurability": 0,
 					"dogtagLevel": 0,
 					"index": 2,
 					"parentId": "",
-					"id": "5ac505c386f7740be0424d19"
+					"id": "5ac505c386f7740be0424d19",
+					"onlyFoundInRaid": true
 				}
 			},
 			{
@@ -186,13 +187,14 @@
 					"target": [
 						"57347cd0245977445a2d6ff1"
 					],
-					"value": "5",
+					"value": "4",
 					"minDurability": 0,
 					"dogtagLevel": 0,
 					"index": 3,
 					"parentId": "",
 					"id": "5ac505e186f7740bdf2ceabe",
-					"visibilityConditions": []
+					"visibilityConditions": [],
+					"onlyFoundInRaid": true
 				}
 			},
 			{
@@ -201,14 +203,14 @@
 					"target": [
 						"590a3b0486f7743954552bdb"
 					],
-					"value": "3",
+					"value": "2",
 					"minDurability": 0,
 					"dogtagLevel": 0,
 					"index": 4,
 					"parentId": "",
 					"id": "5ac5061386f77417e429ce7a",
 					"maxDurability": 0,
-					"onlyFoundInRaid": false
+					"onlyFoundInRaid": true
 				}
 			},
 			{
@@ -217,7 +219,7 @@
 					"target": [
 						"590a3b0486f7743954552bdb"
 					],
-					"value": "3",
+					"value": "2",
 					"minDurability": 0,
 					"dogtagLevel": 0,
 					"index": 5,
@@ -225,7 +227,7 @@
 					"id": "5ac5062586f774587c327395",
 					"visibilityConditions": [],
 					"maxDurability": 0,
-					"onlyFoundInRaid": false
+					"onlyFoundInRaid": true
 				}
 			}
 		],

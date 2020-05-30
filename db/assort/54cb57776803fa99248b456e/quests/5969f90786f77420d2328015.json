@@ -35,7 +35,7 @@
 						"_id": "5e0ac74b9d594972a112a84f",
 						"_tpl": "5449016a4bdc2d6f028b456f",
 						"upd": {
-							"StackObjectsCount": 17000
+							"StackObjectsCount": 17850
 						}
 					}
 				]
@@ -52,6 +52,22 @@
 						"_tpl": "544fb37f4bdc2dee738b4567",
 						"upd": {
 							"StackObjectsCount": 10
+						}
+					}
+				]
+			},
+			{
+				"target": "syringue",
+				"value": "5",
+				"id": "reward",
+				"type": "Item",
+				"index": 4,
+				"items": [
+					{
+						"_id": "syringue",
+						"_tpl": "5d1b3f2d86f774253763b735",
+						"upd": {
+							"StackObjectsCount": 5
 						}
 					}
 				]
@@ -89,7 +105,7 @@
 					"target": [
 						"544fb3f34bdc2d03748b456a"
 					],
-					"value": "5",
+					"value": "4",
 					"index": 0,
 					"parentId": "",
 					"id": "5969f98286f774576d4c9542",

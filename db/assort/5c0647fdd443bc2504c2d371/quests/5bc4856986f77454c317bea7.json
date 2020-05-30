@@ -90,7 +90,7 @@
 			{
 				"_parent": "CounterCreator",
 				"_props": {
-					"value": "7",
+					"value": "5",
 					"type": "Elimination",
 					"counter": {
 						"id": "5bc485b586f774726473a857",
@@ -107,7 +107,7 @@
 									],
 									"distance": {
 										"compareMethod": ">=",
-										"value": 80
+										"value": 55
 									},
 									"weaponModsInclusive": [
 										[

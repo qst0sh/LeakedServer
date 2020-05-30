@@ -90,7 +90,7 @@
 			{
 				"_parent": "CounterCreator",
 				"_props": {
-					"value": "5",
+					"value": "3",
 					"type": "Elimination",
 					"counter": {
 						"id": "5bd983d886f7747ba73fc245",
@@ -107,7 +107,7 @@
 									],
 									"distance": {
 										"compareMethod": ">=",
-										"value": 80
+										"value": 60
 									},
 									"bodyPart": [
 										"LeftLeg",
@@ -143,7 +143,7 @@
 									],
 									"distance": {
 										"compareMethod": ">=",
-										"value": 80
+										"value": 60
 									},
 									"bodyPart": [
 										"Head"

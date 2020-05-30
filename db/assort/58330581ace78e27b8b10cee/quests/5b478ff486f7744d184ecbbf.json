@@ -79,7 +79,7 @@
 					"target": [
 						"59e7715586f7742ee5789605"
 					],
-					"value": "5",
+					"value": "4",
 					"minDurability": 0,
 					"maxDurability": 0,
 					"dogtagLevel": 0,
@@ -95,7 +95,7 @@
 					"target": [
 						"59e7715586f7742ee5789605"
 					],
-					"value": "5",
+					"value": "4",
 					"minDurability": 0,
 					"maxDurability": 0,
 					"dogtagLevel": 0,
@@ -107,12 +107,29 @@
 				}
 			},
 			{
+				"_parent": "FindItem",
+				"_props": {
+					"target": [
+						"5b4335ba86f7744d2837a264"
+					],
+					"value": "3",
+					"minDurability": 0,
+					"maxDurability": 0,
+					"dogtagLevel": 0,
+					"index": 1,
+					"parentId": "",
+					"id": "5ec1388d83b69d213d3c2ee0",
+					"visibilityConditions": [],
+					"onlyFoundInRaid": true
+				}
+			},
+			{
 				"_parent": "HandoverItem",
 				"_props": {
 					"target": [
 						"5b4335ba86f7744d2837a264"
 					],
-					"value": "5",
+					"value": "3",
 					"minDurability": 0,
 					"maxDurability": 0,
 					"dogtagLevel": 0,

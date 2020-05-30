@@ -120,7 +120,7 @@
 			{
 				"_parent": "CounterCreator",
 				"_props": {
-					"value": "5",
+					"value": "4",
 					"type": "Elimination",
 					"counter": {
 						"id": "5bc47e3e86f7741e6b2f3331",
@@ -137,7 +137,7 @@
 									],
 									"distance": {
 										"compareMethod": "<=",
-										"value": 15
+										"value": 25
 									},
 									"id": "5bc4800d86f774194f27ac45"
 								}
