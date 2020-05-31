@@ -74,11 +74,24 @@
 				]
 			},
 			{
+				"target": "reward",
+				"value": "1",
+				"id": "reward_1",
+				"type": "Item",
+				"index": 4,
+				"items": [
+					{
+						"_id": "reward",
+						"_tpl": "5d1b371186f774253763a656"
+					}
+				]
+			},
+			{
 				"target": "5c0647fdd443bc2504c2d371",
 				"value": "-0.01",
 				"id": "5d72501386f7740aff6e375a",
 				"type": "TraderStanding",
-				"index": 4
+				"index": 5
 			}
 		],
 		"Fail": []

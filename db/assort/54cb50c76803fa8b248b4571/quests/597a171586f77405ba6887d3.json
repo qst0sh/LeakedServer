@@ -62,6 +62,22 @@
 				"id": "5d6e713386f77410d46d1e42",
 				"type": "TraderStanding",
 				"index": 4
+			},
+			{
+				"target": "reward",
+				"value": "2",
+				"type": "Item",
+				"index": 5,
+				"id": "ammo_case_reward",
+				"items": [
+					{
+						"_id": "reward",
+						"_tpl": "5aafbde786f774389d0cbc0f",
+						"upd": {
+							"StackObjectsCount": 2
+						}
+					}
+				]
 			}
 		],
 		"Fail": [

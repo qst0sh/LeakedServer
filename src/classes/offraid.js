@@ -77,6 +77,19 @@ function markFoundItems(pmcData, offraidData, isPlayerScav) {
     return offraidData;
 }
 
+function RemoveFoundItems(offraidData) {
+    for (let offraidItem of offraidData.Inventory.items) {
+        // Remove the FIR status if the player died and the item marked FIR
+        if ("upd" in offraidItem && "SpawnedInSession" in offraidItem.upd) {
+            delete offraidItem.upd.SpawnedInSession;
+        }
+
+        continue;
+    }
+
+    return offraidData;
+}
+
 function setInventory(pmcData, offraidData) {
     move_f.removeItemFromProfile(pmcData, pmcData.Inventory.equipment);
     move_f.removeItemFromProfile(pmcData, pmcData.Inventory.questRaidItems);
@@ -257,8 +270,15 @@ function saveProgress(offraidData, sessionID) {
         offraid_f.inraidServer.removePlayer(sessionID);
     }
 
-    // mark found items and replace item ID's
-    offraidData.profile = markFoundItems(pmcData, offraidData.profile, isPlayerScav);
+    //Check for exit status
+    if(offraidData.exit === "survived"){
+        // mark found items and replace item ID's if the player survived
+        offraidData.profile = markFoundItems(pmcData, offraidData.profile, isPlayerScav);
+    }else{
+        //Or remove the FIR status if the player havn't survived
+        offraidData.profile = RemoveFoundItems(offraidData.profile)
+    }
+
     offraidData.profile.Inventory.items = itm_hf.replaceIDs(offraidData.profile, offraidData.profile.Inventory.items);
 
     // set profile equipment to the raid equipment

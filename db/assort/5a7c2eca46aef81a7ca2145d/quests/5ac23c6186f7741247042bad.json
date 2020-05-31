@@ -6,7 +6,7 @@
 	"type": "WeaponAssembly",
 	"isKey": false,
 	"restartable": false,
-	"min_level": 10,
+	"min_level": 5,
 	"canShowNotificationsInGame": true,
 	"rewards": {
 		"Started": [],
@@ -113,7 +113,7 @@
 				"_parent": "Level",
 				"_props": {
 					"compareMethod": ">=",
-					"value": "10",
+					"value": "5",
 					"index": 0,
 					"parentId": "",
 					"id": "5acf375f86f7741bb8377ff7"

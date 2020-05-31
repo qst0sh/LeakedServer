@@ -110,13 +110,16 @@ function acceptQuest(pmcData, body, sessionID) {
     let questRewards = getQuestRewardItems(quest, state);
     let messageContent = {
         "templateId": questLocale.startedMessageText,
-        "type": dialogue_f.getMessageTypeValue('questStart')
+        "type": dialogue_f.getMessageTypeValue('questStart'),
+        "maxStorageTime": gameplayConfig.other.RedeemTime *3600
+
     };
 
     if (questLocale.startedMessageText === "") {
         messageContent = {
             "templateId": questLocale.description,
-            "type": dialogue_f.getMessageTypeValue('questStart')
+            "type": dialogue_f.getMessageTypeValue('questStart'),
+            "maxStorageTime": gameplayConfig.other.RedeemTime *3600
         };
     }
 
@@ -193,7 +196,8 @@ function completeQuest(pmcData, body, sessionID) {
     let questLocale = json.parse(json.read(db.locales["en"].quest[body.qid]));
     let messageContent = {
         "templateId": questLocale.successMessageText,
-        "type": dialogue_f.getMessageTypeValue('questSuccess')
+        "type": dialogue_f.getMessageTypeValue('questSuccess'),
+        "maxStorageTime": gameplayConfig.other.RedeemTime * 3600
     }
 
     dialogue_f.dialogueServer.addDialogueMessage(questDb.traderId, messageContent, sessionID, questRewards);

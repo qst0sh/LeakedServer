@@ -160,7 +160,7 @@
 			{
 				"_parent": "CounterCreator",
 				"_props": {
-					"value": "5",
+					"value": "7",
 					"type": "Elimination",
 					"counter": {
 						"id": "5a27cc8186f7744c8166c6e9",
@@ -185,66 +185,33 @@
 				"_parent": "FindItem",
 				"_props": {
 					"target": [
-						"544a5cde4bdc2d39388b456b"
+						"59f32c3b86f77472a31742f0"
 					],
-					"value": "2",
+					"value": "7",
 					"minDurability": 0,
 					"index": 1,
 					"parentId": "",
-					"id": "5a27cf8286f7747e0b237470",
+					"id": "5ec137962d5b8510d548aef1",
 					"maxDurability": 0,
 					"dogtagLevel": 0,
-					"onlyFoundInRaid": false
+					"onlyFoundInRaid": true
 				}
 			},
 			{
 				"_parent": "HandoverItem",
 				"_props": {
 					"target": [
-						"544a5cde4bdc2d39388b456b"
+						"59f32c3b86f77472a31742f0"
 					],
-					"value": "2",
+					"value": "7",
 					"minDurability": 0,
 					"index": 2,
 					"parentId": "",
-					"id": "5a27cfd586f7747e4b2ab23f",
+					"id": "5ec137dcc367fc6781104613",
 					"visibilityConditions": [],
 					"maxDurability": 0,
 					"dogtagLevel": 0,
-					"onlyFoundInRaid": false
-				}
-			},
-			{
-				"_parent": "FindItem",
-				"_props": {
-					"target": [
-						"544a5caa4bdc2d1a388b4568"
-					],
-					"value": "1",
-					"minDurability": 0,
-					"index": 3,
-					"parentId": "",
-					"id": "5a27d04686f7747e2b71be4f",
-					"maxDurability": 0,
-					"dogtagLevel": 0,
-					"onlyFoundInRaid": false
-				}
-			},
-			{
-				"_parent": "HandoverItem",
-				"_props": {
-					"target": [
-						"544a5caa4bdc2d1a388b4568"
-					],
-					"value": "1",
-					"minDurability": 0,
-					"index": 4,
-					"parentId": "",
-					"id": "5a27d09c86f7747e0b23747a",
-					"visibilityConditions": [],
-					"maxDurability": 0,
-					"dogtagLevel": 0,
-					"onlyFoundInRaid": false
+					"onlyFoundInRaid": true
 				}
 			}
 		],

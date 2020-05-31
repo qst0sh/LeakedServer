@@ -39,6 +39,19 @@
 						}
 					}
 				]
+			},
+			{
+				"target": "reward",
+				"value": "1",
+				"type": "Item",
+				"index": 3,
+				"id": "med_case_reward",
+				"items": [
+					{
+						"_id": "reward",
+						"_tpl": "5aafbcd986f7745e590fff23"
+					}
+				]
 			}
 		],
 		"Fail": [
