@@ -9,6 +9,9 @@
         "saveHealthEnabled": true,
         "saveHealthMultiplier": 0.1
     },
+    "other":{
+        "RedeemTime": 48
+    },
     "bots": {
         "pmc": {
             "enabled": true,
