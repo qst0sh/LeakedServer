@@ -38,7 +38,7 @@
 				"value": "30",
 				"id": "new_reward",
 				"type": "Item",
-				"index": 1,
+				"index": 2,
 				"items": [
 					{
 						"_id": "12x70_reward",
@@ -54,7 +54,7 @@
 				"value": "80",
 				"id": "new_reward2",
 				"type": "Item",
-				"index": 1,
+				"index": 3,
 				"items": [
 					{
 						"_id": "warmage_reward",
@@ -70,7 +70,14 @@
 				"value": "0.03",
 				"id": "5d76325a86f77402b60854fa",
 				"type": "TraderStanding",
-				"index": 2
+				"index": 4
+			},
+			{
+				"target": "Metabolism",
+				"value": "2",
+				"id": "5d66735486f774368e1b7868",
+				"type": "Skill",
+				"index": 5
 			}
 		],
 		"Fail": []
