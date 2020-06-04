@@ -598,8 +598,8 @@ function replaceIDs(pmcData, items) {
         }
 
         // replace id
-        let old_id = item._id;
-        let new_id = utility.generateNewItemId();
+        let old_id = "\""+item._id+"\"";
+        let new_id = "\""+utility.generateNewItemId()+"\"";
 
         string_inventory = string_inventory.replace(new RegExp(old_id, 'g'), new_id);
     }
